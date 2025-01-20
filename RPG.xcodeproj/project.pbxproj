@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		58357DC42D3F0BCA005F418E /* Game.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58357DC32D3F0BC7005F418E /* Game.swift */; };
 		58536ECE2D3E90DF005DB5CB /* Charakter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58536EC42D3E8F56005DB5CB /* Charakter.swift */; };
 		58536ECF2D3E90F5005DB5CB /* Gegner.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58536EC52D3E8F5E005DB5CB /* Gegner.swift */; };
 		58536ED02D3E90FA005DB5CB /* Held.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58536EC62D3E8F6B005DB5CB /* Held.swift */; };
@@ -37,6 +38,7 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		58357DC32D3F0BC7005F418E /* Game.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Game.swift; sourceTree = "<group>"; };
 		58536EC42D3E8F56005DB5CB /* Charakter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Charakter.swift; sourceTree = "<group>"; };
 		58536EC52D3E8F5E005DB5CB /* Gegner.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Gegner.swift; sourceTree = "<group>"; };
 		58536EC62D3E8F6B005DB5CB /* Held.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Held.swift; sourceTree = "<group>"; };
@@ -77,6 +79,7 @@
 		58536EC32D3E8F4E005DB5CB /* Clases */ = {
 			isa = PBXGroup;
 			children = (
+				58357DC32D3F0BC7005F418E /* Game.swift */,
 				58536ECC2D3E8FC0005DB5CB /* Scherger.swift */,
 				58536ECB2D3E8FB6005DB5CB /* Endgegner.swift */,
 				58536ECA2D3E8FAD005DB5CB /* Hexendoktor.swift */,
@@ -205,6 +208,7 @@
 				58536ED82D3E9140005DB5CB /* Extensions.swift in Sources */,
 				58536ECE2D3E90DF005DB5CB /* Charakter.swift in Sources */,
 				585371CA2D3EFC9C005DB5CB /* Waffen.swift in Sources */,
+				58357DC42D3F0BCA005F418E /* Game.swift in Sources */,
 				58536ED32D3E912A005DB5CB /* Magier.swift in Sources */,
 				58536ED22D3E9103005DB5CB /* Kreuzritter.swift in Sources */,
 				58536ED42D3E912F005DB5CB /* Hexendoktor.swift in Sources */,
