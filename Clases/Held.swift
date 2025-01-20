@@ -4,8 +4,12 @@
 //
 //  Created by Robin Maly on 20.01.25.
 //
+// MARK: 4. Klassen & Vererbung
+
+
 
 class Held: Charakter {
+    
     var angriffsPunkte: Double
     var verteidigungsPunkte: Double
     
