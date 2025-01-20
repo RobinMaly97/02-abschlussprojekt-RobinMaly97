@@ -7,9 +7,12 @@
 
 class Scherger: Gegner {
     
-    func heilPfeil() {
+    func heilPfeil(zuHeilen: Endgegner) {
         print("Scherger setzt Heil Pfeil ein")
-        print("Endgegner bekommt 10 hp dazu!!")
+        print("\(zuHeilen.name) bekommt 10 hp dazu!!")
+        zuHeilen.hp = zuHeilen.hp + 10
+        
+        
     }
     func eisPfeil() {
         
