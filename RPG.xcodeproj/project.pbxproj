@@ -19,6 +19,9 @@
 /* End PBXCopyFilesBuildPhase section */
 
 /* Begin PBXFileReference section */
+		58A1CD272D3E8BB7002AC81E /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
+		58A1CD282D3E8BBF002AC81E /* Extensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extensions.swift; sourceTree = "<group>"; };
+		58A1CD2A2D3E8C0E002AC81E /* Protocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Protocols.swift; sourceTree = "<group>"; };
 		CE2F4BF62C9D636900643971 /* RPG */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = RPG; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -41,9 +44,36 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		58A1CD242D3E8B7B002AC81E /* Classes */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Classes;
+			sourceTree = "<group>";
+		};
+		58A1CD252D3E8B8D002AC81E /* Sructs */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Sructs;
+			sourceTree = "<group>";
+		};
+		58A1CD262D3E8B96002AC81E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				58A1CD2A2D3E8C0E002AC81E /* Protocols.swift */,
+				58A1CD282D3E8BBF002AC81E /* Extensions.swift */,
+				58A1CD272D3E8BB7002AC81E /* Enums.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
 		CE2F4BED2C9D636900643971 = {
 			isa = PBXGroup;
 			children = (
+				58A1CD262D3E8B96002AC81E /* Utilities */,
+				58A1CD252D3E8B8D002AC81E /* Sructs */,
+				58A1CD242D3E8B7B002AC81E /* Classes */,
 				CE2F4BF82C9D636900643971 /* RPG */,
 				CE2F4BF72C9D636900643971 /* Products */,
 			);
