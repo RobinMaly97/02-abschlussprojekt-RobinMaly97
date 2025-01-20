@@ -19,6 +19,9 @@
 		58536ED72D3E913D005DB5CB /* Protocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A1CD2A2D3E8C0E002AC81E /* Protocols.swift */; };
 		58536ED82D3E9140005DB5CB /* Extensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A1CD282D3E8BBF002AC81E /* Extensions.swift */; };
 		58536ED92D3E9144005DB5CB /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 58A1CD272D3E8BB7002AC81E /* Enums.swift */; };
+		585371CA2D3EFC9C005DB5CB /* Waffen.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585371C82D3EABB2005DB5CB /* Waffen.swift */; };
+		585371CB2D3EFCA2005DB5CB /* Beutel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585371C72D3EAB95005DB5CB /* Beutel.swift */; };
+		585371CC2D3EFCA7005DB5CB /* Items.swift in Sources */ = {isa = PBXBuildFile; fileRef = 585371C92D3EABBC005DB5CB /* Items.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXCopyFilesBuildPhase section */
@@ -195,10 +198,13 @@
 				58536ED72D3E913D005DB5CB /* Protocols.swift in Sources */,
 				58536ECF2D3E90F5005DB5CB /* Gegner.swift in Sources */,
 				58536ED62D3E9137005DB5CB /* Scherger.swift in Sources */,
+				585371CB2D3EFCA2005DB5CB /* Beutel.swift in Sources */,
 				58536ED02D3E90FA005DB5CB /* Held.swift in Sources */,
+				585371CC2D3EFCA7005DB5CB /* Items.swift in Sources */,
 				58536ED92D3E9144005DB5CB /* Enums.swift in Sources */,
 				58536ED82D3E9140005DB5CB /* Extensions.swift in Sources */,
 				58536ECE2D3E90DF005DB5CB /* Charakter.swift in Sources */,
+				585371CA2D3EFC9C005DB5CB /* Waffen.swift in Sources */,
 				58536ED32D3E912A005DB5CB /* Magier.swift in Sources */,
 				58536ED22D3E9103005DB5CB /* Kreuzritter.swift in Sources */,
 				58536ED42D3E912F005DB5CB /* Hexendoktor.swift in Sources */,

@@ -12,8 +12,9 @@ class Barbar: Held {
     
     // MARK: Reguläre Attacke
     func seismischesSchmettern(gegner: Gegner) {
+        let schaden: Double = 10
         print("Der Barbar \(self.name) führt die Attacke Seismisches Schmettern gegen \(gegner.name) aus.")
-        gegner.hp = gegner.hp - 10
+        gegner.hp = gegner.hp - schaden
     }
     
     // MARK: Reguläre Attacke
