@@ -44,7 +44,7 @@ class Endgegner: Gegner {
         if maxBeschwoerung < 1 {
             if self.hp <= self.hp / 2 {
                 print("Der Scherger wird beschworen und kommt \(self.name) zur hilfe.")
-                let scherger: Scherger = Scherger(name: "Duriel", hp: 50, angriffsPunkte: 15, etraSchild: 0)
+                let scherger: Scherger = Scherger(name: "Duriel", hp: 50, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
             }
             maxBeschwoerung += 1
         }
