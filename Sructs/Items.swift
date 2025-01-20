@@ -5,10 +5,20 @@
 //  Created by Robin Maly on 20.01.25.
 //
 // MARK: 5. Structs implementieren
+// MARK: 6. Protokolle implementieren
 
 
 
-struct Item {
+struct Item: CustomStringConvertable {
+    var description: String {
+        return """
+\tName: \(name)
+\tSchadenswert: \(schadensWert)
+\tVerteidigungswert: \(verteidigungsWert)
+\tAnzahl: \(anzahlVerwendung)
+"""
+    }
+    
     let name: String
     let schadensWert: Double
     let verteidigungsWert: Double
