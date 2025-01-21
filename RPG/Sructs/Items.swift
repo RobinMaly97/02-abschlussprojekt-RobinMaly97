@@ -9,7 +9,7 @@
 
 
 
-struct Item: CustomStringConvertable {
+struct Item: CustomStringConvertable, Nutzbar {
     var description: String {
         return """
 \tName: \(name)

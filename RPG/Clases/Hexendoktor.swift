@@ -13,7 +13,7 @@ class Hexendoktor: Held {
     // MARK: Reguläre Attacke
     func seelenErnte(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Seelen Ernte gegen \(gegner.name) ein.")
-        gegner.hp = gegner.hp - 10
+        gegner.nimmSchade(10)
     }
     // MARK: Reguläre Attacke
     func geisterSpeerFeuer(gegner: Gegner) {

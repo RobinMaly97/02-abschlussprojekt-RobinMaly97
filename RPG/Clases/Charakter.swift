@@ -17,4 +17,12 @@ class Charakter {
         self.name = name
         self.hp = hp
     }
+    
+    func nimmSchade(_ schaden: Double) {
+        self.hp = self.hp - schaden
+    }
+    
+    func heilung(_ heilen: Double) {
+        self.hp = self.hp + heilen
+    }
 }

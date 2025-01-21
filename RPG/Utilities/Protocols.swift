@@ -15,5 +15,10 @@ protocol CustomStringConvertable {
 
 
 protocol Nutzbar {
+    var name: String { get }
+    var schadensWert: Double { get }
+    var verteidigungsWert: Double { get }
+    var anzahlVerwendung: Int { get }
     
+    func anwenden()
 }
