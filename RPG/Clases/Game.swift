@@ -6,7 +6,7 @@
 //
 // MARK: 9. Programmablauf programmieren
 
-
+import Foundation
 
 class Game {
     
@@ -17,8 +17,8 @@ class Game {
         Held(name: "Hexendoktor", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
     ]
     var gegner: [Gegner] = [
-        Gegner(name: "Urzael", hp: 150, angriffsPunkte: 30, etraSchild: 50, status: .gesund),
-        Gegner(name: "Scherger", hp: 100, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+        Endgegner(name: "Urzael", hp: 50, angriffsPunkte: 30, etraSchild: 50, status: .gesund),
+        Scherger(name: "Fallen Angel", hp: 30, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
     ]
     
 
@@ -54,32 +54,53 @@ class Game {
     }
     
     func runden() {
-        
-        // hier kommt eine repeat while scheife rein
         var rundenCounter: Int = 1
-        print("Runde \(rundenCounter)".hashTags())
-        // kann in eine funktion ausgelagert werden
-        for held in helden {
-            print("\(held.name) hat noch \(held.hp) HP")
+        repeat{
+            
+            print("Runde \(rundenCounter)".hashTags())
+            // kann in eine funktion ausgelagert werden
+            for held in helden {
+                print("\(held.name) hat noch \(held.hp) HP")
+            }
+            print("---")
+            // kann in eine funktion ausgelagert werden
+            for enemy in gegner {
+                print("\(enemy.name) hat noch \(enemy.hp) HP")
+            }
+            print("---")
+            
+            for held in helden {
+                if !gegner.isEmpty{
+                    held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
+                    gegner.removeAll(where: {$0.hp <= 0}) // in funktion schreiben
+                    print("----")
+                   // sleep(2)
+                }
+              
+            }
+            
+            for enemy in gegner {
+                if !helden.isEmpty {
+                    enemy.aktionsMenue(ziele: helden, zuHeilen: [enemy])
+                    helden.removeAll(where: {$0.hp <= 0})
+                    print("----")
+                   //sleep(4)
+                }
+                
+            }
+            if helden.isEmpty {
+                print("Die Gegner haben Gewonnen")
+                break
+            } else if gegner.isEmpty {
+                print("Die Helden haben Gewonnen")
+                break
+            }
+           
+            rundenCounter += 1
+            
+            // willst du beutel oder Attacken nutzen 
         }
-        print("---")
-        // kann in eine funktion ausgelagert werden
-        for enemy in gegner {
-            print("\(enemy.name) hat noch \(enemy.hp) HP")
-        }
-        print("---")
-        
-        for held in helden {
-            held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
-            gegner.removeAll(where: {$0.hp <= 0}) // in funktion schreiben
-        }
-        
-        for enemy in gegner {
-            enemy.aktionsMenue(ziel: helden.randomElement()!, zuHeilen: enemy)
-            helden.removeAll(where: {$0.hp <= 0})
-        }
-       
-        rundenCounter = rundenCounter + 1
+        while gegner.contains(where: {$0.hp > 0}) || helden.contains(where: {$0.hp > 0})
     }
     
 }

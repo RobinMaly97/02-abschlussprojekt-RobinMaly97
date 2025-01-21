@@ -23,8 +23,8 @@ class Endgegner: Gegner {
     func flammenInferno(helden: [Held]) {
         print("\(self.name) setz Flammen Inferno ein in trifft alle Helden.")
         for held in helden {
-            self.nimmSchaden(15)
-            print("Der Held \(held.name) verliert 15 HP, Rest HP \(held.hp)")
+            held.nimmSchaden(15)
+            
         }
         
     }
@@ -54,7 +54,7 @@ class Endgegner: Gegner {
        
     }
     
-    override func aktionsMenue(ziel: Held, zuHeilen: Gegner) {
+    override func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
        
         print("Der Endgegner \(self.name) greift an!")
         
@@ -63,18 +63,18 @@ class Endgegner: Gegner {
         switch input {
         case "1":
             print("Endgegner \(self.name) setzt Meteor Schlag ein.")
-            meteorSchlag(held: ziel)
+            meteorSchlag(held: ziele.randomElement()!)
         case "2":
             print("Endgegner \(self.name) setz Flammen Inferno ein")
-            flammenInferno(helden: [ziel])
+            flammenInferno(helden: ziele)
         case "3":
             print("Endgegner \(self.name) setzt Zorn des Teufels ein")
-            zornDesTeufels(held: ziel)
+            zornDesTeufels(held: ziele.randomElement()!)
         case "4":
             print("Endgegner \(self.name) beschwört ein Scherger")
             schergenBeschwören()
         default:
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            aktionsMenue(ziele: ziele, zuHeilen: zuHeilen)
             
         }
     }

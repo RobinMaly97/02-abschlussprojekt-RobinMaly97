@@ -33,7 +33,21 @@ class Gegner: Charakter, CustomStringConvertable {
         super.init(name: name, hp: hp)
     }
     
-    func aktionsMenue(ziel: Held, zuHeilen: Gegner) {
+    
+    func nimmSchaden(_ schaden: Double) {
+            
+            self.hp -= schaden
+            print("Der Geggner \(self.name) verliert \(schaden) Hp, Rest HP \(self.hp)")
+            
+            
+        
+        if self.hp <= 0 {
+            print("\(self.name) ist besiegt")
+        }
+    }
+    
+    
+    func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
         print("Der gegner greift an!")
         
         let input: String = String(Int.random(in: 1...4))
@@ -49,7 +63,7 @@ class Gegner: Charakter, CustomStringConvertable {
         case "4":
             print("Spiel Beendet")
         default:
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            aktionsMenue(ziele: ziele, zuHeilen: zuHeilen)
             
         }
     }

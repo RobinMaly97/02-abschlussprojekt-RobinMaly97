@@ -10,10 +10,15 @@
 
 class Barbar: Held {
     
+
+    
     // MARK: Reguläre Attacke
     func seismischesSchmettern(gegner: Gegner) {
+        
         print("Der Barbar \(self.name) führt die Attacke Seismisches Schmettern gegen \(gegner.name) mit einer HP von \(gegner.hp) aus.")
-        gegner.nimmSchaden(10)
+        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        // TODO: Print das der schaden durch die Waffe erhöht wurde und die verwdnugsanzahl nohc übrig. if anzhal verwendung ist 0 waffe auf nil setzten. Mit print besschied geben wurde so und so oft benutz und ist jetzt kaputt
         print("Der Gegner \(gegner.name) verliert 10 HP, Rest HP \(gegner.hp).")
    
     }
@@ -21,7 +26,8 @@ class Barbar: Held {
     // MARK: Reguläre Attacke
     func kraftvollerAnsturm(gegner: Gegner) {
         print("Der Barbar \(self.name) führt die Attacke Kraftvoller Ansturm gegen \(gegner.name) mit einer HP von \(gegner.hp) aus.")
-        gegner.nimmSchaden(15)
+        gegner.nimmSchaden(25 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
         print("Der Gegner \(gegner.name) verliert 15 HP, Rest HP \(gegner.hp).")
     }
     // MARK: Block Attacke
@@ -35,13 +41,14 @@ class Barbar: Held {
         print("Der Barbar \(self.name) führt die Attacke Erdbeben aus.")
         print("Alle gegner werden getroffen.")
         for enemy in gegner {
-            enemy.nimmSchaden(10)
+            enemy.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+            waffe?.anzahlVerwendung -= 1
             print("Der Gegner \(enemy.name) verliert 10 HP, Rest HP \(enemy.hp).")
         }
     }
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        print("Der Barbar greift an! Welche Attacke soll er ausführen?")
+        print("Der Barbar greift \(ziel.name) HP: (\(ziel.hp) an! Welche Attacke soll er ausführen?")
         print("[1] Seismisches Schmettern, Stärke: 10")
         print("[2] Kraftvoller Ansturm, Stärke: 15")
         print("[3] Schwert Block, Stärke: 10")
@@ -70,6 +77,8 @@ class Barbar: Held {
             
         }
     }
+    
+
     
     // MARK: Beutel
     func beutel() {

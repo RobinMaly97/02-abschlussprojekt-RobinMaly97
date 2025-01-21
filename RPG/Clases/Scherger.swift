@@ -11,8 +11,9 @@ class Scherger: Gegner {
     // MARK: Heil Attacke
     func heilPfeil(zuHeilen: Gegner) {
         if zuHeilen.name == self.name {
-            print("Der Scherger \(self.name) hat sich Selbst geheilt.")
+            print("Der Scherger \(self.name) hat sich Selbst mit einer Hp von \(zuHeilen.hp) geheilt.")
             self.heilung(20)
+            print("Seine HP \(self.hp)")
         } else {
             print("Der Scherger \(self.name) heilt \(zuHeilen.name) mit einer Hp von \(zuHeilen.hp).")
             zuHeilen.heilung(20)
@@ -60,7 +61,7 @@ class Scherger: Gegner {
         }
     }
     
-    override func aktionsMenue(ziel: Held, zuHeilen: Gegner) {
+    override func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
        
         print("Der Scherger \(self.name) greift an!")
         
@@ -69,18 +70,18 @@ class Scherger: Gegner {
         switch input {
         case "1":
             print("Scherger \(self.name) setzt Heil Pfeil ein.")
-            heilPfeil(zuHeilen: zuHeilen)
+            heilPfeil(zuHeilen: zuHeilen.randomElement()!)
         case "2":
-            print("Endgegner \(self.name) setz Flammen Inferno ein")
-            eisPfeil(held: ziel)
+            print("Scherger \(self.name) setz Eis Pfeil ein")
+            eisPfeil(held: ziele.randomElement()!)
         case "3":
-            print("Endgegner \(self.name) setzt Zorn des Teufels ein")
-            paralysePfeil(held: ziel)
+            print("Scherger \(self.name) setzt Paralyse Pfeil ein")
+            paralysePfeil(held: ziele.randomElement()!)
         case "4":
-            print("Endgegner \(self.name) beschwört ein Scherger")
-            giftPfeil(held: ziel)
+            print("Scherger \(self.name) setz Gift Pfeil ein")
+            giftPfeil(held: ziele.randomElement()!)
         default:
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            aktionsMenue(ziele: ziele, zuHeilen: zuHeilen)
             
         }
     }

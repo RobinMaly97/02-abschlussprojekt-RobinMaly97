@@ -25,8 +25,13 @@ class Held: Charakter, CustomStringConvertable {
     var verteidigungsPunkte: Double
     var status: Status
     var blockWert: Double = 0
+    var waffe: Waffe?
+    var item: Item?
 
-    
+    /*
+     SChlau wäre:
+     in der helden mutter attacke1,2,3,4,5 vari
+     */
     init(name: String, hp: Double, angriffsPunkte: Double, verteidigungsPunkte: Double, status: Status) {
         self.angriffsPunkte = angriffsPunkte
         self.verteidigungsPunkte = verteidigungsPunkte
@@ -34,6 +39,20 @@ class Held: Charakter, CustomStringConvertable {
         
         super.init(name: name, hp: hp)
     }
+    
+    func nimmSchaden(_ schaden: Double) {
+            
+            self.hp -= schaden - (self.waffe?.verteidigungsWert ?? 0)
+            self.waffe?.anzahlVerwendung -= 1
+            print("Der Held \(self.name) verliert \(schaden) Hp, Rest HP \(self.hp)")
+            
+            
+        
+        if self.hp <= 0 {
+            print("\(self.name) ist besiegt")
+        }
+    }
+    
     
     func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
         print("Der Barbar greift an! Welche Attacke soll er ausführen?")
@@ -62,4 +81,5 @@ class Held: Charakter, CustomStringConvertable {
             
         }
     }
+   
 }
