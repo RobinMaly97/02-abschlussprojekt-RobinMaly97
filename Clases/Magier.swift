@@ -17,8 +17,8 @@ class Magier: Held {
         let random: Int = Int.random(in: 1...10)
         if random == 3 {
             print("Der Gegner \(gegner.name) wurde für 2 Runden vereist")
-            
-            // gegner.status = gegner.status.vereist (wird noch eingebunden wenn ich bei den Enums bin.)
+            gegner.status = .vereist
+           
         }
         
     }
@@ -35,8 +35,9 @@ class Magier: Held {
         let random: Int = Int.random(in: 1...10)
         if random == 2 {
             print("Der Gegner \(gegner.name) brennt für 2 Runden.")
+            gegner.status = .brennt
             
-            // gegner.status = gegner.status.brennt (wird noch eingebunden wenn ich bei den Enums bin.)
+            
         }
         
     }

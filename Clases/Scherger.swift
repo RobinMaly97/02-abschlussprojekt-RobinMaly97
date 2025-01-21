@@ -30,7 +30,8 @@ class Scherger: Gegner {
         let random: Int = Int.random(in: 1...10)
         if random == 1 {
             print("Der Held \(held.name) wurde für 2 Runden vereist")
-            // gegner.status = gegner.status.vereist (wird noch eingebunden wenn ich bei den Enums bin.)
+            held.status = .vereist
+           
         }
     
     }
@@ -42,7 +43,8 @@ class Scherger: Gegner {
         let random: Int = Int.random(in: 1...10)
         if random == 8 {
             print("Der Held \(held.name) wurde für 2 Runden paralysiert")
-            // gegner.status = gegner.status.paralysiert (wird noch eingebunden wenn ich bei den Enums bin.)
+            held.status = .paralysiert
+           
         }
     }
     
@@ -53,7 +55,7 @@ class Scherger: Gegner {
         let random: Int = Int.random(in: 1...10)
         if random == 10 {
             print("Der Held \(held.name) wurde für 2 Runden vergiftet")
-            // gegner.status = gegner.status.vergiftet (wird noch eingebunden wenn ich bei den Enums bin.)
+            held.status = .vergiftet
         }
     }
 }

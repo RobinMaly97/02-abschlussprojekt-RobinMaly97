@@ -27,7 +27,7 @@ class Hexendoktor: Held {
         let random: Int = Int.random(in: 1...10)
         if random == 5 {
             print("Der Gegner \(gegner.name) wurde für 2 Runden paralysiert")
-            // gegner.status = gegner.status.paralysiert (wird noch eingebunden wenn ich bei den Enums bin.)
+            gegner.status = .paralysiert
         }
     }
     // MARK: Gift Attacke
@@ -37,7 +37,7 @@ class Hexendoktor: Held {
         let random: Int = Int.random(in: 1...10)
         if random == 7 {
             print("Der Gegner \(gegner.name) wurde für 2 Runden vergiftet")
-            // gegner.status = gegner.status.vergiftet (wird noch eingebunden wenn ich bei den Enums bin.)
+            gegner.status = .vergiftet
         }
     }
     // MARK: Beutel
