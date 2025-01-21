@@ -22,5 +22,6 @@ class Charakter {
     
     func heilung(_ heilen: Double) {
         self.hp = self.hp + heilen
+        print("\(self.name) bekommt \(heilen) Hp dazu.")
     }
 }

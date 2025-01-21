@@ -11,13 +11,13 @@ class Scherger: Gegner {
     // MARK: Heil Attacke
     func heilPfeil(zuHeilen: Gegner) {
         if zuHeilen.name == self.name {
-            print("Der Scherger \(self.name) hat sich Selbst mit einer Hp von \(zuHeilen.hp) geheilt.")
+            print("Der Scherger \(self.name) hat sich Selbst geheilt. Mit einem Rest von Hp \(self.hp).")
             self.heilung(20)
-            print("Seine HP \(self.hp)")
+          
         } else {
             print("Der Scherger \(self.name) heilt \(zuHeilen.name) mit einer Hp von \(zuHeilen.hp).")
             zuHeilen.heilung(20)
-            print("Die Hp von \(zuHeilen.name) ist auf \(zuHeilen.hp) gestiegen")
+         
         }
         
     }
@@ -63,7 +63,7 @@ class Scherger: Gegner {
     
     override func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
        
-        print("Der Scherger \(self.name) greift an!")
+        print(" \(self.name) greift an!")
         
         let input: String = String(Int.random(in: 1...4))
         

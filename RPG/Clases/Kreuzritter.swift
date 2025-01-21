@@ -10,23 +10,38 @@
 
 class Kreuzritter: Held {
     
+
+    
+    
     // MARK: Reguläre Attacke
     func schwungAngriff(gegner: Gegner) {
         print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit dem Schwung Angriff an")
-        gegner.nimmSchaden(10)
-        print("Der Gegner \(gegner.name) verliert 10 HP, Rest HP \(gegner.hp).")
+        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
+      
     }
     // MARK: Reguläre Attacke
     func himmelsFaust(gegner: Gegner) {
         print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit der Himmels Faust an")
-        gegner.nimmSchaden(5)
-        print("Der Gegner \(gegner.name) verliert 5 HP, Rest HP \(gegner.hp).")
+        gegner.nimmSchaden(5 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
+      
     }
     // MARK: Reguläre Attacke
     func gesegneterHammer(gegner: Gegner) {
         print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit dem Gesegnetem Hammer an")
-        gegner.nimmSchaden(7.5)
-        print("Der Gegner \(gegner.name) verliert 7.5 HP, Rest HP \(gegner.hp).")
+        gegner.nimmSchaden(7.5 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
+        
     }
     // MARK: Block Attacke
     func schildBlock() {
@@ -36,7 +51,7 @@ class Kreuzritter: Held {
     }
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        print("Der Kreuzritter greift an! Welche Attacke soll er ausführen?")
+        print("Der Kreuzritter greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
         print("[1] Schwung Angriff, Stärke: 10")
         print("[2] Himmelsfaust, Stärke: 5")
         print("[3] Gesegneter Hammer, Stärke: 7.5")

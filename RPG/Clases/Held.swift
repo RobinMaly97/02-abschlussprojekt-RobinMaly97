@@ -21,10 +21,13 @@ class Held: Charakter, CustomStringConvertable {
     }
     
     
-    var angriffsPunkte: Double
+    var angriffsPunkte: Double //   get {self.angriffsPunkte *= waffe}} //
+    
     var verteidigungsPunkte: Double
     var status: Status
+    var beutel: Beutel = Beutel()
     var blockWert: Double = 0
+    var traegtItem: Bool = false
     var waffe: Waffe?
     var item: Item?
 
@@ -41,10 +44,16 @@ class Held: Charakter, CustomStringConvertable {
     }
     
     func nimmSchaden(_ schaden: Double) {
-            
+        if self.blockWert >= 0{
+            self.blockWert -= schaden
+            print("\(self.name) verliert \(schaden) Block Wert, Rest Schild \(self.blockWert)")
+        }
+       
+        if self.blockWert <= 0 {
             self.hp -= schaden - (self.waffe?.verteidigungsWert ?? 0)
-            self.waffe?.anzahlVerwendung -= 1
-            print("Der Held \(self.name) verliert \(schaden) Hp, Rest HP \(self.hp)")
+                self.waffe?.anzahlVerwendung -= 1
+                print("Der Held \(self.name) verliert \(schaden) Hp, Rest HP \(self.hp)")
+        }
             
             
         

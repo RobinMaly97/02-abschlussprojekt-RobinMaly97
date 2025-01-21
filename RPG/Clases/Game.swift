@@ -11,14 +11,14 @@ import Foundation
 class Game {
     
     var helden: [Held] = [
-        Held(name: "Barbar", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
-        Held(name: "Kreuzritter", hp: 100, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
-        Held(name: "Magier", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund),
-        Held(name: "Hexendoktor", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
+        Barbar(name: "Barbar", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
+        Kreuzritter(name: "Kreuzritter", hp: 100, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
+        Magier(name: "Magier", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund),
+        Hexendoktor(name: "Hexendoktor", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
     ]
     var gegner: [Gegner] = [
-        Endgegner(name: "Urzael", hp: 50, angriffsPunkte: 30, etraSchild: 50, status: .gesund),
-        Scherger(name: "Fallen Angel", hp: 30, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+        Endgegner(name: "Urzael", hp: 150, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
+//        Scherger(name: "Fallen Angel", hp: 100, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
     ]
     
 
@@ -30,6 +30,8 @@ class Game {
 
     
     func menu() {
+        print("Willkommen bei DemonHunter".einruecken())
+        print()
         print("Bitte wähle ein Zahl von 1 - 4")
         print("[1] Neues Spiel Starten")
         print("[2] Helden Auswahl")
@@ -48,6 +50,7 @@ class Game {
             print("Alle HIGHSCORES")
         case "4":
             print("Spiel Beendet")
+            break
         default:
             menu()
         }
@@ -56,16 +59,17 @@ class Game {
     func runden() {
         var rundenCounter: Int = 1
         repeat{
-            
-            print("Runde \(rundenCounter)".hashTags())
+            print()
+            print("Runde \(rundenCounter)".hashTags().einruecken())
+            print()
             // kann in eine funktion ausgelagert werden
             for held in helden {
-                print("\(held.name) hat noch \(held.hp) HP")
+                print("\(held.name) hat noch \(held.hp) HP und einen Blockwert \(held.blockWert)")
             }
             print("---")
             // kann in eine funktion ausgelagert werden
             for enemy in gegner {
-                print("\(enemy.name) hat noch \(enemy.hp) HP")
+                print("\(enemy.name) hat noch \(enemy.hp) HP und \(enemy.etraSchild) Extra Schild")
             }
             print("---")
             
@@ -97,6 +101,8 @@ class Game {
             }
            
             rundenCounter += 1
+            let randomMasterCounter: Int = Int.random(in: 3...5)
+            gegner[0].masterAttackCounter += randomMasterCounter
             
             // willst du beutel oder Attacken nutzen 
         }

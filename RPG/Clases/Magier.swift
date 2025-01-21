@@ -13,8 +13,11 @@ class Magier: Held {
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
         print("Der Magier \(self.name) setzt Froststrahl gegen \(gegner.name) ein")
-        gegner.nimmSchaden(10)
-        print("Der Gegner \(gegner.name) verliert 10 HP, Rest HP \(gegner.hp).")
+        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
         let random: Int = Int.random(in: 1...10)
         if random == 3 {
             print("Der Gegner \(gegner.name) wurde für 2 Runden vereist")
@@ -26,15 +29,20 @@ class Magier: Held {
     // MARK: Reguläre Attacke
     func explosion(gegner: Gegner) {
         print("Der Magier \(self.name) setzt Explosion gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(8.5)
-        print("Der Gegner \(gegner.name) verliert 8.5 HP, Rest HP \(gegner.hp).")
-        
+        gegner.nimmSchaden(8.5 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
     }
     // MARK: Brannt/Feuer Attacke
     func dreiKöpfigeHydra(gegner: Gegner) {
         print("Der Magier \(self.name) setzt die Drei Köpfige Hydra gegen \(gegner.name) ein gegner Hp: \(gegner.hp).")
-        gegner.nimmSchaden(13.5)
-        print("Der Gegner \(gegner.name) verliert 13.5 HP, Rest HP \(gegner.hp).")
+        gegner.nimmSchaden(13.5 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
         let random: Int = Int.random(in: 1...10)
         if random == 2 {
             print("Der Gegner \(gegner.name) brennt für 2 Runden.")
@@ -57,7 +65,7 @@ class Magier: Held {
     
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        print("Der Magier greift an! Welche Attacke soll er ausführen?")
+        print("Der Magier greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
         print("[1] Frost Strahl, Stärke: 10")
         print("[2] Explosion, Stärke: 8.5")
         print("[3] Drei Köpfige Hydra, Stärke: 13.5")

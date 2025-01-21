@@ -13,20 +13,31 @@ class Hexendoktor: Held {
     // MARK: Reguläre Attacke
     func seelenErnte(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Seelen Ernte gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(10)
-        print("Der Gegner \(gegner.name) verliert 10 HP, Rest HP \(gegner.hp).")
+        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
+       
     }
     // MARK: Reguläre Attacke
     func geisterSpeerFeuer(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Geister Speerfeuer gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(11.5)
-        print("Der Gegner \(gegner.name) verliert 11.5 HP \(gegner.hp).")
+        gegner.nimmSchaden(11.5 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
+       
     }
     // MARK: Paralyse Attacke
     func paralyseBombe(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Paralyse Bombe gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(8.5)
-        print("Der Gegner \(gegner.name) verliert 8.5 HP \(gegner.hp).")
+        gegner.nimmSchaden(8.5 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
         let random: Int = Int.random(in: 1...10)
         if random == 5 {
             print("Der Gegner \(gegner.name) wurde für 2 Runden paralysiert und kann nicht angreifen.")
@@ -37,7 +48,11 @@ class Hexendoktor: Held {
     // MARK: Gift Attacke
     func giftPfeil(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Gift Pfeil gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(10.5)
+        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        waffe?.anzahlVerwendung -= 1
+        if self.traegtItem {
+                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+        }
         print("Der Gegner \(gegner.name) verliert 10.5 HP \(gegner.hp).")
         let random: Int = Int.random(in: 1...10)
         if random == 7 {
@@ -48,7 +63,7 @@ class Hexendoktor: Held {
     
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        print("Der Hexendoktor greift an! Welche Attacke soll er ausführen?")
+        print("Der Hexendoktor greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
         print("[1] Seelen Ernte, Stärke: 10")
         print("[2] Geister Speerfeuer, Stärke: 11.5")
         print("[3] Paralyse Bombe, Stärke: 8.5")

@@ -28,10 +28,10 @@ struct Beutel: CustomStringConvertable {
     var giftHeiler: Int = 2
     var eisHeiler: Int = 2
     var waffen: [Waffe] = [
-        Waffe(name: "Schwert", schadensMultiplier: 1.5, verteidigungsWert: 20, anzahlVerwendung: 3),
-        Waffe(name: "Schild", schadensMultiplier: 1, verteidigungsWert: 50, anzahlVerwendung: 3),
-        Waffe(name: "Eiserne Faust", schadensMultiplier: 1.6, verteidigungsWert: 10, anzahlVerwendung: 3),
-        Waffe(name: "Geweite Axt", schadensMultiplier: 1.8, verteidigungsWert: 10, anzahlVerwendung: 3)
+        Waffe(name: "Schwert", schadensMultiplier: 1.5, verteidigungsWert: 10, anzahlVerwendung: 3),
+        Waffe(name: "Schild", schadensMultiplier: 1, verteidigungsWert: 10, anzahlVerwendung: 3),
+        Waffe(name: "Eiserne Faust", schadensMultiplier: 1.6, verteidigungsWert: 0, anzahlVerwendung: 3),
+        Waffe(name: "Geweite Axt", schadensMultiplier: 1.8, verteidigungsWert: 0, anzahlVerwendung: 3)
     ]
     var items: [Item] = [
         Item(name: "Feuer Rune", schadensWert: 10, verteidigungsWert: 5, anzahlVerwendung: 3),
@@ -44,8 +44,8 @@ struct Beutel: CustomStringConvertable {
     func beutelInhalt() {
         var inhalt: [Beutel] = [Beutel()]
         for (index,item) in inhalt.enumerated() {
-            print("\(index + 1). \(item.waffen)")
-            print("\(index + 1). \(item.items)")
+            print("\(index + 1). \(item.waffen[0])")
+            print("\(index + 2). \(item.items[0])")
             
         }
     }

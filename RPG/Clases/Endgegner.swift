@@ -15,7 +15,7 @@ class Endgegner: Gegner {
     func meteorSchlag(held: Held) {
         print("\(self.name) setzt Meteor Schlag gegen \(held.name) ein.")
         held.nimmSchaden(20)
-        print("Der Held \(held.name) verliert 20 HP, Rest HP \(held.hp)")
+      
     }
     
     // MARK: Flächenangriff
@@ -31,9 +31,13 @@ class Endgegner: Gegner {
     
     // MARK: One Hit Attacke (Bombastischer Angriff)
     func zornDesTeufels(held: Held) {
-        print("\(self.name) setzt Zorn des Teufels gegen \(held.name) ein.")
-        held.nimmSchaden(held.hp)
-        print("Der Held \(held.name) wurde besiegt Rest HP \(held.hp) ")
+        var maxAngriffe: Int = 1
+        if maxAngriffe == 1 && masterAttackCounter >= 10 {
+            print("\(self.name) setzt Zorn des Teufels gegen \(held.name) ein.")
+            held.nimmSchaden(held.hp)
+            maxAngriffe -= 1
+        }
+       
     }
     
     
@@ -44,11 +48,11 @@ class Endgegner: Gegner {
 
     func schergenBeschwören() {
         var maxBeschwoerung: Int = 0
-        if maxBeschwoerung < 1 {
-            if self.hp <= self.hp / 2 {
+        if maxBeschwoerung < 1 &&  self.hp <= self.hp / 2 {
                 print("Der Scherger wird beschworen und kommt \(self.name) zur hilfe.")
                 let scherger: Scherger = Scherger(name: "Duriel", hp: 50, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
-            }
+            
+         //   gegner.append(contentsOf: scherger) wie kriege ich zugriff auf das gegner Array?
             maxBeschwoerung += 1
         }
        
@@ -56,7 +60,7 @@ class Endgegner: Gegner {
     
     override func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
        
-        print("Der Endgegner \(self.name) greift an!")
+        print("\(self.name) greift an!")
         
         let input: String = String(Int.random(in: 1...4))
         
