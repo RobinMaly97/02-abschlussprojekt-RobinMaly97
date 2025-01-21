@@ -18,8 +18,12 @@ class Charakter {
         self.hp = hp
     }
     
-    func nimmSchade(_ schaden: Double) {
+    func nimmSchaden(_ schaden: Double) {
         self.hp = self.hp - schaden
+        
+        if self.hp <= 0 {
+            print("Der Gegner ist besiegt")
+        }
     }
     
     func heilung(_ heilen: Double) {

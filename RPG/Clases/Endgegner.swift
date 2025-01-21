@@ -14,7 +14,8 @@ class Endgegner: Gegner {
     // MARK: Reguläre Attacke
     func meteorSchlag(held: Held) {
         print("\(self.name) setzt Meteor Schlag gegen \(held.name) ein.")
-        held.hp = held.hp - 20
+        held.nimmSchaden(20)
+        print("Der Held \(held.name) verliert 20 HP, Rest HP \(held.hp)")
     }
     
     // MARK: Flächenangriff
@@ -22,7 +23,8 @@ class Endgegner: Gegner {
     func flammenInferno(helden: [Held]) {
         print("\(self.name) setz Flammen Inferno ein in trifft alle Helden.")
         for held in helden {
-            self.hp = self.hp - 15
+            self.nimmSchaden(15)
+            print("Der Held \(held.name) verliert 15 HP, Rest HP \(held.hp)")
         }
         
     }
@@ -30,7 +32,8 @@ class Endgegner: Gegner {
     // MARK: One Hit Attacke (Bombastischer Angriff)
     func zornDesTeufels(held: Held) {
         print("\(self.name) setzt Zorn des Teufels gegen \(held.name) ein.")
-        held.hp = held.hp - held.hp
+        held.nimmSchaden(held.hp)
+        print("Der Held \(held.name) wurde besiegt Rest HP \(held.hp) ")
     }
     
     
@@ -49,5 +52,30 @@ class Endgegner: Gegner {
             maxBeschwoerung += 1
         }
        
+    }
+    
+    override func aktionsMenue(ziel: Held, zuHeilen: Gegner) {
+       
+        print("Der Endgegner \(self.name) greift an!")
+        
+        let input: String = String(Int.random(in: 1...4))
+        
+        switch input {
+        case "1":
+            print("Endgegner \(self.name) setzt Meteor Schlag ein.")
+            meteorSchlag(held: ziel)
+        case "2":
+            print("Endgegner \(self.name) setz Flammen Inferno ein")
+            flammenInferno(helden: [ziel])
+        case "3":
+            print("Endgegner \(self.name) setzt Zorn des Teufels ein")
+            zornDesTeufels(held: ziel)
+        case "4":
+            print("Endgegner \(self.name) beschwört ein Scherger")
+            schergenBeschwören()
+        default:
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            
+        }
     }
 }
