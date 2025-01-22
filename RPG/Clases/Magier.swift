@@ -13,10 +13,10 @@ class Magier: Held {
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
         print("Der Magier \(self.name) setzt Froststrahl gegen \(gegner.name) ein")
-        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         let random: Int = Int.random(in: 1...10)
         if random == 3 {
@@ -29,19 +29,19 @@ class Magier: Held {
     // MARK: Reguläre Attacke
     func explosion(gegner: Gegner) {
         print("Der Magier \(self.name) setzt Explosion gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(8.5 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
     }
     // MARK: Brannt/Feuer Attacke
     func dreiKöpfigeHydra(gegner: Gegner) {
         print("Der Magier \(self.name) setzt die Drei Köpfige Hydra gegen \(gegner.name) ein gegner Hp: \(gegner.hp).")
-        gegner.nimmSchaden(13.5 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(13.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         let random: Int = Int.random(in: 1...10)
         if random == 2 {
@@ -89,6 +89,7 @@ class Magier: Held {
             heilen(held: self)
         case "5":
             print("Magier öffnet den Beutel")
+            beutel(ziel: ziel, zuHeilen: zuHeilen)
         default:
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
             
@@ -98,7 +99,7 @@ class Magier: Held {
     
     
     // MARK: Beutel
-    func beutel() {
+    func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
         print("[1] Trank, Hp+: 10")
         print("[2] Para Heiler")
@@ -113,6 +114,7 @@ class Magier: Held {
         print("[11] Eis Rune Angr + 10")
         print("[12] Gift Rune Angr + 10")
         print("[13] Paralyse Rune Angr + 10")
+        print("[14] Zurück zur Attacken Auswahl")
         
         let input: String = readLine()!
         
@@ -158,9 +160,9 @@ class Magier: Held {
             self.angriffsPunkte += 10
         case "14":
             print("\(self.name) geht zur Attacken Auswahl zurück")
-            // geht leider nicht aktionsMenue(ziel: ziel, zuHeilen: Held:)
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:
-            beutel()
+            beutel(ziel: ziel, zuHeilen: zuHeilen)
             
         }
             

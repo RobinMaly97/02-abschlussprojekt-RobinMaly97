@@ -17,7 +17,7 @@ class Game{
         Hexendoktor(name: "Hexendoktor", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
     ]
     var gegner: [Gegner] = [
-        Endgegner(name: "Urzael", hp: 74, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
+        Endgegner(name: "Urzael", hp: 150, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
 //        Scherger(name: "Fallen Angel", hp: 100, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
     ]
     

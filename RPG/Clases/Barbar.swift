@@ -17,10 +17,10 @@ class Barbar: Held {
     func seismischesSchmettern(gegner: Gegner) {
         
         print("Der Barbar \(self.name) führt die Attacke Seismisches Schmettern gegen \(gegner.name) mit einer HP von \(gegner.hp) aus.")
-        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         // TODO: Print das der schaden durch die Waffe erhöht wurde und die verwdnugsanzahl noch übrig. if anzhal verwendung ist 0 waffe auf nil setzten. Mit print besschied geben wurde so und so oft benutz und ist jetzt kaputt
       
@@ -30,10 +30,10 @@ class Barbar: Held {
     // MARK: Reguläre Attacke
     func kraftvollerAnsturm(gegner: Gegner) {
         print("Der Barbar \(self.name) führt die Attacke Kraftvoller Ansturm gegen \(gegner.name) mit einer HP von \(gegner.hp) aus.")
-        gegner.nimmSchaden(15 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(15 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         
     }
@@ -48,10 +48,10 @@ class Barbar: Held {
         print("Der Barbar \(self.name) führt die Attacke Erdbeben aus.")
         print("Alle gegner werden getroffen.")
         for enemy in gegner {
-            enemy.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+            enemy.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
             waffe?.anzahlVerwendung -= 1
             if self.traegtItem {
-                    print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+                print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
             }
             
         }
@@ -82,7 +82,7 @@ class Barbar: Held {
             erdbeben(gegner: [ziel])
         case "5":
             print("barbar öffnet den Beutel")
-            beutel()
+            beutel(ziel: ziel, zuHeilen: zuHeilen)
         default:
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
             
@@ -92,7 +92,7 @@ class Barbar: Held {
 
     
     // MARK: Beutel // rekrusion einbauen damit nicht nur liste ausgegebn wird
-    func beutel() {
+    func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
         print("[1] Trank, Hp+: 10")
         print("[2] Para Heiler")
@@ -107,6 +107,7 @@ class Barbar: Held {
         print("[11] Eis Rune Angr + 10")
         print("[12] Gift Rune Angr + 10")
         print("[13] Paralyse Rune Angr + 10")
+        print("[14] Zurück zur Attacken Auswahl")
         
         let input: String = readLine()!
         
@@ -152,9 +153,9 @@ class Barbar: Held {
             self.angriffsPunkte += 10
         case "14":
             print("\(self.name) geht zur Attacken Auswahl zurück")
-            // geht leider nicht aktionsMenue(ziel: ziel, zuHeilen: Held:)
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:
-            beutel()
+            beutel(ziel: ziel, zuHeilen: zuHeilen)
             
         }
             

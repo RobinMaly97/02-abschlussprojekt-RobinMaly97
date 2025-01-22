@@ -13,30 +13,30 @@ class Hexendoktor: Held {
     // MARK: Reguläre Attacke
     func seelenErnte(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Seelen Ernte gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
        
     }
     // MARK: Reguläre Attacke
     func geisterSpeerFeuer(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Geister Speerfeuer gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(11.5 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(11.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
        
     }
     // MARK: Paralyse Attacke
     func paralyseBombe(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Paralyse Bombe gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(8.5 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         let random: Int = Int.random(in: 1...10)
         if random == 5 {
@@ -48,10 +48,10 @@ class Hexendoktor: Held {
     // MARK: Gift Attacke
     func giftPfeil(gegner: Gegner) {
         print("Der Hexendoktor \(self.name) setzt Gift Pfeil gegen \(gegner.name) ein.")
-        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         print("Der Gegner \(gegner.name) verliert 10.5 HP \(gegner.hp).")
         let random: Int = Int.random(in: 1...10)
@@ -95,7 +95,7 @@ class Hexendoktor: Held {
     
     
     // MARK: Beutel
-    func beutel() {
+    func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
         print("[1] Trank, Hp+: 10")
         print("[2] Para Heiler")
@@ -110,6 +110,7 @@ class Hexendoktor: Held {
         print("[11] Eis Rune Angr + 10")
         print("[12] Gift Rune Angr + 10")
         print("[13] Paralyse Rune Angr + 10")
+        print("[14] Zurück zur Attacken Auswahl")
         
         let input: String = readLine()!
         
@@ -155,9 +156,10 @@ class Hexendoktor: Held {
             self.angriffsPunkte += 10
         case "14":
             print("\(self.name) geht zur Attacken Auswahl zurück")
-            // geht leider nicht aktionsMenue(ziel: ziel, zuHeilen: Held:)
+            print("\(self.name) geht zur Attacken Auswahl zurück")
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:
-            beutel()
+            beutel(ziel: ziel, zuHeilen: zuHeilen)
             
         }
             

@@ -13,14 +13,14 @@ struct Waffe: CustomStringConvertable {
     var description: String {
         return """
 \tName: \(name)
-\tSchadens Multiplier: \(schadensMultiplier)
+\tSchadens Multiplier: \(schadensWert)
 \tVerteidigungs Wert: \(verteidigungsWert)
 \tAnzahl Verwendungen: \(anzahlVerwendung)
 """
     }
     
     let name: String
-    let schadensMultiplier: Double
+    let schadensWert: Double
     let verteidigungsWert: Double
     var anzahlVerwendung: Int
     

@@ -16,30 +16,30 @@ class Kreuzritter: Held {
     // MARK: Reguläre Attacke
     func schwungAngriff(gegner: Gegner) {
         print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit dem Schwung Angriff an")
-        gegner.nimmSchaden(10 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
       
     }
     // MARK: Reguläre Attacke
     func himmelsFaust(gegner: Gegner) {
         print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit der Himmels Faust an")
-        gegner.nimmSchaden(5 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
       
     }
     // MARK: Reguläre Attacke
     func gesegneterHammer(gegner: Gegner) {
         print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit dem Gesegnetem Hammer an")
-        gegner.nimmSchaden(7.5 * (waffe?.schadensMultiplier ?? 1))
+        gegner.nimmSchaden(7.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-                print("Der Schaden wurde durch die waffe \(waffe?.name) erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         
     }
@@ -83,7 +83,7 @@ class Kreuzritter: Held {
     
     
     // MARK: Beutel
-    func beutel() {
+    func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
         print("[1] Trank, Hp+: 10")
         print("[2] Para Heiler")
@@ -98,6 +98,7 @@ class Kreuzritter: Held {
         print("[11] Eis Rune Angr + 10")
         print("[12] Gift Rune Angr + 10")
         print("[13] Paralyse Rune Angr + 10")
+        print("[14] Zurück zur Attacken Auswahl")
         
         let input: String = readLine()!
         
@@ -143,9 +144,9 @@ class Kreuzritter: Held {
             self.angriffsPunkte += 10
         case "14":
             print("\(self.name) geht zur Attacken Auswahl zurück")
-            // geht leider nicht aktionsMenue(ziel: ziel, zuHeilen: Held:)
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:
-            beutel()
+            beutel(ziel: ziel, zuHeilen: zuHeilen)
             
         }
             

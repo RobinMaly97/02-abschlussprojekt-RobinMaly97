@@ -28,16 +28,16 @@ struct Beutel: CustomStringConvertable {
     var giftHeiler: Int = 2
     var eisHeiler: Int = 2
     var waffen: [Waffe] = [
-        Waffe(name: "Schwert", schadensMultiplier: 1.5, verteidigungsWert: 10, anzahlVerwendung: 3),
-        Waffe(name: "Schild", schadensMultiplier: 1, verteidigungsWert: 10, anzahlVerwendung: 3),
-        Waffe(name: "Eiserne Faust", schadensMultiplier: 1.6, verteidigungsWert: 0, anzahlVerwendung: 3),
-        Waffe(name: "Geweite Axt", schadensMultiplier: 1.8, verteidigungsWert: 0, anzahlVerwendung: 3)
+        Waffe(name: "Schwert", schadensWert: 10, verteidigungsWert: 10, anzahlVerwendung: 3),
+        Waffe(name: "Schild", schadensWert: 0, verteidigungsWert: 10, anzahlVerwendung: 3),
+        Waffe(name: "Eiserne Faust", schadensWert: 10, verteidigungsWert: 0, anzahlVerwendung: 3),
+        Waffe(name: "Geweite Axt", schadensWert: 10, verteidigungsWert: 0, anzahlVerwendung: 3)
     ]
     var items: [Item] = [
         Item(name: "Feuer Rune", schadensWert: 10, verteidigungsWert: 5, anzahlVerwendung: 3),
-        Item(name: "Eis Rune", schadensWert: 12, verteidigungsWert: 8, anzahlVerwendung: 3),
-        Item(name: "Gift Rune", schadensWert: 15, verteidigungsWert: 4, anzahlVerwendung: 3),
-        Item(name: "Paralyse Rune", schadensWert: 11.5, verteidigungsWert: 6.5, anzahlVerwendung: 3)
+        Item(name: "Eis Rune", schadensWert: 10, verteidigungsWert: 8, anzahlVerwendung: 3),
+        Item(name: "Gift Rune", schadensWert: 10, verteidigungsWert: 4, anzahlVerwendung: 3),
+        Item(name: "Paralyse Rune", schadensWert: 10, verteidigungsWert: 6.5, anzahlVerwendung: 3)
     ]
     
     

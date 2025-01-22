@@ -51,19 +51,19 @@ class Endgegner: Gegner {
         
         if !schergerBeschworen {
                 print("Der Scherger wird beschworen und kommt \(self.name) zur hilfe.")
-               var scherger: Scherger = Scherger(name: "Duriel", hp: 50, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
+               var scherger: Scherger = Scherger(name: "Duriel", hp: 100, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
             schergerBeschworen = true
             return scherger
         }
         return nil
     }
-    
+    var maxAngriffe: Int = 1
     override func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
        
-        print("\(self.name) greift an!")
-       zornDesTeufels(held: ziele.randomElement()!)
+//        print("\(self.name) greift an!")
+//       zornDesTeufels(held: ziele.randomElement()!)
         
-        var maxAngriffe: Int = 1
+        
         if maxAngriffe == 1 && masterAttackCounter >= 10 {
             let heldZiel = ziele.randomElement()!
             print("\(self.name) setzt Zorn des Teufels gegen \(heldZiel.name) ein.")
