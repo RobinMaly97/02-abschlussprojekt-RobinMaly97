@@ -65,35 +65,41 @@ class Magier: Held {
     
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        print("Der Magier greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
-        print("[1] Frost Strahl, Stärke: 10")
-        print("[2] Explosion, Stärke: 8.5")
-        print("[3] Drei Köpfige Hydra, Stärke: 13.5")
-        print("[4] Heilen, Stärke: 20")
-        print("[5] Beutel öffnen")
         
-        let input: String = readLine()!
-        
-        switch input {
-        case "1":
-            print("Magier greift mit Frost Strahl an")
-            froststrahl(gegner: ziel)
-        case "2":
-            print("Magier greift mit Explosion an")
-            explosion(gegner: ziel)
-        case "3":
-            print("Magier greift mit Drei Köpfiger Hydra an")
-            dreiKöpfigeHydra(gegner: ziel)
-        case "4":
-            print("Magier setz Heilen ein")
-            heilen(held: self)
-        case "5":
-            print("Magier öffnet den Beutel")
-            beutel(ziel: ziel, zuHeilen: zuHeilen)
-        default:
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+        if status == .paralysiert || status == .vereist {
+            print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
+        } else {
+            print("Der Magier greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
+            print("[1] Frost Strahl, Stärke: 10")
+            print("[2] Explosion, Stärke: 8.5")
+            print("[3] Drei Köpfige Hydra, Stärke: 13.5")
+            print("[4] Heilen, Stärke: 20")
+            print("[5] Beutel öffnen")
             
+            let input: String = readLine()!
+            
+            switch input {
+            case "1":
+                print("Magier greift mit Frost Strahl an")
+                froststrahl(gegner: ziel)
+            case "2":
+                print("Magier greift mit Explosion an")
+                explosion(gegner: ziel)
+            case "3":
+                print("Magier greift mit Drei Köpfiger Hydra an")
+                dreiKöpfigeHydra(gegner: ziel)
+            case "4":
+                print("Magier setz Heilen ein")
+                heilen(held: self)
+            case "5":
+                print("Magier öffnet den Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            default:
+                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                
+            }
         }
+        
     }
     
     

@@ -58,35 +58,42 @@ class Barbar: Held {
     }
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        print("Der Barbar greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
-        print("[1] Seismisches Schmettern, Stärke: 10")
-        print("[2] Kraftvoller Ansturm, Stärke: 15")
-        print("[3] Schwert Block, Stärke: 10")
-        print("[4] Erdbeeben, Stärke: 10")
-        print("[5] Beutel öffnen")
         
-        let input: String = readLine()!
-        
-        switch input {
-        case "1":
-            print("Barbar greift mit Seismisches Schmettern an")
-            seismischesSchmettern(gegner: ziel)
-        case "2":
-            print("Barbar greift mit Kraftvoller Ansturm an")
-            kraftvollerAnsturm(gegner: ziel)
-        case "3":
-            print("Barbar blockiert den nächsten Angriff mit Schwert Block")
-            schwertBlock()
-        case "4":
-            print("Barbar greift mit Erdbeeben an")
-            erdbeben(gegner: [ziel])
-        case "5":
-            print("barbar öffnet den Beutel")
-            beutel(ziel: ziel, zuHeilen: zuHeilen)
-        default:
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+        if status == .paralysiert || status == .vereist {
+            print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
+            // if status == .vegiftet || status == .brennt {  print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")}
+        } else {
+            print("Der Barbar greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
+            print("[1] Seismisches Schmettern, Stärke: 10")
+            print("[2] Kraftvoller Ansturm, Stärke: 15")
+            print("[3] Schwert Block, Stärke: 10")
+            print("[4] Erdbeeben, Stärke: 10")
+            print("[5] Beutel öffnen")
             
+            let input: String = readLine()!
+            
+            switch input {
+            case "1":
+                print("Barbar greift mit Seismisches Schmettern an")
+                seismischesSchmettern(gegner: ziel)
+            case "2":
+                print("Barbar greift mit Kraftvoller Ansturm an")
+                kraftvollerAnsturm(gegner: ziel)
+            case "3":
+                print("Barbar blockiert den nächsten Angriff mit Schwert Block")
+                schwertBlock()
+            case "4":
+                print("Barbar greift mit Erdbeeben an")
+                erdbeben(gegner: [ziel])
+            case "5":
+                print("barbar öffnet den Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            default:
+                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                
+            }
         }
+
     }
     
 

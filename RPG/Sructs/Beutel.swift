@@ -41,14 +41,14 @@ struct Beutel: CustomStringConvertable {
     ]
     
     
-    func beutelInhalt() {
-        var inhalt: [Beutel] = [Beutel()]
-        for item in inhalt {
-            print("\(item.waffen)")
-           
-            
-        }
-    }
+//    func beutelInhalt() {
+//        var inhalt: [Beutel] = [Beutel()]
+//        for item in inhalt {
+//            print("\(item.waffen)")
+//           
+//            
+//        }
+//    }
 }
 
 

@@ -63,34 +63,39 @@ class Hexendoktor: Held {
     
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        print("Der Hexendoktor greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
-        print("[1] Seelen Ernte, Stärke: 10")
-        print("[2] Geister Speerfeuer, Stärke: 11.5")
-        print("[3] Paralyse Bombe, Stärke: 8.5")
-        print("[4] Gift Pfeil, Stärke: 10.5")
-        print("[5] Beutel öffnen")
-        
-        let input: String = readLine()!
-        
-        switch input {
-        case "1":
-            print("Hexendoktor greift mit Seelen Ernte an")
-            seelenErnte(gegner: ziel)
-        case "2":
-            print("Hexendoktor greift mit Geister Speerfeuer an")
-            geisterSpeerFeuer(gegner: ziel)
-        case "3":
-            print("Hexendoktor greif mit Paralyse Bombe an")
-            paralyseBombe(gegner: ziel)
-        case "4":
-            print("Hexendoktor greift mit Gift Pfeil an")
-            giftPfeil(gegner: ziel)
-        case "5":
-            print("barbar öffnet den Beutel")
-        default:
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+        if status == .paralysiert || status == .vereist {
+            print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
+        } else {
+            print("Der Hexendoktor greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
+            print("[1] Seelen Ernte, Stärke: 10")
+            print("[2] Geister Speerfeuer, Stärke: 11.5")
+            print("[3] Paralyse Bombe, Stärke: 8.5")
+            print("[4] Gift Pfeil, Stärke: 10.5")
+            print("[5] Beutel öffnen")
             
+            let input: String = readLine()!
+            
+            switch input {
+            case "1":
+                print("Hexendoktor greift mit Seelen Ernte an")
+                seelenErnte(gegner: ziel)
+            case "2":
+                print("Hexendoktor greift mit Geister Speerfeuer an")
+                geisterSpeerFeuer(gegner: ziel)
+            case "3":
+                print("Hexendoktor greif mit Paralyse Bombe an")
+                paralyseBombe(gegner: ziel)
+            case "4":
+                print("Hexendoktor greift mit Gift Pfeil an")
+                giftPfeil(gegner: ziel)
+            case "5":
+                print("barbar öffnet den Beutel")
+            default:
+                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                
+            }
         }
+        
     }
     
     

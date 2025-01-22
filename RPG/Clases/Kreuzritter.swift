@@ -51,34 +51,40 @@ class Kreuzritter: Held {
     }
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        print("Der Kreuzritter greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
-        print("[1] Schwung Angriff, Stärke: 10")
-        print("[2] Himmelsfaust, Stärke: 5")
-        print("[3] Gesegneter Hammer, Stärke: 7.5")
-        print("[4] Schild Block, Stärke: 10")
-        print("[5] Beutel öffnen")
-        
-        let input: String = readLine()!
-        
-        switch input {
-        case "1":
-            print("Kreuzritter greift mit Schwung Angriff an")
-            schwungAngriff(gegner: ziel)
-        case "2":
-            print("Kreuzritter greift mit Himmelsfaust an")
-            himmelsFaust(gegner: ziel)
-        case "3":
-            print("Kreuzritter greift mit Gesegneter Hammer an")
-            gesegneterHammer(gegner: ziel)
-        case "4":
-            print("Kreuzritter blockiert den nächsten Angriff mit Schild Block")
-            schildBlock()
-        case "5":
-            print("barbar öffnet den Beutel")
-        default:
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+        if status == .paralysiert || status == .vereist {
+            print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
+        } else {
+            print("Der Kreuzritter greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
+            print("[1] Schwung Angriff, Stärke: 10")
+            print("[2] Himmelsfaust, Stärke: 5")
+            print("[3] Gesegneter Hammer, Stärke: 7.5")
+            print("[4] Schild Block, Stärke: 10")
+            print("[5] Beutel öffnen")
             
+            let input: String = readLine()!
+            
+            switch input {
+            case "1":
+                print("Kreuzritter greift mit Schwung Angriff an")
+                schwungAngriff(gegner: ziel)
+            case "2":
+                print("Kreuzritter greift mit Himmelsfaust an")
+                himmelsFaust(gegner: ziel)
+            case "3":
+                print("Kreuzritter greift mit Gesegneter Hammer an")
+                gesegneterHammer(gegner: ziel)
+            case "4":
+                print("Kreuzritter blockiert den nächsten Angriff mit Schild Block")
+                schildBlock()
+            case "5":
+                print("barbar öffnet den Beutel")
+            default:
+                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                
+            }
         }
+        
+     
     }
     
     

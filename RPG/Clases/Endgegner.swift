@@ -60,8 +60,8 @@ class Endgegner: Gegner {
     var maxAngriffe: Int = 1
     override func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
        
-//        print("\(self.name) greift an!")
-//       zornDesTeufels(held: ziele.randomElement()!)
+       print("\(self.name) greift an!")
+
         
         
         if maxAngriffe == 1 && masterAttackCounter >= 10 {
