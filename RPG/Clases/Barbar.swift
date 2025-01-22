@@ -94,26 +94,79 @@ class Barbar: Held {
     // MARK: Beutel // rekrusion einbauen damit nicht nur liste ausgegebn wird
     func beutel() {
         print("Beutel")
-        print("[1] Trank, Stärke: 10")
-        print("[2] Para Heiler, Stärke: 15")
-        print("[3] Feuer Heiler, Stärke: 10")
-        print("[4] Gift Heiler, Stärke: 10")
-        print("[5] Schwert")
-        print("[6] Schild")
-        print("[7] Eiserne Faust")
-        print("[8] Geweite Axt")
-        print("[9] Feuer Rune")
-        print("[10] Eis Rune")
-        print("[11] Gift Rune")
-        print("[12] Paralyse Rune")
-        print("[13] EisHeiler")
-        var tasche: [Beutel] = [Beutel()]
-        for (index,tasche) in tasche.enumerated() {
-            print("\(index + 1). \(tasche.waffen[0].name)  SchadenMultiplier :\(tasche.waffen[0].schadensMultiplier) Verteidigungswert: \(tasche.waffen[0].verteidigungsWert) Max Verwendung: \(tasche.waffen[0].anzahlVerwendung)")
-            print("\(index + 2). \(tasche.waffen[1].name)  SchadenMultiplier :\(tasche.waffen[1].schadensMultiplier) Verteidigungswert: \(tasche.waffen[1].verteidigungsWert) Max Verwendung: \(tasche.waffen[1].anzahlVerwendung)")
-            print("\(index + 1). \(tasche.items[0].name)")
-        }
+        print("[1] Trank, Hp+: 10")
+        print("[2] Para Heiler")
+        print("[3] Feuer Heiler")
+        print("[4] Gift Heiler")
+        print("[5] EisHeiler")
+        print("[6] Schwert Angr + 10")
+        print("[7] Schild Vert + 10")
+        print("[8] Eiserne Faust Angr + 10")
+        print("[9] Geweite Axt  Angr + 10")
+        print("[10] Feuer Rune Angr + 10")
+        print("[11] Eis Rune Angr + 10")
+        print("[12] Gift Rune Angr + 10")
+        print("[13] Paralyse Rune Angr + 10")
         
+        let input: String = readLine()!
+        
+        switch input {
+        case "1":
+            print("\(self.name) setz Trank ein und Heilt sich um 10 Hp")
+         self.hp += 10
+        case "2":
+            print("\(self.name) setzt Para Heiler ein und ist wieder Gesund")
+            self.status = .gesund
+        case "3":
+            print("\(self.name) setzt Feuer Heiler ein und ist wieder Gesund")
+            self.status = .gesund
+        case "4":
+            print("\(self.name) setzt Gift Heiler ein und ist wieder Gesund")
+            self.status = .gesund
+        case "5":
+            print("\(self.name) setzt Eis Heiler ein und ist nicht mehr Vereist")
+            self.status = .gesund
+        case "6":
+            print("\(self.name) nimmt das Schwert. Sein nächster Angriff macht macht 10  extra Schaden")
+            self.angriffsPunkte += 10
+        case "7":
+            print("\(self.name) blockiert den nächsten Angriff mit Schwert Block um 10 erhöht")
+            self.blockWert += 10
+        case "8":
+            print("\(self.name) nimmt die Eiserne Faust. Sein nächster Angriff Macht 10 extra Schaden")
+            self.angriffsPunkte += 10
+        case "9":
+            print("\(self.name) nimmt die Geweite Axt. Sein nächster Angriff Macht 10  extra Schaden")
+            self.angriffsPunkte += 10
+        case "10":
+            print("\(self.name) nimmt die Feuer Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            self.angriffsPunkte += 10
+        case "11":
+            print("\(self.name)  nimmt die Eis Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            self.angriffsPunkte += 10
+        case "12":
+            print("\(self.name)  nimmt die Gift Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            self.angriffsPunkte += 10
+        case "13":
+            print("\(self.name)  nimmt die Paralyse Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            self.angriffsPunkte += 10
+        case "14":
+            print("\(self.name) geht zur Attacken Auswahl zurück")
+            // geht leider nicht aktionsMenue(ziel: ziel, zuHeilen: Held:)
+        default:
+            beutel()
+            
+        }
+            
     }
 
 }
+
+
+
+//        var tasche: [Beutel] = [Beutel()]
+//        for (index,tasche) in tasche.enumerated() {
+//            print("\(index + 1). \(tasche.waffen[0].name)  SchadenMultiplier :\(tasche.waffen[0].schadensMultiplier) Verteidigungswert: \(tasche.waffen[0].verteidigungsWert) Max Verwendung: \(tasche.waffen[0].anzahlVerwendung)")
+//            print("\(index + 2). \(tasche.waffen[1].name)  SchadenMultiplier :\(tasche.waffen[1].schadensMultiplier) Verteidigungswert: \(tasche.waffen[1].verteidigungsWert) Max Verwendung: \(tasche.waffen[1].anzahlVerwendung)")
+//            print("\(index + 1). \(tasche.items[0].name)")
+//        }

@@ -12,11 +12,11 @@
 struct Beutel: CustomStringConvertable {
     var description: String {
         return """
-\tTränke: \(trank)
-\tPara Heiler: \(paraHeiler)
-\tFeuer Heiler: \(feuerHeiler)
-\tGift Heiler: \(giftHeiler)
-\tEis Heiler:  \(eisHeiler)
+\t[1] Tränke: \(trank)
+\t[2] Para Heiler: \(paraHeiler)
+\t[3] Feuer Heiler: \(feuerHeiler)
+\t[4] Gift Heiler: \(giftHeiler)
+\t[5] Eis Heiler:  \(eisHeiler)
 \tWaffen: \(waffen)
 \tItems: \(items)
 """
@@ -43,12 +43,13 @@ struct Beutel: CustomStringConvertable {
     
     func beutelInhalt() {
         var inhalt: [Beutel] = [Beutel()]
-        for (index,item) in inhalt.enumerated() {
-            print("\(index + 1). \(item.waffen[0])")
-            print("\(index + 2). \(item.items[0])")
+        for item in inhalt {
+            print("\(item.waffen)")
+           
             
         }
     }
 }
+
 
 
