@@ -8,7 +8,7 @@
 
 import Foundation
 
-class Game {
+class Game{
     
     var helden: [Held] = [
         Barbar(name: "Barbar", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
@@ -17,11 +17,12 @@ class Game {
         Hexendoktor(name: "Hexendoktor", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
     ]
     var gegner: [Gegner] = [
-        Endgegner(name: "Urzael", hp: 150, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
+        Endgegner(name: "Urzael", hp: 74, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
 //        Scherger(name: "Fallen Angel", hp: 100, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
     ]
     
 
+    var scherger: Scherger? = nil
     
     var kampfBeutel: [Beutel] = [Beutel(trank: 5, paraHeiler: 2, feuerHeiler: 2, giftHeiler: 2, eisHeiler: 2)]
     
@@ -85,7 +86,14 @@ class Game {
             
             for enemy in gegner {
                 if !helden.isEmpty {
-                    enemy.aktionsMenue(ziele: helden, zuHeilen: [enemy], gegnerBeschwoeren: gegner)
+                    if enemy is Endgegner {
+                        var enemyEnd = enemy as! Endgegner
+                        if enemy.hp <= enemyEnd.halbHp && !enemyEnd.schergerBeschworen{
+                            scherger = enemyEnd.schergenBeschwören()
+                            gegner.append(scherger!)
+                        }
+                    }
+                    enemy.aktionsMenue(ziele: helden, zuHeilen: [enemy])
                     helden.removeAll(where: {$0.hp <= 0})
                     print("----")
                    //sleep(4)

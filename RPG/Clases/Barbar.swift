@@ -94,6 +94,19 @@ class Barbar: Held {
     // MARK: Beutel // rekrusion einbauen damit nicht nur liste ausgegebn wird
     func beutel() {
         print("Beutel")
+        print("[1] Trank, Stärke: 10")
+        print("[2] Para Heiler, Stärke: 15")
+        print("[3] Feuer Heiler, Stärke: 10")
+        print("[4] Gift Heiler, Stärke: 10")
+        print("[5] Schwert")
+        print("[6] Schild")
+        print("[7] Eiserne Faust")
+        print("[8] Geweite Axt")
+        print("[9] Feuer Rune")
+        print("[10] Eis Rune")
+        print("[11] Gift Rune")
+        print("[12] Paralyse Rune")
+        print("[13] EisHeiler")
         var tasche: [Beutel] = [Beutel()]
         for (index,tasche) in tasche.enumerated() {
             print("\(index + 1). \(tasche.waffen[0].name)  SchadenMultiplier :\(tasche.waffen[0].schadensMultiplier) Verteidigungswert: \(tasche.waffen[0].verteidigungsWert) Max Verwendung: \(tasche.waffen[0].anzahlVerwendung)")
