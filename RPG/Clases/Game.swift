@@ -11,7 +11,7 @@ import Foundation
 class Game{
     
     var helden: [Held] = [
-        Barbar(name: "Barbar", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
+        Barbar(name: "Barbar", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .paralysiert),
         Kreuzritter(name: "Kreuzritter", hp: 100, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
         Magier(name: "Magier", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund),
         Hexendoktor(name: "Hexendoktor", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
@@ -59,6 +59,7 @@ class Game{
     
     func runden() {
         var rundenCounter: Int = 1
+        
         repeat{
             print()
             print("Runde \(rundenCounter)".hashTags().einruecken())

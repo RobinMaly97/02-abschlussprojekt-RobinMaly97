@@ -12,6 +12,7 @@ class Charakter {
     
     let name: String
     var hp: Double
+
     
     init(name: String, hp: Double) {
         self.name = name

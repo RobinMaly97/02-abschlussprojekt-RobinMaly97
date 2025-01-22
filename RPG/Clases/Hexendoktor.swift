@@ -10,33 +10,35 @@
 
 class Hexendoktor: Held {
     
+    var statusCounter: Int = 0
+    
     // MARK: Reguläre Attacke
     func seelenErnte(gegner: Gegner) {
-        print("Der Hexendoktor \(self.name) setzt Seelen Ernte gegen \(gegner.name) ein.")
+        print("\(self.name) setzt Seelen Ernte gegen \(gegner.name) mit einer HP von \(gegner.hp) ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
        
     }
     // MARK: Reguläre Attacke
     func geisterSpeerFeuer(gegner: Gegner) {
-        print("Der Hexendoktor \(self.name) setzt Geister Speerfeuer gegen \(gegner.name) ein.")
+        print("\(self.name) setzt Geister Speerfeuer gegen \(gegner.name) mit einer HP von \(gegner.hp) ein.")
         gegner.nimmSchaden(11.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
        
     }
     // MARK: Paralyse Attacke
     func paralyseBombe(gegner: Gegner) {
-        print("Der Hexendoktor \(self.name) setzt Paralyse Bombe gegen \(gegner.name) ein.")
+        print("\(self.name) setzt Paralyse Bombe gegen \(gegner.name) mit einer HP von \(gegner.hp) ein.")
         gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         let random: Int = Int.random(in: 1...10)
         if random == 5 {
@@ -47,11 +49,11 @@ class Hexendoktor: Held {
     }
     // MARK: Gift Attacke
     func giftPfeil(gegner: Gegner) {
-        print("Der Hexendoktor \(self.name) setzt Gift Pfeil gegen \(gegner.name) ein.")
+        print("\(self.name) setzt Gift Pfeil gegen \(gegner.name) mit einer HP von \(gegner.hp) ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet")  erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         print("Der Gegner \(gegner.name) verliert 10.5 HP \(gegner.hp).")
         let random: Int = Int.random(in: 1...10)
@@ -63,8 +65,9 @@ class Hexendoktor: Held {
     
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        if status == .paralysiert || status == .vereist {
+        if statusCounter < 2 && status == .paralysiert || status == .vereist {
             print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
+            statusCounter += 1
         } else {
             print("Der Hexendoktor greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
             print("[1] Seelen Ernte, Stärke: 10")
@@ -77,19 +80,16 @@ class Hexendoktor: Held {
             
             switch input {
             case "1":
-                print("Hexendoktor greift mit Seelen Ernte an")
                 seelenErnte(gegner: ziel)
             case "2":
-                print("Hexendoktor greift mit Geister Speerfeuer an")
                 geisterSpeerFeuer(gegner: ziel)
             case "3":
-                print("Hexendoktor greif mit Paralyse Bombe an")
                 paralyseBombe(gegner: ziel)
             case "4":
-                print("Hexendoktor greift mit Gift Pfeil an")
                 giftPfeil(gegner: ziel)
             case "5":
-                print("barbar öffnet den Beutel")
+                print("\(self.name) öffnet den Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
             default:
                 aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
                 
@@ -107,15 +107,11 @@ class Hexendoktor: Held {
         print("[3] Feuer Heiler")
         print("[4] Gift Heiler")
         print("[5] EisHeiler")
-        print("[6] Schwert Angr + 10")
-        print("[7] Schild Vert + 10")
-        print("[8] Eiserne Faust Angr + 10")
-        print("[9] Geweite Axt  Angr + 10")
-        print("[10] Feuer Rune Angr + 10")
-        print("[11] Eis Rune Angr + 10")
-        print("[12] Gift Rune Angr + 10")
-        print("[13] Paralyse Rune Angr + 10")
-        print("[14] Zurück zur Attacken Auswahl")
+        print("[6] Feuer Rune Angr + 10")
+        print("[7] Eis Rune Angr + 10")
+        print("[8] Gift Rune Angr + 10")
+        print("[9] Paralyse Rune Angr + 10")
+        print("[10] Zurück zur Attacken Auswahl")
         
         let input: String = readLine()!
         
@@ -136,31 +132,18 @@ class Hexendoktor: Held {
             print("\(self.name) setzt Eis Heiler ein und ist nicht mehr Vereist")
             self.status = .gesund
         case "6":
-            print("\(self.name) nimmt das Schwert. Sein nächster Angriff macht macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "7":
-            print("\(self.name) blockiert den nächsten Angriff mit Schwert Block um 10 erhöht")
-            self.blockWert += 10
-        case "8":
-            print("\(self.name) nimmt die Eiserne Faust. Sein nächster Angriff Macht 10 extra Schaden")
-            self.angriffsPunkte += 10
-        case "9":
-            print("\(self.name) nimmt die Geweite Axt. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "10":
             print("\(self.name) nimmt die Feuer Rune. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
-        case "11":
+        case "7":
             print("\(self.name)  nimmt die Eis Rune. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
-        case "12":
+        case "8":
             print("\(self.name)  nimmt die Gift Rune. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
-        case "13":
+        case "9":
             print("\(self.name)  nimmt die Paralyse Rune. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
-        case "14":
-            print("\(self.name) geht zur Attacken Auswahl zurück")
+        case "10":
             print("\(self.name) geht zur Attacken Auswahl zurück")
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:
@@ -169,5 +152,6 @@ class Hexendoktor: Held {
         }
             
     }
+
 
 }

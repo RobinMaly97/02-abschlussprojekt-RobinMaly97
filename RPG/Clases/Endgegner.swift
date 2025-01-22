@@ -13,7 +13,6 @@ class Endgegner: Gegner {
     let halbHp: Double = 75.0
     // MARK: Reguläre Attacke
     func meteorSchlag(held: Held) {
-        print("\(self.name) setzt Meteor Schlag gegen \(held.name) ein.")
         held.nimmSchaden(20)
       
     }
@@ -21,9 +20,10 @@ class Endgegner: Gegner {
     // MARK: Flächenangriff
     // da es ein flächenangriff ist muss als Parameter ein Array(Liste aus Gegner) übergeben werden damit ich auch bei allen gegnern die HP abziehen kann.
     func flammenInferno(helden: [Held]) {
-        print("\(self.name) setz Flammen Inferno ein in trifft alle Helden.")
+      
         for held in helden {
             held.nimmSchaden(15)
+            print()
             
         }
         

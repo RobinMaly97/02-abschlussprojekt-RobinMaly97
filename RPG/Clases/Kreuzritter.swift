@@ -10,12 +10,14 @@
 
 class Kreuzritter: Held {
     
+    var statusCounter: Int = 0
+    
 
     
     
     // MARK: Reguläre Attacke
     func schwungAngriff(gegner: Gegner) {
-        print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit dem Schwung Angriff an")
+        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit dem Schwung Angriff an")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -25,7 +27,7 @@ class Kreuzritter: Held {
     }
     // MARK: Reguläre Attacke
     func himmelsFaust(gegner: Gegner) {
-        print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit der Himmels Faust an")
+        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit der Himmels Faust an")
         gegner.nimmSchaden(5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -35,7 +37,7 @@ class Kreuzritter: Held {
     }
     // MARK: Reguläre Attacke
     func gesegneterHammer(gegner: Gegner) {
-        print("Der Kreuzritter \(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit dem Gesegnetem Hammer an")
+        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) mit dem Gesegnetem Hammer an")
         gegner.nimmSchaden(7.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -51,8 +53,9 @@ class Kreuzritter: Held {
     }
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
-        if status == .paralysiert || status == .vereist {
+        if statusCounter < 2 && status == .paralysiert || status == .vereist {
             print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
+            statusCounter += 1
         } else {
             print("Der Kreuzritter greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
             print("[1] Schwung Angriff, Stärke: 10")
@@ -65,19 +68,16 @@ class Kreuzritter: Held {
             
             switch input {
             case "1":
-                print("Kreuzritter greift mit Schwung Angriff an")
                 schwungAngriff(gegner: ziel)
             case "2":
-                print("Kreuzritter greift mit Himmelsfaust an")
                 himmelsFaust(gegner: ziel)
             case "3":
-                print("Kreuzritter greift mit Gesegneter Hammer an")
                 gesegneterHammer(gegner: ziel)
             case "4":
-                print("Kreuzritter blockiert den nächsten Angriff mit Schild Block")
                 schildBlock()
             case "5":
-                print("barbar öffnet den Beutel")
+                print("\(self.name) öffnet den Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
             default:
                 aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
                 
@@ -100,11 +100,7 @@ class Kreuzritter: Held {
         print("[7] Schild Vert + 10")
         print("[8] Eiserne Faust Angr + 10")
         print("[9] Geweite Axt  Angr + 10")
-        print("[10] Feuer Rune Angr + 10")
-        print("[11] Eis Rune Angr + 10")
-        print("[12] Gift Rune Angr + 10")
-        print("[13] Paralyse Rune Angr + 10")
-        print("[14] Zurück zur Attacken Auswahl")
+        print("[10] Zurück zur Attacken Auswahl")
         
         let input: String = readLine()!
         
@@ -137,18 +133,6 @@ class Kreuzritter: Held {
             print("\(self.name) nimmt die Geweite Axt. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
         case "10":
-            print("\(self.name) nimmt die Feuer Rune. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "11":
-            print("\(self.name)  nimmt die Eis Rune. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "12":
-            print("\(self.name)  nimmt die Gift Rune. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "13":
-            print("\(self.name)  nimmt die Paralyse Rune. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "14":
             print("\(self.name) geht zur Attacken Auswahl zurück")
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:

@@ -10,9 +10,11 @@
 
 class Magier: Held {
     
+    var statusCounter: Int = 0
+    
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
-        print("Der Magier \(self.name) setzt Froststrahl gegen \(gegner.name) ein")
+        print("Der Magier \(self.name) setzt Froststrahl gegen \(gegner.name) mit einer HP von \(gegner.hp) ein")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -28,7 +30,7 @@ class Magier: Held {
     }
     // MARK: Reguläre Attacke
     func explosion(gegner: Gegner) {
-        print("Der Magier \(self.name) setzt Explosion gegen \(gegner.name) ein.")
+        print("Der Magier \(self.name) setzt Explosion gegen \(gegner.name) mit einer HP von \(gegner.hp) ein.")
         gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -37,7 +39,7 @@ class Magier: Held {
     }
     // MARK: Brannt/Feuer Attacke
     func dreiKöpfigeHydra(gegner: Gegner) {
-        print("Der Magier \(self.name) setzt die Drei Köpfige Hydra gegen \(gegner.name) ein gegner Hp: \(gegner.hp).")
+        print("\(self.name) setzt die Drei Köpfige Hydra gegen \(gegner.name) mit einer HP von \(gegner.hp) ein.")
         gegner.nimmSchaden(13.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -55,7 +57,7 @@ class Magier: Held {
     // MARK: Heil Attacke
     func heilen(held: Held) {
         if held.name == self.name {
-            print("Der Magier \(self.name) hat sich Selbst geheilt.")
+            print("Der Magier \(self.name) hat sich Selbst geheilt mit einer HP von \(self.hp).")
             self.heilung(20)
         } else {
             print("Der Magier \(self.name) hat \(held.name) geheilt.")
@@ -66,8 +68,9 @@ class Magier: Held {
     
     override func aktionsMenue(ziel: Gegner, zuHeilen: Held) {
         
-        if status == .paralysiert || status == .vereist {
+        if statusCounter < 2 && status == .paralysiert || status == .vereist {
             print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
+            statusCounter += 1
         } else {
             print("Der Magier greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
             print("[1] Frost Strahl, Stärke: 10")
@@ -80,19 +83,15 @@ class Magier: Held {
             
             switch input {
             case "1":
-                print("Magier greift mit Frost Strahl an")
                 froststrahl(gegner: ziel)
             case "2":
-                print("Magier greift mit Explosion an")
                 explosion(gegner: ziel)
             case "3":
-                print("Magier greift mit Drei Köpfiger Hydra an")
                 dreiKöpfigeHydra(gegner: ziel)
             case "4":
-                print("Magier setz Heilen ein")
                 heilen(held: self)
             case "5":
-                print("Magier öffnet den Beutel")
+                print("\(self.name) öffnet den Beutel")
                 beutel(ziel: ziel, zuHeilen: zuHeilen)
             default:
                 aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
@@ -112,15 +111,11 @@ class Magier: Held {
         print("[3] Feuer Heiler")
         print("[4] Gift Heiler")
         print("[5] EisHeiler")
-        print("[6] Schwert Angr + 10")
-        print("[7] Schild Vert + 10")
-        print("[8] Eiserne Faust Angr + 10")
-        print("[9] Geweite Axt  Angr + 10")
-        print("[10] Feuer Rune Angr + 10")
-        print("[11] Eis Rune Angr + 10")
-        print("[12] Gift Rune Angr + 10")
-        print("[13] Paralyse Rune Angr + 10")
-        print("[14] Zurück zur Attacken Auswahl")
+        print("[6] Feuer Rune Angr + 10")
+        print("[7] Eis Rune Angr + 10")
+        print("[8] Gift Rune Angr + 10")
+        print("[9] Paralyse Rune Angr + 10")
+        print("[10] Zurück zur Attacken Auswahl")
         
         let input: String = readLine()!
         
@@ -141,30 +136,18 @@ class Magier: Held {
             print("\(self.name) setzt Eis Heiler ein und ist nicht mehr Vereist")
             self.status = .gesund
         case "6":
-            print("\(self.name) nimmt das Schwert. Sein nächster Angriff macht macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "7":
-            print("\(self.name) blockiert den nächsten Angriff mit Schwert Block um 10 erhöht")
-            self.blockWert += 10
-        case "8":
-            print("\(self.name) nimmt die Eiserne Faust. Sein nächster Angriff Macht 10 extra Schaden")
-            self.angriffsPunkte += 10
-        case "9":
-            print("\(self.name) nimmt die Geweite Axt. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "10":
             print("\(self.name) nimmt die Feuer Rune. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
-        case "11":
+        case "7":
             print("\(self.name)  nimmt die Eis Rune. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
-        case "12":
+        case "8":
             print("\(self.name)  nimmt die Gift Rune. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
-        case "13":
+        case "9":
             print("\(self.name)  nimmt die Paralyse Rune. Sein nächster Angriff Macht 10  extra Schaden")
             self.angriffsPunkte += 10
-        case "14":
+        case "10":
             print("\(self.name) geht zur Attacken Auswahl zurück")
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:
