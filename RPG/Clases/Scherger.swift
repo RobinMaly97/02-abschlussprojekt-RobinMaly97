@@ -29,8 +29,8 @@ class Scherger: Gegner {
         print("Der Scherger \(self.name) schießt ein Eis Pfeil auf \(held.name) mit einer HP von \(held.hp)")
         held.nimmSchaden(10)
         print("Der Held \(held.name) verliert 10 HP, Rest HP \(held.hp)")
-        let random: Int = Int.random(in: 1...10)
-        if random == 1 {
+        let random: Int = Int.random(in: 1...5)
+        if random == 3 {
             print("Der Held \(held.name) wurde für 2 Runden vereist")
             held.status = .vereist
             
@@ -43,8 +43,8 @@ class Scherger: Gegner {
         print("Der Scherger \(self.name) schießt ein Paralyse Pfeil auf \(held.name) mit einer HP von \(held.hp)")
         held.nimmSchaden(9.5)
         print("Der Held \(held.name) verliert 9.5 HP, Rest HP \(held.hp)")
-        let random: Int = Int.random(in: 1...10)
-        if random == 8 {
+        let random: Int = Int.random(in: 1...5)
+        if random == 2 {
             print("Der Held \(held.name) wurde für 2 Runden paralysiert")
             held.status = .paralysiert
             
@@ -56,8 +56,8 @@ class Scherger: Gegner {
         print("Der Scherger \(self.name) schießt ein Gift Pfeil auf \(held.name) mit einer HP von \(held.hp)")
         held.nimmSchaden(10.5)
         print("Der Held \(held.name) verliert 10.5 HP, Rest HP \(held.hp)")
-        let random: Int = Int.random(in: 1...10)
-        if random == 10 {
+        let random: Int = Int.random(in: 1...5)
+        if random == 1 {
             print("Der Held \(held.name) wurde für 2 Runden vergiftet")
             held.status = .vergiftet
         }

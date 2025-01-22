@@ -40,7 +40,7 @@ class Hexendoktor: Held {
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
-        let random: Int = Int.random(in: 1...10)
+        let random: Int = Int.random(in: 1...5)
         if random == 5 {
             print("Der Gegner \(gegner.name) wurde für 2 Runden paralysiert und kann nicht angreifen.")
             gegner.status = .paralysiert
@@ -56,8 +56,8 @@ class Hexendoktor: Held {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet")  erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         print("Der Gegner \(gegner.name) verliert 10.5 HP \(gegner.hp).")
-        let random: Int = Int.random(in: 1...10)
-        if random == 7 {
+        let random: Int = Int.random(in: 1...5)
+        if random == 4 {
             print("Der Gegner \(gegner.name) wurde für 2 Runden vergiftet und verliert jede Runde 10% seiner HP.")
             gegner.status = .vergiftet
         }

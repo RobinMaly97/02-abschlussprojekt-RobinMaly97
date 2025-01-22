@@ -20,7 +20,7 @@ class Magier: Held {
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
-        let random: Int = Int.random(in: 1...10)
+        let random: Int = Int.random(in: 1...5)
         if random == 3 {
             print("Der Gegner \(gegner.name) wurde für 2 Runden vereist")
             gegner.status = .vereist
@@ -45,7 +45,7 @@ class Magier: Held {
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
-        let random: Int = Int.random(in: 1...10)
+        let random: Int = Int.random(in: 1...5)
         if random == 2 {
             print("Der Gegner \(gegner.name) brennt für 2 Runden.")
             gegner.status = .brennt
