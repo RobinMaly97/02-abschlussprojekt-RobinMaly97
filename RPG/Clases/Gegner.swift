@@ -53,7 +53,7 @@ class Gegner: Charakter, CustomStringConvertable {
     }
     
     
-    func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
+    func aktionsMenue(ziele: [Held], zuHeilen: [Gegner], gegner: [Gegner]) {
         print("Der gegner greift an!")
         
         let input: String = String(Int.random(in: 1...4))
@@ -69,7 +69,7 @@ class Gegner: Charakter, CustomStringConvertable {
         case "4":
             print("Spiel Beendet")
         default:
-            aktionsMenue(ziele: ziele, zuHeilen: zuHeilen)
+            aktionsMenue(ziele: ziele, zuHeilen: zuHeilen, gegner: [])
             
         }
     }

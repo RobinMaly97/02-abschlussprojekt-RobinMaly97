@@ -85,7 +85,7 @@ class Game {
             
             for enemy in gegner {
                 if !helden.isEmpty {
-                    enemy.aktionsMenue(ziele: helden, zuHeilen: [enemy])
+                    enemy.aktionsMenue(ziele: helden, zuHeilen: [enemy], gegnerBeschwoeren: gegner)
                     helden.removeAll(where: {$0.hp <= 0})
                     print("----")
                    //sleep(4)

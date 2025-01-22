@@ -91,7 +91,7 @@ class Barbar: Held {
     
 
     
-    // MARK: Beutel
+    // MARK: Beutel // rekrusion einbauen damit nicht nur liste ausgegebn wird
     func beutel() {
         print("Beutel")
         var tasche: [Beutel] = [Beutel()]

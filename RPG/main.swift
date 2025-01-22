@@ -18,3 +18,4 @@ spiel1.menu()
 //babar1.nimmSchaden(50)
 //print(babar1)
 //print(babar1.waffe)
+
