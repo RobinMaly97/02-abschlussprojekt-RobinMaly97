@@ -11,13 +11,13 @@ import Foundation
 class Game{
     
     var helden: [Held] = [
-        Barbar(name: "Barbar", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .paralysiert),
-        Kreuzritter(name: "Kreuzritter", hp: 100, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
-        Magier(name: "Magier", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund),
-        Hexendoktor(name: "Hexendoktor", hp: 100, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
+        Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
+        Kreuzritter(name: "Kreuzritter", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
+        Magier(name: "Magier", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund),
+        Hexendoktor(name: "Hexendoktor", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
     ]
     var gegner: [Gegner] = [
-        Endgegner(name: "Urzael", hp: 150, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
+        Endgegner(name: "Urzael", hp: 150.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
 //        Scherger(name: "Fallen Angel", hp: 100, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
     ]
     
@@ -66,12 +66,12 @@ class Game{
             print()
             // kann in eine funktion ausgelagert werden
             for held in helden {
-                print("\(held.name) hat noch \(held.hp) HP und einen Blockwert \(held.blockWert)")
+                print("\(held.name) hat noch \(held.hp) HP und einen Blockwert \(held.blockWert). Status: \(held.status.rawValue)")
             }
             print("---")
             // kann in eine funktion ausgelagert werden
             for enemy in gegner {
-                print("\(enemy.name) hat noch \(enemy.hp) HP und \(enemy.etraSchild) Extra Schild")
+                print("\(enemy.name) hat noch \(enemy.hp) HP und \(enemy.etraSchild) Extra Schild. Status: \(enemy.status.rawValue)")
             }
             print("---")
             

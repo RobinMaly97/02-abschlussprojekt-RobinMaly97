@@ -72,6 +72,15 @@ class Magier: Held {
             print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
             statusCounter += 1
         } else {
+            if status == .vergiftet || status == .brennt {
+                print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")
+                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma) Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)")
+            self.hp = self.hp.zweiStellenNachKomma - (self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)
+          
+            
+            statusCounter += 1
+            
+        }
             print("Der Magier greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
             print("[1] Frost Strahl, Stärke: 10")
             print("[2] Explosion, Stärke: 8.5")
@@ -107,54 +116,54 @@ class Magier: Held {
     func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
         print("[1] Trank, Hp+: 10")
-        print("[2] Para Heiler")
-        print("[3] Feuer Heiler")
-        print("[4] Gift Heiler")
-        print("[5] EisHeiler")
-        print("[6] Feuer Rune Angr + 10")
-        print("[7] Eis Rune Angr + 10")
-        print("[8] Gift Rune Angr + 10")
-        print("[9] Paralyse Rune Angr + 10")
-        print("[10] Zurück zur Attacken Auswahl")
+        print("[2] Feuer Heiler")
+        print("[3] Gift Heiler")
+        print("[4] Feuer Rune Angr + 10")
+        print("[5] Eis Rune Angr + 10")
+        print("[6] Gift Rune Angr + 10")
+        print("[7] Paralyse Rune Angr + 10")
+        print("[8] Zurück zur Attacken Auswahl")
         
         let input: String = readLine()!
         
         switch input {
         case "1":
             print("\(self.name) setz Trank ein und Heilt sich um 10 Hp")
-         self.hp += 10
+            self.hp += 10
         case "2":
-            print("\(self.name) setzt Para Heiler ein und ist wieder Gesund")
-            self.status = .gesund
-        case "3":
             print("\(self.name) setzt Feuer Heiler ein und ist wieder Gesund")
             self.status = .gesund
-        case "4":
+        case "3":
             print("\(self.name) setzt Gift Heiler ein und ist wieder Gesund")
             self.status = .gesund
-        case "5":
-            print("\(self.name) setzt Eis Heiler ein und ist nicht mehr Vereist")
-            self.status = .gesund
-        case "6":
+        case "4":
             print("\(self.name) nimmt die Feuer Rune. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "7":
-            print("\(self.name)  nimmt die Eis Rune. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "8":
+            self.item = beutel.items[0]
+            self.item?.schadensWert += 10
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+        case "5":
+            print("\(self.name) nimmt die Eis Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            self.item = beutel.items[1]
+            self.item?.schadensWert += 10
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+        case "6":
             print("\(self.name)  nimmt die Gift Rune. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "9":
+            self.item = beutel.items[2]
+            self.item?.schadensWert += 10
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+        case "7":
             print("\(self.name)  nimmt die Paralyse Rune. Sein nächster Angriff Macht 10  extra Schaden")
-            self.angriffsPunkte += 10
-        case "10":
+            self.item = beutel.items[3]
+            self.item?.schadensWert += 10
+            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+        case "8":
             print("\(self.name) geht zur Attacken Auswahl zurück")
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:
             beutel(ziel: ziel, zuHeilen: zuHeilen)
             
         }
-            
+        
     }
 
 }

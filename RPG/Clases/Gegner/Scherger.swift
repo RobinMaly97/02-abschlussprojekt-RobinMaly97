@@ -67,9 +67,17 @@ class Scherger: Gegner {
         
         if statusCounter < 2 && status == .paralysiert || status == .vereist {
             print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
-            // if status == .vegiftet || status == .brennt {  print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")}
             statusCounter += 1
         } else {
+            if status == .vergiftet || status == .brennt {
+            print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")
+                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma) Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)")
+            self.hp = self.hp.zweiStellenNachKomma - (self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)
+           
+            
+            statusCounter += 1
+            
+        }
             print(" \(self.name) greift an!")
             
             let input: String = String(Int.random(in: 1...4))

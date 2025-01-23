@@ -20,7 +20,7 @@ struct Item: CustomStringConvertable, Nutzbar {
     }
     
     let name: String
-    let schadensWert: Double
+    var schadensWert: Double
     let verteidigungsWert: Double
     var anzahlVerwendung: Int
     

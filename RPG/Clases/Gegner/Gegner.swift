@@ -23,7 +23,7 @@ class Gegner: Charakter, CustomStringConvertable {
     
     var angriffsPunkte: Double
     var etraSchild: Double
-    var status: Status
+    var status: Status 
     var masterAttackCounter: Int = 0
     init(name: String, hp: Double, angriffsPunkte: Double, etraSchild: Double, status: Status) {
         self.angriffsPunkte = angriffsPunkte
@@ -42,7 +42,7 @@ class Gegner: Charakter, CustomStringConvertable {
         
         if self.etraSchild <= 0 {
             self.hp -= schaden
-               print("Der Geggner \(self.name) verliert \(schaden) Hp, Rest HP \(self.hp)")
+               print("\(self.name) verliert \(schaden) Hp, Rest HP \(self.hp)")
         }
             
             
