@@ -10,6 +10,24 @@ import Foundation
 
 class Game{
     
+    
+    var highScores: [Highscore] = []
+    
+
+    func highScoreListe() {
+        
+        let sortierteListe = highScores.sorted(by: {$0.runden < $1.runden})
+        
+        print("Highscores".hashTags().einruecken())
+        for highScore in sortierteListe {
+            print("UserName: \(highScore.userName)  |  Runden: \(highScore.runden)")
+        }
+    }
+
+    
+    
+    
+    
     var helden: [Held] = [
         Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
         Kreuzritter(name: "Kreuzritter", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
@@ -35,9 +53,8 @@ class Game{
         print()
         print("Bitte wähle ein Zahl von 1 - 4")
         print("[1] Neues Spiel Starten")
-        print("[2] Helden Auswahl")
-        print("[3] Highscores")
-        print("[4] Spiel Beenden")
+        print("[2] Highscores")
+        print("[3] Spiel Beenden")
         
         let input: String = readLine()!
         
@@ -46,10 +63,10 @@ class Game{
             print("Das Spiel Startet")
             runden()
         case "2":
-            print("Bitte Wähle mindestens 2 Helden aus.")
-        case "3":
             print("Alle HIGHSCORES")
-        case "4":
+            highScoreListe()
+            menu()
+        case "3":
             print("Spiel Beendet")
             break
         default:
@@ -57,8 +74,12 @@ class Game{
         }
     }
     
+    
     func runden() {
         var rundenCounter: Int = 1
+        print("Bitte gib deinen UserNamen ein")
+        let userNameInput: String = readLine()!
+        print()
         
         repeat{
             print()
@@ -88,7 +109,7 @@ class Game{
             for enemy in gegner {
                 if !helden.isEmpty {
                     if enemy is Endgegner {
-                        var enemyEnd = enemy as! Endgegner
+                        let enemyEnd = enemy as! Endgegner
                         if enemy.hp <= enemyEnd.halbHp && !enemyEnd.schergerBeschworen{
                             scherger = enemyEnd.schergenBeschwören()
                             gegner.append(scherger!)
@@ -102,10 +123,14 @@ class Game{
                 
             }
             if helden.isEmpty {
-                print("Die Gegner haben Gewonnen")
+                print("😪😪😪Die Gegner haben Gewonnen😪😪😪")
                 break
             } else if gegner.isEmpty {
-                print("Die Helden haben Gewonnen")
+                print("🎉🎉🎉Die Helden haben Gewonnen🎉🎉🎉")
+                
+                let highScore: Highscore = Highscore(userName: userNameInput, runden: rundenCounter)
+                highScores.append(highScore)
+                print("Der Highsore wurde abgespeichert \n \(userNameInput) hat nach \(rundenCounter) Uzrael und seinen Scherger besiegt.")
                 break
             }
            

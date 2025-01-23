@@ -24,7 +24,23 @@ class Held: Charakter, CustomStringConvertable {
     var angriffsPunkte: Double //   get {self.angriffsPunkte *= waffe}} //
     
     var verteidigungsPunkte: Double
-    var status: Status
+    var status: Status{
+        didSet {
+            
+            switch status {
+            case .brennt:
+                print("\(self.name) ist am 🔥brennen🔥")
+            case .paralysiert:
+                print("\(self.name) ist ⚡️paralysiert⚡️")
+            case .vereist:
+                print("\(self.name) ist ❄️vereist❄️")
+            case .vergiftet:
+                print("\(self.name) ist ☠️vergiftet☠️")
+            case .gesund:
+                print("\(self.name) ist wieder ❤️Gesund❤️ ")
+            }
+        }
+    }
     var beutel: Beutel = Beutel()
     var blockWert: Double = 0
     var traegtItem: Bool = false

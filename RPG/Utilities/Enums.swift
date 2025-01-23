@@ -8,7 +8,6 @@
 
 enum Status: String {
     case gesund = "Gesund ❤️❤️"
-    case verwundet = "Verwundet 🩹🩹"
     case brennt = "Brennt 🔥🔥"
     case vereist = "Vereist ❄️❄️"
     case vergiftet = "Vergiftet ☠️☠️"

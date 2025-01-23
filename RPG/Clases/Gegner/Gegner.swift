@@ -23,7 +23,23 @@ class Gegner: Charakter, CustomStringConvertable {
     
     var angriffsPunkte: Double
     var etraSchild: Double
-    var status: Status 
+    var status: Status {
+        didSet {
+            
+            switch status {
+            case .brennt:
+                print("\(self.name) ist am 🔥brennen🔥")
+            case .paralysiert:
+                print("\(self.name) ist ⚡️paralysiert⚡️")
+            case .vereist:
+                print("\(self.name) ist ❄️vereist❄️")
+            case .vergiftet:
+                print("\(self.name) ist ☠️vergiftet☠️")
+            case .gesund:
+                print("\(self.name) ist wieder ❤️Gesund❤️ ")
+            }
+        }
+    }
     var masterAttackCounter: Int = 0
     init(name: String, hp: Double, angriffsPunkte: Double, etraSchild: Double, status: Status) {
         self.angriffsPunkte = angriffsPunkte
