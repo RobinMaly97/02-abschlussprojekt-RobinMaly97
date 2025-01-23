@@ -11,7 +11,12 @@ import Foundation
 class Game{
     
     
-    var highScores: [Highscore] = []
+    var highScores: [Highscore] = [
+        Highscore(userName: "MetaMarv", runden: 8),
+        Highscore(userName: "DrG4ming", runden: 10),
+        Highscore(userName: "Pabloson", runden: 7),
+        Highscore(userName: "Stahlrich", runden: 6)
+        ]
     
 
     func highScoreListe() {
@@ -26,7 +31,8 @@ class Game{
 
     
     
-    
+    var heldenAuswahl: [Held] = []
+    var heldenCounter: Int = 0
     
     var helden: [Held] = [
         Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
@@ -45,7 +51,48 @@ class Game{
     var kampfBeutel: [Beutel] = [Beutel(trank: 5, paraHeiler: 2, feuerHeiler: 2, giftHeiler: 2, eisHeiler: 2)]
     
 
-    
+    func heldenAuswahlMenu() {
+       print("[1] Barbar")
+       print("[2] Kreuzritter")
+       print("[3] Magier")
+       print("[4] Hexendoktor")
+       print("[5] Spiel Starten")
+       print("[6] Zurück zum Hauptmenü ")
+        
+        let input: String = readLine()!
+        
+       switch input {
+        case "1":
+            print("Du Hast den Barbaren Gewählt")
+          let barbar = Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund)
+           heldenAuswahl.append(barbar)
+           heldenAuswahlMenu()
+        case "2":
+            print("Du Hast den Kreuzritter Gewählt")
+           let kreuzRitter = Kreuzritter(name: "Kreuzritter", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund)
+           heldenAuswahl.append(kreuzRitter)
+           heldenAuswahlMenu()
+        case "3":
+            print("Du Hast den Magier Gewählt")
+           let magier = Magier(name: "Magier", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund)
+           heldenAuswahl.append(magier)
+           heldenAuswahlMenu()
+        case "4":
+           print("Du Hast den Hexendoktor Gewählt")
+           let hexenDoktor = Hexendoktor(name: "Hexendoktor", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
+           heldenAuswahl.append(hexenDoktor)
+           heldenAuswahlMenu()
+        case "5":
+           print("Spiel Startet")
+           rundenHeldenAuswahl()
+        case "6":
+            print("Zurück zum Hauptmenü")
+           heldenAuswahl.removeAll()
+           menu()
+        default:
+           heldenAuswahlMenu()
+        }
+    }
 
     
     func menu() {
@@ -53,8 +100,9 @@ class Game{
         print()
         print("Bitte wähle ein Zahl von 1 - 4")
         print("[1] Neues Spiel Starten")
-        print("[2] Highscores")
-        print("[3] Spiel Beenden")
+        print("[2] Heldenauswahl")
+        print("[3] Highscores")
+        print("[4] Spiel Beenden")
         
         let input: String = readLine()!
         
@@ -63,10 +111,13 @@ class Game{
             print("Das Spiel Startet")
             runden()
         case "2":
+            print("Mit welchen Helden Willst du Spielen ?")
+            heldenAuswahlMenu()
+        case "3":
             print("Alle HIGHSCORES")
             highScoreListe()
             menu()
-        case "3":
+        case "4":
             print("Spiel Beendet")
             break
         default:
@@ -144,4 +195,73 @@ class Game{
         while gegner.contains(where: {$0.hp > 0}) || helden.contains(where: {$0.hp > 0})
     }
     
+    
+    func rundenHeldenAuswahl() {
+        var rundenCounter: Int = 1
+        print("Bitte gib deinen UserNamen ein")
+        let userNameInput: String = readLine()!
+        print()
+        
+        repeat{
+            print()
+            print("Runde \(rundenCounter)".hashTags().einruecken())
+            print()
+            // kann in eine funktion ausgelagert werden
+            for held in heldenAuswahl {
+                print("\(held.name) hat noch \(held.hp)❤️ HP und einen Blockwert \(held.blockWert)🛡️. Status: \(held.status.rawValue)")
+            }
+            print("---")
+            // kann in eine funktion ausgelagert werden
+            for enemy in gegner {
+                print("\(enemy.name) hat noch \(enemy.hp)❤️ HP und \(enemy.etraSchild)🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+            }
+            print("---")
+            
+            for held in heldenAuswahl {
+                if !gegner.isEmpty{
+                    held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
+                    gegner.removeAll(where: {$0.hp <= 0}) // in funktion schreiben
+                    print("----")
+                   sleep(1)
+                }
+              
+            }
+            
+            for enemy in gegner {
+                if !heldenAuswahl.isEmpty {
+                    if enemy is Endgegner {
+                        let enemyEnd = enemy as! Endgegner
+                        if enemy.hp <= enemyEnd.halbHp && !enemyEnd.schergerBeschworen{
+                            scherger = enemyEnd.schergenBeschwören()
+                            gegner.append(scherger!)
+                        }
+                    }
+                    enemy.aktionsMenue(ziele: heldenAuswahl, zuHeilen: [enemy])
+                    helden.removeAll(where: {$0.hp <= 0})
+                    print("----")
+                   sleep(1)
+                }
+                
+            }
+            if heldenAuswahl.isEmpty {
+                print("😪😪😪Die Gegner haben Gewonnen😪😪😪")
+                break
+            } else if gegner.isEmpty {
+                print("🎉🎉🎉Die Helden haben Gewonnen🎉🎉🎉")
+                
+                let highScore: Highscore = Highscore(userName: userNameInput, runden: rundenCounter)
+                highScores.append(highScore)
+                print("Der Highsore wurde abgespeichert \n \(userNameInput) hat nach \(rundenCounter) Uzrael und seinen Scherger besiegt.")
+                break
+            }
+           
+            rundenCounter += 1
+            let randomMasterCounter: Int = Int.random(in: 3...5)
+            gegner[0].masterAttackCounter += randomMasterCounter
+            
+            sleep(1)
+            
+        }
+        while gegner.contains(where: {$0.hp > 0}) || heldenAuswahl.contains(where: {$0.hp > 0})
+    }
 }

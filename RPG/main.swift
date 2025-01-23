@@ -5,7 +5,7 @@ import Foundation
 
 var spiel1: Game = Game()
 
-//spiel1.menu()
+spiel1.menu()
 spiel1.highScoreListe()
 
 //var gegner = Endgegner(name: "Urzael", hp: 50, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
