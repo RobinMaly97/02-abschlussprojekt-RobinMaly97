@@ -66,12 +66,12 @@ class Game{
             print()
             // kann in eine funktion ausgelagert werden
             for held in helden {
-                print("\(held.name) hat noch \(held.hp) HP und einen Blockwert \(held.blockWert). Status: \(held.status.rawValue)")
+                print("\(held.name) hat noch \(held.hp)❤️ HP und einen Blockwert \(held.blockWert)🛡️. Status: \(held.status.rawValue)")
             }
             print("---")
             // kann in eine funktion ausgelagert werden
             for enemy in gegner {
-                print("\(enemy.name) hat noch \(enemy.hp) HP und \(enemy.etraSchild) Extra Schild. Status: \(enemy.status.rawValue)")
+                print("\(enemy.name) hat noch \(enemy.hp)❤️ HP und \(enemy.etraSchild)🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
             }
             print("---")
             
@@ -80,7 +80,7 @@ class Game{
                     held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
                     gegner.removeAll(where: {$0.hp <= 0}) // in funktion schreiben
                     print("----")
-                   // sleep(2)
+                   sleep(1)
                 }
               
             }
@@ -97,7 +97,7 @@ class Game{
                     enemy.aktionsMenue(ziele: helden, zuHeilen: [enemy])
                     helden.removeAll(where: {$0.hp <= 0})
                     print("----")
-                   //sleep(4)
+                   sleep(1)
                 }
                 
             }
@@ -113,7 +113,8 @@ class Game{
             let randomMasterCounter: Int = Int.random(in: 3...5)
             gegner[0].masterAttackCounter += randomMasterCounter
             
-            // willst du beutel oder Attacken nutzen 
+            sleep(1)
+            
         }
         while gegner.contains(where: {$0.hp > 0}) || helden.contains(where: {$0.hp > 0})
     }

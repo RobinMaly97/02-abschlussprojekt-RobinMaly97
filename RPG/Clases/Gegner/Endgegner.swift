@@ -36,10 +36,9 @@ class Endgegner: Gegner {
         var maxAngriffe: Int = 1
         if statusCounter < 2 && status == .paralysiert || status == .vereist {
             print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
-            // if status == .vegiftet || status == .brennt {  print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")}
             statusCounter += 1
         } else if maxAngriffe == 1 && masterAttackCounter >= 10 {
-            print("\(self.name) setzt Zorn des Teufels gegen \(held.name) ein.")
+            print("\(self.name) setzt 🔥😈😈Zorn des Teufels🔥😈😈 gegen \(held.name) ein.")
             held.nimmSchaden(held.hp)
             maxAngriffe -= 1
         }
@@ -54,21 +53,13 @@ class Endgegner: Gegner {
     var schergerBeschworen: Bool = false
     
     func schergenBeschwören() -> Scherger? {
-        if statusCounter < 2 && status == .paralysiert || status == .vereist {
-            print("\(self.name) ist \(status.rawValue) er kann 2 Runden nicht angreifen")
-            // if status == .vegiftet || status == .brennt {  print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")}
-            statusCounter += 1
-        }
-        
-        
-        else if !schergerBeschworen {
             print("Der Scherger wird beschworen und kommt \(self.name) zur hilfe.")
             var scherger: Scherger = Scherger(name: "Duriel", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
             schergerBeschworen = true
             return scherger
         }
-        return nil
-    }
+      
+    
     var maxAngriffe: Int = 1
     override func aktionsMenue(ziele: [Held], zuHeilen: [Gegner]) {
         
@@ -78,7 +69,7 @@ class Endgegner: Gegner {
         
         if maxAngriffe == 1 && masterAttackCounter >= 10 {
             let heldZiel = ziele.randomElement()!
-            print("\(self.name) setzt Zorn des Teufels gegen \(heldZiel.name) ein.")
+            print("\(self.name) setzt 🔥😈😈Zorn des Teufels🔥😈😈 gegen \(heldZiel.name) ein.")
             heldZiel.nimmSchaden(heldZiel.hp)
             maxAngriffe -= 1
             
@@ -90,8 +81,8 @@ class Endgegner: Gegner {
                 statusCounter += 1
             } else {
                 if status == .vergiftet || status == .brennt {
-                    print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")
-                    print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma) Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)")
+                    print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ❤️")
+                    print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️")
                     self.hp = self.hp.zweiStellenNachKomma - (self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)
                     
                     
@@ -105,10 +96,10 @@ class Endgegner: Gegner {
                 
                 switch input {
                 case "1":
-                    print("Endgegner \(self.name) setzt Meteor Schlag ein.")
+                    print("\(self.name) setzt ☄️👊🏽👊🏽Meteor Schlag☄️👊🏽👊🏽 ein.")
                     meteorSchlag(held: ziele.randomElement()!)
                 case "2":
-                    print("Endgegner \(self.name) setz Flammen Inferno ein")
+                    print("\(self.name) setz 🔥💥🔥Flammen Inferno🔥💥🔥 ein")
                     flammenInferno(helden: ziele)
                     
                 default:

@@ -46,19 +46,19 @@ class Held: Charakter, CustomStringConvertable {
     func nimmSchaden(_ schaden: Double) {
         if self.blockWert >= 0{
             self.blockWert -= schaden
-            print("\(self.name) verliert \(schaden) Block Wert, Rest Schild \(self.blockWert)")
+            print("\(self.name) verliert \(schaden) Block Wert🛡️, Rest Schild🛡️ \(self.blockWert)")
         }
        
         if self.blockWert <= 0 {
             self.hp -= schaden + (self.waffe?.schadensWert ?? 0)
                 self.waffe?.anzahlVerwendung -= 1
-                print("\(self.name) verliert \(schaden) Hp, Rest HP \(self.hp)")
+                print("\(self.name) verliert \(schaden) Hp❤️, Rest HP \(self.hp)❤️")
         }
             
             
         
         if self.hp <= 0 {
-            print("\(self.name) ist besiegt")
+            print("☠️\(self.name) ist besiegt☠️")
         }
     }
     

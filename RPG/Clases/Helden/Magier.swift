@@ -14,15 +14,15 @@ class Magier: Held {
     
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
-        print("Der Magier \(self.name) setzt Froststrahl gegen \(gegner.name) mit einer HP von \(gegner.hp) ein")
+        print("\(self.name) setzt ❄️❄️❄️Froststrahl❄️❄️❄️ gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
-        let random: Int = Int.random(in: 1...5)
-        if random == 3 {
-            print("Der Gegner \(gegner.name) wurde für 2 Runden vereist")
+        let random: Int = Int.random(in: 1...2)
+        if random == 2 {
+            print("\(gegner.name) wurde für 2 Runden vereist ❄️❄️.")
             gegner.status = .vereist
            
         }
@@ -30,24 +30,24 @@ class Magier: Held {
     }
     // MARK: Reguläre Attacke
     func explosion(gegner: Gegner) {
-        print("Der Magier \(self.name) setzt Explosion gegen \(gegner.name) mit einer HP von \(gegner.hp) ein.")
+        print("\(self.name) setzt 💥💥💥Explosion💥💥💥 gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ ein.")
         gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
     }
     // MARK: Brannt/Feuer Attacke
     func dreiKöpfigeHydra(gegner: Gegner) {
-        print("\(self.name) setzt die Drei Köpfige Hydra gegen \(gegner.name) mit einer HP von \(gegner.hp) ein.")
+        print("\(self.name) setzt die 🐉🐉🐉Drei Köpfige Hydra🐉🐉🐉 gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ ein.")
         gegner.nimmSchaden(13.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
-            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") Keine Waffe Ausgerüstet erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
+            print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
         let random: Int = Int.random(in: 1...5)
         if random == 2 {
-            print("Der Gegner \(gegner.name) brennt für 2 Runden.")
+            print("\(gegner.name) brennt 🔥🔥 für 2 Runden.")
             gegner.status = .brennt
             
             
@@ -57,10 +57,10 @@ class Magier: Held {
     // MARK: Heil Attacke
     func heilen(held: Held) {
         if held.name == self.name {
-            print("Der Magier \(self.name) hat sich Selbst geheilt mit einer HP von \(self.hp).")
+            print("\(self.name) hat sich Selbst ❤️❤️❤️geheilt❤️❤️❤️ mit einer HP von \(self.hp) ❤️.")
             self.heilung(20)
         } else {
-            print("Der Magier \(self.name) hat \(held.name) geheilt.")
+            print("\(self.name) hat \(held.name) ❤️❤️❤️geheilt❤️❤️❤️ mit einer HP von \(held.hp) ❤️.")
             held.heilung(20)
         }
     }
@@ -73,20 +73,20 @@ class Magier: Held {
             statusCounter += 1
         } else {
             if status == .vergiftet || status == .brennt {
-                print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")
-                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma) Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)")
+                print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ❤️")
+                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️")
             self.hp = self.hp.zweiStellenNachKomma - (self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)
           
             
             statusCounter += 1
             
         }
-            print("Der Magier greift \(ziel.name) HP: \(ziel.hp), Extra Schild \(ziel.etraSchild) an! Welche Attacke soll er ausführen?")
-            print("[1] Frost Strahl, Stärke: 10")
-            print("[2] Explosion, Stärke: 8.5")
-            print("[3] Drei Köpfige Hydra, Stärke: 13.5")
-            print("[4] Heilen, Stärke: 20")
-            print("[5] Beutel öffnen")
+            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(ziel.etraSchild) 🛡️ an! Welche Attacke soll er ausführen?")
+            print("[1] Frost Strahl, Stärke: 10 ❄️❄️❄️")
+            print("[2] Explosion, Stärke: 8.5 💥💥💥")
+            print("[3] Drei Köpfige Hydra, Stärke: 13.5 🐉🐉🐉")
+            print("[4] Heilen, Stärke: 20 ❤️❤️❤️")
+            print("[5] Beutel öffnen 🎒🎒🎒")
             
             let input: String = readLine()!
             
@@ -100,7 +100,7 @@ class Magier: Held {
             case "4":
                 heilen(held: self)
             case "5":
-                print("\(self.name) öffnet den Beutel")
+                print("\(self.name) öffnet den Beutel 🎒🎒🎒")
                 beutel(ziel: ziel, zuHeilen: zuHeilen)
             default:
                 aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
@@ -115,49 +115,49 @@ class Magier: Held {
     // MARK: Beutel
     func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
-        print("[1] Trank, Hp+: 10")
-        print("[2] Feuer Heiler")
-        print("[3] Gift Heiler")
-        print("[4] Feuer Rune Angr + 10")
-        print("[5] Eis Rune Angr + 10")
-        print("[6] Gift Rune Angr + 10")
-        print("[7] Paralyse Rune Angr + 10")
-        print("[8] Zurück zur Attacken Auswahl")
+        print("[1] Trank, Hp + 10 ❤️❤️")
+        print("[2] Feuer Heiler 🔥❤️")
+        print("[3] Gift Heiler ☠️❤️")
+        print("[4] Feuer Rune Angr + 10 🔥🀄️")
+        print("[5] Eis Rune Angr + 10 ❄️🀄️")
+        print("[6] Gift Rune Angr + 10 ☠️🀄️")
+        print("[7] Paralyse Rune Angr + 10 ⚡️🀄️")
+        print("[8] Zurück zur Attacken Auswahl ⚔️")
         
         let input: String = readLine()!
         
         switch input {
         case "1":
-            print("\(self.name) setz Trank ein und Heilt sich um 10 Hp")
-            self.hp += 10
+            print("\(self.name) setz Trank ❤️❤️ ein und Heilt sich um 10 Hp ❤️")
+         self.hp += 10
         case "2":
-            print("\(self.name) setzt Feuer Heiler ein und ist wieder Gesund")
+            print("\(self.name) setzt Feuer Heiler 🔥❤️ ein und ist wieder Gesund ❤️")
             self.status = .gesund
         case "3":
-            print("\(self.name) setzt Gift Heiler ein und ist wieder Gesund")
+            print("\(self.name) setzt Gift Heiler ❤️☠️ ein und ist wieder Gesund ❤️")
             self.status = .gesund
         case "4":
-            print("\(self.name) nimmt die Feuer Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            print("\(self.name) nimmt die Feuer Rune 🔥🀄️. Sein nächster Angriff Macht 10 extra Schaden")
             self.item = beutel.items[0]
             self.item?.schadensWert += 10
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         case "5":
-            print("\(self.name) nimmt die Eis Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            print("\(self.name) nimmt die Eis Rune ❄️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
             self.item = beutel.items[1]
             self.item?.schadensWert += 10
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         case "6":
-            print("\(self.name)  nimmt die Gift Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            print("\(self.name) nimmt die Gift Rune ☠️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
             self.item = beutel.items[2]
             self.item?.schadensWert += 10
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         case "7":
-            print("\(self.name)  nimmt die Paralyse Rune. Sein nächster Angriff Macht 10  extra Schaden")
+            print("\(self.name) nimmt die Paralyse Rune ⚡️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
             self.item = beutel.items[3]
             self.item?.schadensWert += 10
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         case "8":
-            print("\(self.name) geht zur Attacken Auswahl zurück")
+            print("\(self.name) geht zur Attacken Auswahl zurück ⚔️")
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
         default:
             beutel(ziel: ziel, zuHeilen: zuHeilen)
@@ -165,5 +165,6 @@ class Magier: Held {
         }
         
     }
+    
 
 }

@@ -9,7 +9,8 @@
 
 
 
-struct Waffe: CustomStringConvertable {
+struct Waffe: CustomStringConvertable, Nutzbar {
+    
     var description: String {
         return """
 \tName: \(name)
@@ -23,6 +24,13 @@ struct Waffe: CustomStringConvertable {
     var schadensWert: Double
     let verteidigungsWert: Double
     var anzahlVerwendung: Int
+    
+    
+    func anwenden() {
+        if anzahlVerwendung > 0 {
+            print("Das Item \(self.name) wurde eingesetzt")
+        }
+    }
     
     
 }

@@ -13,11 +13,11 @@ class Scherger: Gegner {
     // MARK: Heil Attacke
     func heilPfeil(zuHeilen: Gegner) {
         if zuHeilen.name == self.name {
-            print("Der Scherger \(self.name) hat sich Selbst geheilt. Mit einem Rest von Hp \(self.hp).")
+            print("\(self.name) setzt ❤️🏹🏹Heilfpleil❤️🏹🏹 ein und hat sich Selbst geheilt ❤️. Mit einem Rest von Hp \(self.hp)❤️.")
             self.heilung(20)
     
         } else {
-            print("Der Scherger \(self.name) heilt \(zuHeilen.name) mit einer Hp von \(zuHeilen.hp).")
+            print("\(self.name) setzt ❤️🏹🏹Heilfpleil❤️🏹🏹 ein heilt \(zuHeilen.name) mit einer Hp von \(zuHeilen.hp)❤️.")
             zuHeilen.heilung(20)
             
         }
@@ -26,12 +26,12 @@ class Scherger: Gegner {
     
     // MARK: Eis Attacke
     func eisPfeil(held: Held) {
-        print("Der Scherger \(self.name) schießt ein Eis Pfeil auf \(held.name) mit einer HP von \(held.hp)")
+        print("\(self.name) schießt ein ❄️🏹🏹Eis Pfeil❄️🏹🏹 auf \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(10)
-        print("Der Held \(held.name) verliert 10 HP, Rest HP \(held.hp)")
+        print("\(held.name) verliert 10 HP❤️, Rest HP \(held.hp)❤️")
         let random: Int = Int.random(in: 1...5)
         if random == 3 {
-            print("Der Held \(held.name) wurde für 2 Runden vereist")
+            print("\(held.name) wurde für 2 Runden vereist ❄️❄️ ")
             held.status = .vereist
             
         }
@@ -40,12 +40,12 @@ class Scherger: Gegner {
     
     // MARK: Paralyse Attacke
     func paralysePfeil(held: Held) {
-        print("Der Scherger \(self.name) schießt ein Paralyse Pfeil auf \(held.name) mit einer HP von \(held.hp)")
+        print("\(self.name) schießt ein ⚡️🏹🏹Paralyse Pfeil⚡️🏹🏹 auf \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(9.5)
-        print("Der Held \(held.name) verliert 9.5 HP, Rest HP \(held.hp)")
+        print("\(held.name) verliert 9.5 HP❤️, Rest HP \(held.hp)❤️")
         let random: Int = Int.random(in: 1...5)
         if random == 2 {
-            print("Der Held \(held.name) wurde für 2 Runden paralysiert")
+            print("\(held.name) wurde für 2 Runden paralysiert ⚡️⚡️")
             held.status = .paralysiert
             
         }
@@ -53,12 +53,12 @@ class Scherger: Gegner {
     
     // MARK: Gift Attacke
     func giftPfeil(held: Held) {
-        print("Der Scherger \(self.name) schießt ein Gift Pfeil auf \(held.name) mit einer HP von \(held.hp)")
+        print("\(self.name) schießt ein ☠️🏹🏹Gift Pfeil auf☠️🏹🏹 \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(10.5)
-        print("Der Held \(held.name) verliert 10.5 HP, Rest HP \(held.hp)")
+        print("\(held.name) verliert 10.5 HP❤️, Rest HP \(held.hp)❤️")
         let random: Int = Int.random(in: 1...5)
         if random == 1 {
-            print("Der Held \(held.name) wurde für 2 Runden vergiftet")
+            print("\(held.name) wurde für 2 Runden vergiftet ☠️☠️")
             held.status = .vergiftet
         }
     }
@@ -70,8 +70,8 @@ class Scherger: Gegner {
             statusCounter += 1
         } else {
             if status == .vergiftet || status == .brennt {
-            print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ")
-                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma) Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)")
+            print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens❤️ ")
+                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️")
             self.hp = self.hp.zweiStellenNachKomma - (self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)
            
             

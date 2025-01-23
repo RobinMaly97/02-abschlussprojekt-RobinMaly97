@@ -37,18 +37,18 @@ class Gegner: Charakter, CustomStringConvertable {
     func nimmSchaden(_ schaden: Double) {
         if self.etraSchild >= 0{
             self.etraSchild -= schaden
-            print("\(self.name) verliert \(schaden) Extra Schild, Rest Schild \(self.etraSchild)")
+            print("\(self.name) verliert \(schaden) Extra Schild🛡️, Rest Schild \(self.etraSchild)🛡️")
         }
         
         if self.etraSchild <= 0 {
             self.hp -= schaden
-               print("\(self.name) verliert \(schaden) Hp, Rest HP \(self.hp)")
+               print("\(self.name) verliert \(schaden) Hp❤️, Rest HP \(self.hp)❤️")
         }
             
             
         
         if self.hp <= 0 {
-            print("\(self.name) ist besiegt")
+            print("☠️\(self.name) ist besiegt☠️")
         }
     }
     
