@@ -24,8 +24,8 @@ class Game{
         let sortierteListe = highScores.sorted(by: {$0.runden < $1.runden})
         
         print("Highscores".hashTags().einruecken())
-        for highScore in sortierteListe {
-            print("UserName: \(highScore.userName)  |  Runden: \(highScore.runden)")
+        for (index,highScore) in sortierteListe.enumerated() {
+            print("Platz:\(index + 1)  |  UserName: \(highScore.userName)  |  Runden: \(highScore.runden)")
         }
     }
 
