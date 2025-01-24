@@ -53,7 +53,7 @@ class Gegner: Charakter, CustomStringConvertable {
     func nimmSchaden(_ schaden: Double) {
         if self.etraSchild >= 0{
             self.etraSchild -= schaden
-            print("\(self.name) verliert \(schaden) Extra Schild🛡️, Rest Schild \(self.etraSchild)🛡️")
+            print("\(self.name) verliert \(schaden) Extra Schild🛡️, Rest Schild \(max(self.etraSchild,0))🛡️")
         }
         
         if self.etraSchild <= 0 {

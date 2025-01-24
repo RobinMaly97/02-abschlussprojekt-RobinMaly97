@@ -14,7 +14,7 @@ class Magier: Held {
     
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
-        print("\(self.name) setzt ❄️❄️❄️Froststrahl❄️❄️❄️ gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ ein.")
+        print("\(self.name) setzt ❄️❄️❄️Froststrahl❄️❄️❄️ gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -30,7 +30,7 @@ class Magier: Held {
     }
     // MARK: Reguläre Attacke
     func explosion(gegner: Gegner) {
-        print("\(self.name) setzt 💥💥💥Explosion💥💥💥 gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ ein.")
+        print("\(self.name) setzt 💥💥💥Explosion💥💥💥 gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -39,7 +39,7 @@ class Magier: Held {
     }
     // MARK: Brannt/Feuer Attacke
     func dreiKöpfigeHydra(gegner: Gegner) {
-        print("\(self.name) setzt die 🐉🐉🐉Drei Köpfige Hydra🐉🐉🐉 gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ ein.")
+        print("\(self.name) setzt die 🐉🐉🐉Drei Köpfige Hydra🐉🐉🐉 gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(13.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -81,7 +81,7 @@ class Magier: Held {
             statusCounter += 1
             
         }
-            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(ziel.etraSchild) 🛡️ an! Welche Attacke soll er ausführen?")
+            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(max(ziel.etraSchild,0)) 🛡️ an! Welche Attacke soll er ausführen?")            
             print("[1] Frost Strahl, Stärke: 10 ❄️❄️❄️")
             print("[2] Explosion, Stärke: 8.5 💥💥💥")
             print("[3] Drei Köpfige Hydra, Stärke: 13.5 🐉🐉🐉")

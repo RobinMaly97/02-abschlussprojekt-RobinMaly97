@@ -14,7 +14,7 @@ class Hexendoktor: Held {
     
     // MARK: Reguläre Attacke
     func seelenErnte(gegner: Gegner) {
-        print("\(self.name) setzt 👻👻👻Seelen Ernte👻👻👻 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ ein.")
+        print("\(self.name) setzt 👻👻👻Seelen Ernte👻👻👻 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -24,7 +24,7 @@ class Hexendoktor: Held {
     }
     // MARK: Reguläre Attacke
     func geisterSpeerFeuer(gegner: Gegner) {
-        print("\(self.name) setzt 👻🔥🔥Geister Speerfeuer👻🔥🔥 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ ein.")
+        print("\(self.name) setzt 👻🔥🔥Geister Speerfeuer👻🔥🔥 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(11.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -34,7 +34,7 @@ class Hexendoktor: Held {
     }
     // MARK: Paralyse Attacke
     func paralyseBombe(gegner: Gegner) {
-        print("\(self.name) setzt ⚡️💣💣Paralyse Bombe⚡️💣💣 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ ein.")
+        print("\(self.name) setzt ⚡️💣💣Paralyse Bombe⚡️💣💣 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -49,7 +49,7 @@ class Hexendoktor: Held {
     }
     // MARK: Gift Attacke
     func giftPfeil(gegner: Gegner) {
-        print("\(self.name) setzt ☠️🏹🏹Gift Pfeil☠️🏹🏹 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ ein.")
+        print("\(self.name) setzt ☠️🏹🏹Gift Pfeil☠️🏹🏹 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -78,7 +78,7 @@ class Hexendoktor: Held {
                 statusCounter += 1
                 
             }
-            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(ziel.etraSchild)🛡️ an! Welche Attacke soll er ausführen?")
+            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(max(ziel.etraSchild,0)) 🛡️ an! Welche Attacke soll er ausführen?")            
             print("[1] Seelen Ernte, Stärke: 10 👻👻👻")
             print("[2] Geister Speerfeuer, Stärke: 11.5 👻🔥🔥")
             print("[3] Paralyse Bombe, Stärke: 8.5 ⚡️💣💣")

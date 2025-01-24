@@ -17,8 +17,8 @@ class Barbar: Held {
     
     // MARK: Reguläre Attacke
     func seismischesSchmettern(gegner: Gegner) {
-        
-        print("\(self.name) führt die Attacke 💥🔨🔨Seismisches Schmettern💥🔨🔨 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ aus.")
+      
+        print("\(self.name) führt die Attacke 💥🔨🔨Seismisches Schmettern💥🔨🔨 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) aus.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1 // MARK: Muss das nicht in die if bedingung drunter ???
         if self.traegtItem {
@@ -29,7 +29,7 @@ class Barbar: Held {
     
     // MARK: Reguläre Attacke
     func kraftvollerAnsturm(gegner: Gegner) {
-        print("\(self.name) führt die Attacke 💪🏽💨💨Kraftvoller Ansturm💪🏽💨💨 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ aus.")
+        print("\(self.name) führt die Attacke 💪🏽💨💨Kraftvoller Ansturm💪🏽💨💨 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) aus.")
         gegner.nimmSchaden(15 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1 // MARK: Muss das nicht in die if bedingung drunter ???
         if self.traegtItem {
@@ -74,7 +74,7 @@ class Barbar: Held {
             statusCounter += 1
             
         }
-            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(ziel.etraSchild)🛡️ an! Welche Attacke soll er ausführen?")
+            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(max(ziel.etraSchild,0)) 🛡️ an! Welche Attacke soll er ausführen?")            
             print("[1] Seismisches Schmettern, Stärke: 10 💥🔨🔨")
             print("[2] Kraftvoller Ansturm, Stärke: 15 💪🏽💨💨")
             print("[3] Schwert Block, Stärke: 10 🗡️🛡️🛡️")
@@ -108,7 +108,7 @@ class Barbar: Held {
     // MARK: Beutel // rekrusion einbauen damit nicht nur liste ausgegebn wird
     func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
-        print("[1] Trank, Hp + 10 ❤️❤️")
+        print("[1] Trank, Hp + 10 ❤️❤️ ")
         print("[2] Feuer Heiler 🔥❤️")
         print("[3] Gift Heiler ☠️❤️")
         print("[4] Schwert Angr + 10 ⚔️⚔️")

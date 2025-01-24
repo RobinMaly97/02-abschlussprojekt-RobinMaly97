@@ -17,7 +17,7 @@ class Kreuzritter: Held {
     
     // MARK: Reguläre Attacke
     func schwungAngriff(gegner: Gegner) {
-        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ mit dem 🤺🤺🤺Schwung Angriff🤺🤺🤺 an")
+        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) mit dem 🤺🤺🤺Schwung Angriff🤺🤺🤺 an.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -27,7 +27,7 @@ class Kreuzritter: Held {
     }
     // MARK: Reguläre Attacke
     func himmelsFaust(gegner: Gegner) {
-        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ mit der ☁️👊🏽👊🏽Himmels Faust☁️👊🏽👊🏽 an")
+        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) mit der ☁️👊🏽👊🏽Himmels Faust☁️👊🏽👊🏽 an")
         gegner.nimmSchaden(5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -37,7 +37,7 @@ class Kreuzritter: Held {
     }
     // MARK: Reguläre Attacke
     func gesegneterHammer(gegner: Gegner) {
-        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ mit dem ✨🔨🔨Gesegnetem Hammer✨🔨🔨 an")
+        print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) mit dem ✨🔨🔨Gesegnetem Hammer✨🔨🔨 an")
         gegner.nimmSchaden(7.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -66,7 +66,7 @@ class Kreuzritter: Held {
             statusCounter += 1
             
         }
-            print(" \(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(ziel.etraSchild)🛡️ an! Welche Attacke soll er ausführen?")
+            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(max(ziel.etraSchild,0)) 🛡️ an! Welche Attacke soll er ausführen?")            
             print("[1] Schwung Angriff, Stärke: 10 🤺🤺🤺")
             print("[2] Himmelsfaust, Stärke: 5 ☁️👊🏽👊🏽")
             print("[3] Gesegneter Hammer, Stärke: 7.5 ✨🔨🔨")

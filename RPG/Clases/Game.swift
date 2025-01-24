@@ -65,21 +65,25 @@ class Game{
        switch input {
         case "1":
             print("Du Hast den Barbaren Gewählt")
+           print("Weiter Helden Auswählen oder Spiel Starten.")
           let barbar = Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund)
            heldenAuswahl.append(barbar)
            heldenAuswahlMenu()
         case "2":
             print("Du Hast den Kreuzritter Gewählt")
+           print("Weiter Helden Auswählen oder Spiel Starten.")
            let kreuzRitter = Kreuzritter(name: "Kreuzritter", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund)
            heldenAuswahl.append(kreuzRitter)
            heldenAuswahlMenu()
         case "3":
             print("Du Hast den Magier Gewählt")
+           print("Weiter Helden Auswählen oder Spiel Starten.")
            let magier = Magier(name: "Magier", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund)
            heldenAuswahl.append(magier)
            heldenAuswahlMenu()
         case "4":
            print("Du Hast den Hexendoktor Gewählt")
+           print("Weiter Helden Auswählen oder Spiel Starten.")
            let hexenDoktor = Hexendoktor(name: "Hexendoktor", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
            heldenAuswahl.append(hexenDoktor)
            heldenAuswahlMenu()
@@ -175,8 +179,9 @@ class Game{
             print("Schwierigkeitsgrad: \(schwierigkeitsGrad.rawValue)")
             print()
             // kann in eine funktion ausgelagert werden
+            // max(held.blockWert,0)
             for held in helden {
-                print("\(held.name) hat noch \(held.hp)❤️ HP und einen Blockwert \(held.blockWert)🛡️. Status: \(held.status.rawValue)")
+                print("\(held.name) hat noch \(held.hp)❤️ HP und einen Blockwert \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
             }
             print("---")
             // kann in eine funktion ausgelagert werden
