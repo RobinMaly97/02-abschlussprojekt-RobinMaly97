@@ -124,41 +124,83 @@ class Hexendoktor: Held {
             
             switch input {
             case "1":
-                print("\(self.name) setz Trank ❤️❤️ ein und Heilt sich um 10 Hp ❤️")
-                beutel.trank -= 1
-             self.hp += 10
+                if beutel.trank > 0 {
+                    print("\(self.name) setz Trank ❤️❤️ ein und Heilt sich um 10 Hp ❤️")
+                   beutel.trank -= 1
+                 self.hp += 10
+                } else {
+                    print("Du hast alle Tränke ❤️❤️ aufgebraucht.")
+                    print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                    beutel(ziel: ziel, zuHeilen: zuHeilen)
+                }
             case "2":
-                print("\(self.name) setzt Feuer Heiler 🔥❤️ ein und ist wieder Gesund ❤️")
-                beutel.feuerHeiler -= 1
-                self.status = .gesund
+                if beutel.feuerHeiler > 0 {
+                    print("\(self.name) setzt Feuer Heiler 🔥❤️ ein und ist wieder Gesund ❤️")
+                    self.status = .gesund
+                    beutel.feuerHeiler -= 1
+                } else {
+                    print("Du hast alle Feuer Heiler 🔥❤️ aufgebraucht.")
+                    print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                    beutel(ziel: ziel, zuHeilen: zuHeilen)
+                }
             case "3":
-                print("\(self.name) setzt Gift Heiler ❤️☠️ ein und ist wieder Gesund ❤️")
-                beutel.giftHeiler -= 1
-                self.status = .gesund
+                if beutel.giftHeiler > 0 {
+                    print("\(self.name) setzt Gift Heiler ❤️☠️ ein und ist wieder Gesund ❤️")
+                    self.status = .gesund
+                    beutel.giftHeiler -= 1
+                } else {
+                    print("Du hast alle Gift Heiler ❤️☠️ aufgebraucht.")
+                    print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                    beutel(ziel: ziel, zuHeilen: zuHeilen)
+                }
             case "4":
-                print("\(self.name) nimmt die Feuer Rune 🔥🀄️. Sein nächster Angriff Macht 10 extra Schaden")
-                self.item = beutel.items[0]
-                self.item?.schadensWert += 10
-                beutel.items[0].anzahlVerwendung -= 1
-                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                if beutel.items[0].anzahlVerwendung > 0 {
+                    print("\(self.name) nimmt die Feuer Rune 🔥🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                    self.item = beutel.items[0]
+                    self.item?.schadensWert += 10
+                    beutel.items[0].anzahlVerwendung -= 1
+                    aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                } else {
+                    print("Du hast alle Feuer Runen 🔥🀄️ aufgebraucht.")
+                    print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                    beutel(ziel: ziel, zuHeilen: zuHeilen)
+                }
             case "5":
-                print("\(self.name) nimmt die Eis Rune ❄️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
-                self.item = beutel.items[1]
-                self.item?.schadensWert += 10
-                beutel.items[1].anzahlVerwendung -= 1
-                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                if beutel.items[1].anzahlVerwendung > 0 {
+                    print("\(self.name) nimmt die Eis Rune ❄️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                    self.item = beutel.items[1]
+                    self.item?.schadensWert += 10
+                    beutel.items[1].anzahlVerwendung -= 1
+                    aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                } else {
+                    print("Du hast alle Eis Runen ❄️🀄️ aufgebraucht.")
+                    print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                    beutel(ziel: ziel, zuHeilen: zuHeilen)
+                }
             case "6":
-                print("\(self.name) nimmt die Gift Rune ☠️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
-                self.item = beutel.items[2]
-                self.item?.schadensWert += 10
-                beutel.items[2].anzahlVerwendung -= 1
-                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                if beutel.items[2].anzahlVerwendung > 0 {
+                    print("\(self.name) nimmt die Gift Rune ☠️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                    self.item = beutel.items[2]
+                    self.item?.schadensWert += 10
+                    beutel.items[2].anzahlVerwendung -= 1
+                    aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                } else {
+                    print("Du hast alle Gift Runen ☠️🀄️ aufgebraucht.")
+                    print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                    beutel(ziel: ziel, zuHeilen: zuHeilen)
+                }
             case "7":
-                print("\(self.name) nimmt die Paralyse Rune ⚡️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
-                self.item = beutel.items[3]
-                self.item?.schadensWert += 10
-                beutel.items[3].anzahlVerwendung -= 1
-                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                if beutel.items[3].anzahlVerwendung > 0 {
+                    print("\(self.name) nimmt die Paralyse Rune ⚡️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                    self.item = beutel.items[3]
+                    self.item?.schadensWert += 10
+                    beutel.items[3].anzahlVerwendung -= 1
+                    aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+                } else {
+                    print("Du hast alle Paralyse Runen ⚡️🀄️ aufgebraucht.")
+                    print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                    beutel(ziel: ziel, zuHeilen: zuHeilen)
+                }
             case "8":
                 print("\(self.name) geht zur Attacken Auswahl zurück ⚔️")
                 aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)

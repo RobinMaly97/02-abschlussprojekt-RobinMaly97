@@ -100,10 +100,10 @@ class Kreuzritter: Held {
     // MARK: Beutel
     func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
-        print("[1] Trank, Hp + 10 ❤️❤️ Anzahl. \(max(beutel.trank,0))")
-        print("[2] Feuer Heiler 🔥❤️ Anzahl. \(max(beutel.feuerHeiler,0))")
-        print("[3] Gift Heiler ☠️❤️ Anzahl. \(max(beutel.giftHeiler,0))")
-        print("[4] Schwert Angr + 10 ⚔️⚔️ Anzahl. \(max(beutel.waffen[0].anzahlVerwendung,0))")
+        print("[1] Trank, Hp + 10 ❤️❤️ Anzahl: \(max(beutel.trank,0))")
+        print("[2] Feuer Heiler 🔥❤️ Anzahl: \(max(beutel.feuerHeiler,0))")
+        print("[3] Gift Heiler ☠️❤️ Anzahl: \(max(beutel.giftHeiler,0))")
+        print("[4] Schwert Angr + 10 ⚔️⚔️ Anzahl: \(max(beutel.waffen[0].anzahlVerwendung,0))")
         print("[5] Schild Vert + 10 🛡️🛡️ Anzahl: \(max(beutel.waffen[1].anzahlVerwendung,0))")
         print("[6] Eiserne Faust Angr + 10 ⚒️👊🏽 Anzahl: \(max(beutel.waffen[2].anzahlVerwendung,0))")
         print("[7] Geweite Axt  Angr + 10 ✨🪓 Anzahl: \(max(beutel.waffen[3].anzahlVerwendung,0))")
@@ -113,41 +113,83 @@ class Kreuzritter: Held {
         
         switch input {
         case "1":
-            print("\(self.name) setz Trank ❤️❤️ ein und Heilt sich um 10 Hp ❤️")
-            beutel.trank -= 1
-         self.hp += 10
+            if beutel.trank > 0 {
+                print("\(self.name) setz Trank ❤️❤️ ein und Heilt sich um 10 Hp ❤️")
+               beutel.trank -= 1
+             self.hp += 10
+            } else {
+                print("Du hast alle Tränke ❤️❤️ aufgebraucht.")
+                print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            }
         case "2":
-            print("\(self.name) setzt Feuer Heiler 🔥❤️ ein und ist wieder Gesund ❤️")
-            beutel.feuerHeiler -= 1
-            self.status = .gesund
+            if beutel.feuerHeiler > 0 {
+                print("\(self.name) setzt Feuer Heiler 🔥❤️ ein und ist wieder Gesund ❤️")
+                self.status = .gesund
+                beutel.feuerHeiler -= 1
+            } else {
+                print("Du hast alle Feuer Heiler 🔥❤️ aufgebraucht.")
+                print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            }
         case "3":
-            print("\(self.name) setzt Gift Heiler ❤️☠️ ein und ist wieder Gesund ❤️")
-            self.status = .gesund
-            beutel.giftHeiler -= 1
+            if beutel.giftHeiler > 0 {
+                print("\(self.name) setzt Gift Heiler ❤️☠️ ein und ist wieder Gesund ❤️")
+                self.status = .gesund
+                beutel.giftHeiler -= 1
+            } else {
+                print("Du hast alle Gift Heiler ❤️☠️ aufgebraucht.")
+                print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            }
         case "4":
-            print("\(self.name) nimmt das Schwert ⚔️⚔️. Sein nächster Angriff macht macht 10 extra Schaden")
-            self.waffe = beutel.waffen[0]
-            self.waffe?.schadensWert += 10
-            beutel.waffen[0].anzahlVerwendung -= 1
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            if beutel.waffen[0].anzahlVerwendung > 0 {
+                print("\(self.name) nimmt das Schwert ⚔️⚔️. Sein nächster Angriff macht macht 10 extra Schaden")
+                self.waffe = beutel.waffen[0]
+                self.waffe?.schadensWert += 10
+                beutel.waffen[0].anzahlVerwendung -= 1
+                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            } else {
+                print("Du hast alle Schwerter ⚔️⚔️ aufgebraucht.")
+                print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            }
         case "5":
-            print("\(self.name) blockiert den nächsten Angriff mit Schild 🛡️🛡️. Blockwert um 10 erhöht")
-            self.waffe = beutel.waffen[1]
-            self.blockWert += 10
-            beutel.waffen[1].anzahlVerwendung -= 1
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            if beutel.waffen[1].anzahlVerwendung > 0 {
+                print("\(self.name) blockiert den nächsten Angriff mit Schild 🛡️🛡️. Blockwert um 10 erhöht")
+                self.waffe = beutel.waffen[1]
+                self.blockWert += 10
+                beutel.waffen[1].anzahlVerwendung -= 1
+                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            } else {
+                print("Du hast alle Schilder 🛡️🛡️ aufgebraucht.")
+                print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            }
         case "6":
-            print("\(self.name) nimmt die Eiserne Faust ⚒️👊🏽. Sein nächster Angriff Macht 10 extra Schaden")
-            self.waffe = beutel.waffen[2]
-            self.waffe?.schadensWert += 10
-            beutel.waffen[2].anzahlVerwendung -= 1
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            if beutel.waffen[2].anzahlVerwendung > 0 {
+                print("\(self.name) nimmt die Eiserne Faust ⚒️👊🏽. Sein nächster Angriff Macht 10 extra Schaden")
+                self.waffe = beutel.waffen[2]
+                self.waffe?.schadensWert += 10
+                beutel.waffen[2].anzahlVerwendung -= 1
+                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            } else {
+                print("Du hast alle Eisernen Fäuste ⚒️👊🏽 aufgebraucht.")
+                print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            }
         case "7":
-            print("\(self.name) nimmt die Geweite Axt ✨🪓. Sein nächster Angriff Macht 10  extra Schaden")
-            self.waffe = beutel.waffen[3]
-            self.waffe?.schadensWert += 10
-            beutel.waffen[3].anzahlVerwendung -= 1
-            aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            if beutel.waffen[3].anzahlVerwendung > 0 {
+                print("\(self.name) nimmt die Geweite Axt ✨🪓. Sein nächster Angriff Macht 10  extra Schaden")
+                self.waffe = beutel.waffen[3]
+                self.waffe?.schadensWert += 10
+                beutel.waffen[3].anzahlVerwendung -= 1
+                aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
+            } else {
+                print("Du hast alle Geweiten Äxte ✨🪓 aufgebraucht.")
+                print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
+                beutel(ziel: ziel, zuHeilen: zuHeilen)
+            }
         case "8":
             print("\(self.name) geht zur Attacken Auswahl zurück ⚔️")
             aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
@@ -157,6 +199,5 @@ class Kreuzritter: Held {
         }
             
     }
-
 
 }

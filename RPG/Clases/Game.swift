@@ -186,7 +186,7 @@ class Game{
             print("---")
             // kann in eine funktion ausgelagert werden
             for enemy in gegner {
-                print("\(enemy.name) hat noch \(enemy.hp)❤️ HP und \(enemy.etraSchild)🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+                print("\(enemy.name) hat noch \(enemy.hp)❤️ HP und \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
             }
             print("---")
             
@@ -251,12 +251,13 @@ class Game{
             print()
             // kann in eine funktion ausgelagert werden
             for held in heldenAuswahl {
-                print("\(held.name) hat noch \(held.hp)❤️ HP und einen Blockwert \(held.blockWert)🛡️. Status: \(held.status.rawValue)")
+                print("\(held.name) hat noch \(held.hp)❤️ HP und einen Blockwert  \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
+               
             }
             print("---")
             // kann in eine funktion ausgelagert werden
             for enemy in gegner {
-                print("\(enemy.name) hat noch \(enemy.hp)❤️ HP und \(enemy.etraSchild)🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+                print("\(enemy.name) hat noch \(enemy.hp)❤️ HP und  \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
             }
             print("---")
             
