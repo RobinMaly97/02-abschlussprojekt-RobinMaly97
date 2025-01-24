@@ -33,6 +33,7 @@ class Game{
     
     var heldenAuswahl: [Held] = []
     var heldenCounter: Int = 0
+    var schwierigkeitsGrad: schwierigkeitesGrad = .leicht
     
     var helden: [Held] = [
         Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
@@ -94,6 +95,39 @@ class Game{
         }
     }
 
+    func schwierigkeitsGradMenu() {
+        print("Welchen Schwierigkeitsgrad möchtest du spielen?")
+        print("[1] Leicht")
+        print("[2] Mittel")
+        print("[3] Schwer")
+        
+        let input: String = readLine()!
+        switch input {
+        case "1":
+            print("Du hast Schwierigkeitsgrad Leicht gewählt")
+            menu()
+        case "2":
+            print("Du hast Schwierigkeitsgrad Mittel gewählt")
+            let scherger1 = Scherger(name: "Belial", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+            schwierigkeitsGrad = .mittel
+            gegner.append(scherger1)
+            menu()
+        case "3":
+            print("Du hast Schwierigkeitsgrad Schwer gewählt")
+            let scherger = Scherger(name: "Mathael", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+            let scherger2 = Scherger(name: "Mephisto", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+            schwierigkeitsGrad = .schwer
+            gegner.append(scherger)
+            gegner.append(scherger2)
+            menu()
+        default:
+            schwierigkeitsGradMenu()
+            
+        }
+       
+        
+        
+    }
     
     func menu() {
         print("Willkommen bei DemonHunter".einruecken())
@@ -101,8 +135,9 @@ class Game{
         print("Bitte wähle ein Zahl von 1 - 4")
         print("[1] Neues Spiel Starten")
         print("[2] Heldenauswahl")
-        print("[3] Highscores")
-        print("[4] Spiel Beenden")
+        print("[3] Schwierigkeitsgrad")
+        print("[4] Highscores")
+        print("[5] Spiel Beenden")
         
         let input: String = readLine()!
         
@@ -114,10 +149,12 @@ class Game{
             print("Mit welchen Helden Willst du Spielen ?")
             heldenAuswahlMenu()
         case "3":
+            schwierigkeitsGradMenu()
+        case "4":
             print("Alle HIGHSCORES")
             highScoreListe()
             menu()
-        case "4":
+        case "5":
             print("Spiel Beendet")
             break
         default:
@@ -135,6 +172,7 @@ class Game{
         repeat{
             print()
             print("Runde \(rundenCounter)".hashTags().einruecken())
+            print("Schwierigkeitsgrad: \(schwierigkeitsGrad.rawValue)")
             print()
             // kann in eine funktion ausgelagert werden
             for held in helden {

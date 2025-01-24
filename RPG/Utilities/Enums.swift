@@ -21,3 +21,10 @@ enum SpielZustand: String {
     case kampf = "Kampf"
     case spielVorbei = "Spiel vorbei"
 }
+
+
+enum schwierigkeitesGrad: String {
+    case leicht = "Leicht"
+    case mittel = "Mittel"
+    case schwer = "Schwer"
+}
