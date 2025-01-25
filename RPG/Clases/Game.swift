@@ -43,7 +43,7 @@ class Game{
     ]
     var gegner: [Gegner] = [
         Endgegner(name: "Urzael", hp: 150.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
-//        Scherger(name: "Fallen Angel", hp: 100, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+
     ]
     
 
@@ -181,15 +181,15 @@ class Game{
             // kann in eine funktion ausgelagert werden
             // max(held.blockWert,0)
             for held in helden {
-                print("\(held.name) hat noch \(held.hp)❤️ HP und einen Blockwert \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
+                print("\(held.name) hat noch \(held.hp.zweiStellenNachKomma)❤️ HP und einen Blockwert \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
             }
             print("---")
             // kann in eine funktion ausgelagert werden
             for enemy in gegner {
-                print("\(enemy.name) hat noch \(enemy.hp)❤️ HP und \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+                print("\(enemy.name) hat noch \(enemy.hp.zweiStellenNachKomma)❤️ HP und \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
             }
             print("---")
-            
+            print("Helden Liste".hashTags())
             for held in helden {
                 if !gegner.isEmpty{
                     held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
@@ -199,7 +199,7 @@ class Game{
                 }
               
             }
-            
+            print("Gegner Liste".hashTags())
             for enemy in gegner {
                 if !helden.isEmpty {
                     if enemy is Endgegner {
@@ -251,13 +251,13 @@ class Game{
             print()
             // kann in eine funktion ausgelagert werden
             for held in heldenAuswahl {
-                print("\(held.name) hat noch \(held.hp)❤️ HP und einen Blockwert  \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
+                print("\(held.name) hat noch \(held.hp.zweiStellenNachKomma)❤️ HP und einen Blockwert  \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
                
             }
             print("---")
             // kann in eine funktion ausgelagert werden
             for enemy in gegner {
-                print("\(enemy.name) hat noch \(enemy.hp)❤️ HP und  \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+                print("\(enemy.name) hat noch \(enemy.hp.zweiStellenNachKomma)❤️ HP und  \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
             }
             print("---")
             
