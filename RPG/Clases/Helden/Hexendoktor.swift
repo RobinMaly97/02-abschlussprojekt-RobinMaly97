@@ -15,8 +15,8 @@ class Hexendoktor: Held {
     // MARK: Reguläre Attacke
     func seelenErnte(gegner: Gegner) {
         print("\(self.name) setzt \(blinken)👻👻👻Seelen Ernte👻👻👻\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
-        gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
-        waffe?.anzahlVerwendung -= 1
+        gegner.nimmSchaden(10 + (item?.schadensWert ?? 0))
+        item?.anzahlVerwendung -= 1
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -25,8 +25,8 @@ class Hexendoktor: Held {
     // MARK: Reguläre Attacke
     func geisterSpeerFeuer(gegner: Gegner) {
         print("\(self.name) setzt \(blinken)👻🔥🔥Geister Speerfeuer👻🔥🔥\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
-        gegner.nimmSchaden(11.5 + (waffe?.schadensWert ?? 0))
-        waffe?.anzahlVerwendung -= 1
+        gegner.nimmSchaden(11.5 + (item?.schadensWert ?? 0))
+        item?.anzahlVerwendung -= 1
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -35,8 +35,8 @@ class Hexendoktor: Held {
     // MARK: Paralyse Attacke
     func paralyseBombe(gegner: Gegner) {
         print("\(self.name) setzt \(blinken)⚡️💣💣Paralyse Bombe⚡️💣💣\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
-        gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
-        waffe?.anzahlVerwendung -= 1
+        gegner.nimmSchaden(8.5 + (item?.schadensWert ?? 0))
+        item?.anzahlVerwendung -= 1
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -50,8 +50,8 @@ class Hexendoktor: Held {
     // MARK: Gift Attacke
     func giftPfeil(gegner: Gegner) {
         print("\(self.name) setzt ☠️🏹🏹Gift Pfeil☠️🏹🏹\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
-        gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
-        waffe?.anzahlVerwendung -= 1
+        gegner.nimmSchaden(10 + (item?.schadensWert ?? 0))
+        item?.anzahlVerwendung -= 1
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }

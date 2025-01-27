@@ -15,12 +15,12 @@ class Magier: Held {
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
         print("\(self.name) setzt \(blinken)❄️❄️❄️Froststrahl❄️❄️❄️\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
-        gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
-        waffe?.anzahlVerwendung -= 1
+        gegner.nimmSchaden(10 + (item?.schadensWert ?? 0))
+        item?.anzahlVerwendung -= 1
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
-        let random: Int = Int.random(in: 1...2)
+        let random: Int = Int.random(in: 1...5)
         if random == 2 {
             print("\(gegner.name) wurde für 2 Runden vereist ❄️❄️.")
             gegner.status = .vereist
@@ -31,8 +31,8 @@ class Magier: Held {
     // MARK: Reguläre Attacke
     func explosion(gegner: Gegner) {
         print("\(self.name) setzt \(blinken)💥💥💥Explosion💥💥💥\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
-        gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
-        waffe?.anzahlVerwendung -= 1
+        gegner.nimmSchaden(8.5 + (item?.schadensWert ?? 0))
+        item?.anzahlVerwendung -= 1
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -40,8 +40,8 @@ class Magier: Held {
     // MARK: Brannt/Feuer Attacke
     func dreiKöpfigeHydra(gegner: Gegner) {
         print("\(self.name) setzt die \(blinken)🐉🐉🐉Drei Köpfige Hydra🐉🐉🐉\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
-        gegner.nimmSchaden(13.5 + (waffe?.schadensWert ?? 0))
-        waffe?.anzahlVerwendung -= 1
+        gegner.nimmSchaden(13.5 + (item?.schadensWert ?? 0))
+        item?.anzahlVerwendung -= 1
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
