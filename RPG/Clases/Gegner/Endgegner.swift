@@ -53,8 +53,8 @@ class Endgegner: Gegner {
     var schergerBeschworen: Bool = false
     
     func schergenBeschwören() -> Scherger? {
-            print("Der Scherger wird beschworen und kommt \(self.name) zur hilfe.")
-            var scherger: Scherger = Scherger(name: "Duriel", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
+        print("\(blinken)Der Scherger wird beschworen und kommt \(self.name) zur hilfe.\(reset)")
+            let scherger: Scherger = Scherger(name: "\(magenta)Duriel\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
             schergerBeschworen = true
             return scherger
         }
@@ -69,7 +69,7 @@ class Endgegner: Gegner {
         
         if maxAngriffe == 1 && masterAttackCounter >= 10 {
             let heldZiel = ziele.randomElement()!
-            print("\(self.name) setzt 🔥😈😈Zorn des Teufels🔥😈😈 gegen \(heldZiel.name) ein.")
+            print("\(self.name) setzt \(blinken)🔥😈😈Zorn des Teufels🔥😈😈\(reset) gegen \(heldZiel.name) ein.")
             heldZiel.nimmSchaden(heldZiel.hp)
             maxAngriffe -= 1
             
@@ -96,10 +96,10 @@ class Endgegner: Gegner {
                 
                 switch input {
                 case "1":
-                    print("\(self.name) setzt ☄️👊🏽👊🏽Meteor Schlag☄️👊🏽👊🏽 ein.")
+                    print("\(self.name) setzt \(blinken)☄️👊🏽👊🏽Meteor Schlag☄️👊🏽👊🏽\(reset) ein.")
                     meteorSchlag(held: ziele.randomElement()!)
                 case "2":
-                    print("\(self.name) setz 🔥💥🔥Flammen Inferno🔥💥🔥 ein")
+                    print("\(self.name) setz \(blinken)🔥💥🔥Flammen Inferno🔥💥🔥\(reset) ein")
                     flammenInferno(helden: ziele)
                     
                 default:

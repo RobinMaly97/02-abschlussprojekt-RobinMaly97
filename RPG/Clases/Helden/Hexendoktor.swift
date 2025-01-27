@@ -14,7 +14,7 @@ class Hexendoktor: Held {
     
     // MARK: Reguläre Attacke
     func seelenErnte(gegner: Gegner) {
-        print("\(self.name) setzt 👻👻👻Seelen Ernte👻👻👻 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt \(blinken)👻👻👻Seelen Ernte👻👻👻\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -24,7 +24,7 @@ class Hexendoktor: Held {
     }
     // MARK: Reguläre Attacke
     func geisterSpeerFeuer(gegner: Gegner) {
-        print("\(self.name) setzt 👻🔥🔥Geister Speerfeuer👻🔥🔥 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt \(blinken)👻🔥🔥Geister Speerfeuer👻🔥🔥\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(11.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -34,7 +34,7 @@ class Hexendoktor: Held {
     }
     // MARK: Paralyse Attacke
     func paralyseBombe(gegner: Gegner) {
-        print("\(self.name) setzt ⚡️💣💣Paralyse Bombe⚡️💣💣 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt \(blinken)⚡️💣💣Paralyse Bombe⚡️💣💣\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -49,7 +49,7 @@ class Hexendoktor: Held {
     }
     // MARK: Gift Attacke
     func giftPfeil(gegner: Gegner) {
-        print("\(self.name) setzt ☠️🏹🏹Gift Pfeil☠️🏹🏹 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt ☠️🏹🏹Gift Pfeil☠️🏹🏹\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -125,7 +125,7 @@ class Hexendoktor: Held {
             switch input {
             case "1":
                 if beutel.trank > 0 {
-                    print("\(self.name) setz Trank ❤️❤️ ein und Heilt sich um 10 Hp ❤️")
+                    print("\(self.name) setz \(blinken)Trank ❤️❤️\(reset) ein und Heilt sich um 10 Hp ❤️")
                    beutel.trank -= 1
                  self.hp += 10
                 } else {
@@ -135,7 +135,7 @@ class Hexendoktor: Held {
                 }
             case "2":
                 if beutel.feuerHeiler > 0 {
-                    print("\(self.name) setzt Feuer Heiler 🔥❤️ ein und ist wieder Gesund ❤️")
+                    print("\(self.name) setzt \(blinken)Feuer Heiler 🔥❤️\(reset) ein und ist wieder Gesund ❤️")
                     self.status = .gesund
                     beutel.feuerHeiler -= 1
                 } else {
@@ -145,7 +145,7 @@ class Hexendoktor: Held {
                 }
             case "3":
                 if beutel.giftHeiler > 0 {
-                    print("\(self.name) setzt Gift Heiler ❤️☠️ ein und ist wieder Gesund ❤️")
+                    print("\(self.name) setzt \(blinken)Gift Heiler ❤️☠️\(reset) ein und ist wieder Gesund ❤️")
                     self.status = .gesund
                     beutel.giftHeiler -= 1
                 } else {
@@ -155,7 +155,7 @@ class Hexendoktor: Held {
                 }
             case "4":
                 if beutel.items[0].anzahlVerwendung > 0 {
-                    print("\(self.name) nimmt die Feuer Rune 🔥🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                    print("\(self.name) nimmt die \(blinken)Feuer Rune 🔥🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                     self.item = beutel.items[0]
                     self.item?.schadensWert += 10
                     beutel.items[0].anzahlVerwendung -= 1
@@ -167,7 +167,7 @@ class Hexendoktor: Held {
                 }
             case "5":
                 if beutel.items[1].anzahlVerwendung > 0 {
-                    print("\(self.name) nimmt die Eis Rune ❄️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                    print("\(self.name) nimmt die \(blinken)Eis Rune ❄️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                     self.item = beutel.items[1]
                     self.item?.schadensWert += 10
                     beutel.items[1].anzahlVerwendung -= 1
@@ -179,7 +179,7 @@ class Hexendoktor: Held {
                 }
             case "6":
                 if beutel.items[2].anzahlVerwendung > 0 {
-                    print("\(self.name) nimmt die Gift Rune ☠️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                    print("\(self.name) nimmt die \(blinken)Gift Rune ☠️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                     self.item = beutel.items[2]
                     self.item?.schadensWert += 10
                     beutel.items[2].anzahlVerwendung -= 1
@@ -191,7 +191,7 @@ class Hexendoktor: Held {
                 }
             case "7":
                 if beutel.items[3].anzahlVerwendung > 0 {
-                    print("\(self.name) nimmt die Paralyse Rune ⚡️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                    print("\(self.name) nimmt die \(blinken)Paralyse Rune ⚡️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                     self.item = beutel.items[3]
                     self.item?.schadensWert += 10
                     beutel.items[3].anzahlVerwendung -= 1

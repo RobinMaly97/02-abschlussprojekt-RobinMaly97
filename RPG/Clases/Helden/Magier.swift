@@ -14,7 +14,7 @@ class Magier: Held {
     
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
-        print("\(self.name) setzt ❄️❄️❄️Froststrahl❄️❄️❄️ gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt \(blinken)❄️❄️❄️Froststrahl❄️❄️❄️\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -30,7 +30,7 @@ class Magier: Held {
     }
     // MARK: Reguläre Attacke
     func explosion(gegner: Gegner) {
-        print("\(self.name) setzt 💥💥💥Explosion💥💥💥 gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt \(blinken)💥💥💥Explosion💥💥💥\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(8.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -39,7 +39,7 @@ class Magier: Held {
     }
     // MARK: Brannt/Feuer Attacke
     func dreiKöpfigeHydra(gegner: Gegner) {
-        print("\(self.name) setzt die 🐉🐉🐉Drei Köpfige Hydra🐉🐉🐉 gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt die \(blinken)🐉🐉🐉Drei Köpfige Hydra🐉🐉🐉\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(13.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -57,10 +57,10 @@ class Magier: Held {
     // MARK: Heil Attacke
     func heilen(held: Held) {
         if held.name == self.name {
-            print("\(self.name) hat sich Selbst ❤️❤️❤️geheilt❤️❤️❤️ mit einer HP von \(self.hp) ❤️.")
+            print("\(self.name) hat sich \(blinken)Selbst ❤️❤️❤️geheilt❤️❤️❤️\(reset) mit einer HP von \(self.hp) ❤️.")
             self.heilung(20)
         } else {
-            print("\(self.name) hat \(held.name) ❤️❤️❤️geheilt❤️❤️❤️ mit einer HP von \(held.hp) ❤️.")
+            print("\(self.name) hat \(blinken)\(held.name) ❤️❤️❤️geheilt❤️❤️❤️\(reset) mit einer HP von \(held.hp) ❤️.")
             held.heilung(20)
         }
     }
@@ -129,7 +129,7 @@ class Magier: Held {
         switch input {
         case "1":
             if beutel.trank > 0 {
-                print("\(self.name) setz Trank ❤️❤️ ein und Heilt sich um 10 Hp ❤️")
+                print("\(self.name) setz \(blinken)Trank ❤️❤️\(reset) ein und Heilt sich um 10 Hp ❤️")
                beutel.trank -= 1
              self.hp += 10
             } else {
@@ -139,7 +139,7 @@ class Magier: Held {
             }
         case "2":
             if beutel.feuerHeiler > 0 {
-                print("\(self.name) setzt Feuer Heiler 🔥❤️ ein und ist wieder Gesund ❤️")
+                print("\(self.name) setzt \(blinken)Feuer Heiler 🔥❤️\(reset) ein und ist wieder Gesund ❤️")
                 self.status = .gesund
                 beutel.feuerHeiler -= 1
             } else {
@@ -149,7 +149,7 @@ class Magier: Held {
             }
         case "3":
             if beutel.giftHeiler > 0 {
-                print("\(self.name) setzt Gift Heiler ❤️☠️ ein und ist wieder Gesund ❤️")
+                print("\(self.name) setzt \(blinken)Gift Heiler ❤️☠️\(reset) ein und ist wieder Gesund ❤️")
                 self.status = .gesund
                 beutel.giftHeiler -= 1
             } else {
@@ -159,7 +159,7 @@ class Magier: Held {
             }
         case "4":
             if beutel.items[0].anzahlVerwendung > 0 {
-                print("\(self.name) nimmt die Feuer Rune 🔥🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                print("\(self.name) nimmt die \(blinken)Feuer Rune 🔥🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                 self.item = beutel.items[0]
                 self.item?.schadensWert += 10
                 beutel.items[0].anzahlVerwendung -= 1
@@ -171,7 +171,7 @@ class Magier: Held {
             }
         case "5":
             if beutel.items[1].anzahlVerwendung > 0 {
-                print("\(self.name) nimmt die Eis Rune ❄️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                print("\(self.name) nimmt die \(blinken)Eis Rune ❄️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                 self.item = beutel.items[1]
                 self.item?.schadensWert += 10
                 beutel.items[1].anzahlVerwendung -= 1
@@ -183,7 +183,7 @@ class Magier: Held {
             }
         case "6":
             if beutel.items[2].anzahlVerwendung > 0 {
-                print("\(self.name) nimmt die Gift Rune ☠️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                print("\(self.name) nimmt die \(blinken)Gift Rune ☠️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                 self.item = beutel.items[2]
                 self.item?.schadensWert += 10
                 beutel.items[2].anzahlVerwendung -= 1
@@ -195,7 +195,7 @@ class Magier: Held {
             }
         case "7":
             if beutel.items[3].anzahlVerwendung > 0 {
-                print("\(self.name) nimmt die Paralyse Rune ⚡️🀄️. Sein nächster Angriff Macht 10 extra Schaden")
+                print("\(self.name) nimmt die \(blinken)Paralyse Rune ⚡️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                 self.item = beutel.items[3]
                 self.item?.schadensWert += 10
                 beutel.items[3].anzahlVerwendung -= 1
@@ -214,7 +214,6 @@ class Magier: Held {
         }
         
     }
-    
 
 
 }

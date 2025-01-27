@@ -23,7 +23,7 @@ class Game{
         
         let sortierteListe = highScores.sorted(by: {$0.runden < $1.runden})
         
-        print("Highscores".hashTags().einruecken())
+        print("\(yellow)\(blinken)\(bold)Highscores\(reset)".hashTags().einruecken())
         for (index,highScore) in sortierteListe.enumerated() {
             print("Platz:\(index + 1)  |  UserName: \(highScore.userName)  |  Runden: \(highScore.runden)")
         }
@@ -36,13 +36,13 @@ class Game{
     var schwierigkeitsGrad: schwierigkeitesGrad = .leicht
     
     var helden: [Held] = [
-        Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
-        Kreuzritter(name: "Kreuzritter", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
-        Magier(name: "Magier", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund),
-        Hexendoktor(name: "Hexendoktor", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
+        Barbar(name: "\(green)Barbar\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
+        Kreuzritter(name: "\(green)Kreuzritter\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
+        Magier(name: "\(green)Magier\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund),
+        Hexendoktor(name: "\(green)Hexendoktor\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
     ]
     var gegner: [Gegner] = [
-        Endgegner(name: "Urzael", hp: 150.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
+        Endgegner(name: "\(red)Urzael\(reset)", hp: 150.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
 
     ]
     
@@ -112,14 +112,14 @@ class Game{
             menu()
         case "2":
             print("Du hast Schwierigkeitsgrad Mittel gewählt")
-            let scherger1 = Scherger(name: "Belial", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+            let scherger1 = Scherger(name: "\(magenta)Belial\(reset)", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
             schwierigkeitsGrad = .mittel
             gegner.append(scherger1)
             menu()
         case "3":
             print("Du hast Schwierigkeitsgrad Schwer gewählt")
-            let scherger = Scherger(name: "Mathael", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
-            let scherger2 = Scherger(name: "Mephisto", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+            let scherger = Scherger(name: "\(magenta)Mathael\(reset)", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
+            let scherger2 = Scherger(name: "\(magenta)Mephisto\(reset)", hp: 80, angriffsPunkte: 20, etraSchild: 0, status: .gesund)
             schwierigkeitsGrad = .schwer
             gegner.append(scherger)
             gegner.append(scherger2)
@@ -134,7 +134,7 @@ class Game{
     }
     
     func menu() {
-        print("Willkommen bei DemonHunter".einruecken())
+        print("\(blue)\(bold)Willkommen bei DemonHunter \(reset)".einruecken())
         print()
         print("Bitte wähle ein Zahl von 1 - 4")
         print("[1] Neues Spiel Starten")
@@ -147,7 +147,7 @@ class Game{
         
         switch input {
         case "1":
-            print("Das Spiel Startet")
+            print("\(blue)\(bold)Das Spiel Startet\(reset)".einruecken())
             runden()
         case "2":
             print("Mit welchen Helden Willst du Spielen ?")
@@ -169,27 +169,34 @@ class Game{
     
     func runden() {
         var rundenCounter: Int = 1
-        print("Bitte gib deinen UserNamen ein")
+        print()
+        print("\(cyan)\(bold)Bitte gib deinen UserNamen ein\(reset)")
         let userNameInput: String = readLine()!
         print()
         
         repeat{
             print()
-            print("Runde \(rundenCounter)".hashTags().einruecken())
+            print("\(blue) \(bold) Runde \(rundenCounter) \(reset)".hashTags().einruecken())
             print("Schwierigkeitsgrad: \(schwierigkeitsGrad.rawValue)")
             print()
             // kann in eine funktion ausgelagert werden
             // max(held.blockWert,0)
-            for held in helden {
+            print("\(green) \(bold)Heldenliste \(reset)".hashTags())
+            for (index,held) in helden.enumerated() {
+                print("Held: \(index+1)")
                 print("\(held.name) hat noch \(held.hp.zweiStellenNachKomma)❤️ HP und einen Blockwert \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
+                sleep(1)
             }
             print("---")
             // kann in eine funktion ausgelagert werden
-            for enemy in gegner {
+            print("\(red) \(bold)Gegnerliste \(reset)".hashTags())
+            for (index,enemy) in gegner.enumerated() {
+                print("Gegner: \(index+1)")
                 print("\(enemy.name) hat noch \(enemy.hp.zweiStellenNachKomma)❤️ HP und \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+                sleep(1)
             }
             print("---")
-            print("Helden Liste".hashTags())
+            print("\(blue) \(bold)Helden Liste\(reset)".hashTags())
             for held in helden {
                 if !gegner.isEmpty{
                     held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
@@ -199,7 +206,7 @@ class Game{
                 }
               
             }
-            print("Gegner Liste".hashTags())
+            print("\(red) \(bold)Gegner Liste\(reset)".hashTags())
             for enemy in gegner {
                 if !helden.isEmpty {
                     if enemy is Endgegner {
@@ -217,14 +224,14 @@ class Game{
                 
             }
             if helden.isEmpty {
-                print("😪😪😪Die Gegner haben Gewonnen😪😪😪")
+                print("\(bold)\(blinken)\(red)😪😪😪Die Gegner haben Gewonnen😪😪😪\(reset)")
                 break
             } else if gegner.isEmpty {
-                print("🎉🎉🎉Die Helden haben Gewonnen🎉🎉🎉")
+                print("\(bold)\(blinken)\(green)🎉🎉🎉Die Helden haben Gewonnen🎉🎉🎉\(reset)")
                 
                 let highScore: Highscore = Highscore(userName: userNameInput, runden: rundenCounter)
                 highScores.append(highScore)
-                print("Der Highsore wurde abgespeichert \n \(userNameInput) hat nach \(rundenCounter) Uzrael und seinen Scherger besiegt.")
+                print("Der Highsore wurde abgespeichert \n \(userNameInput) hat nach \(rundenCounter) Runden Uzrael und seinen Scherger besiegt.")
                 break
             }
            
@@ -241,26 +248,31 @@ class Game{
     
     func rundenHeldenAuswahl() {
         var rundenCounter: Int = 1
-        print("Bitte gib deinen UserNamen ein")
+        print()
+        print("\(cyan)\(bold)Bitte gib deinen UserNamen ein\(reset)")
         let userNameInput: String = readLine()!
         print()
         
         repeat{
             print()
-            print("Runde \(rundenCounter)".hashTags().einruecken())
+            print("\(blue) \(bold)Runde \(rundenCounter)\(reset)".hashTags().einruecken())
             print()
             // kann in eine funktion ausgelagert werden
-            for held in heldenAuswahl {
+            print("\(green) \(bold)Heldenliste \(reset)")
+            for (index,held) in heldenAuswahl.enumerated() {
+                print("Held: \(index+1)")
                 print("\(held.name) hat noch \(held.hp.zweiStellenNachKomma)❤️ HP und einen Blockwert  \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
                
             }
             print("---")
             // kann in eine funktion ausgelagert werden
-            for enemy in gegner {
+            print("\(red) \(bold)Gegnerliste \(reset)")
+            for (index,enemy) in gegner.enumerated() {
+                print("Gegner: \(index+1)")
                 print("\(enemy.name) hat noch \(enemy.hp.zweiStellenNachKomma)❤️ HP und  \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
             }
             print("---")
-            
+            print("\(blue) \(bold)Helden Liste\(reset)".hashTags())
             for held in heldenAuswahl {
                 if !gegner.isEmpty{
                     held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
@@ -270,7 +282,7 @@ class Game{
                 }
               
             }
-            
+            print("\(red) \(bold)Gegner Liste\(reset)".hashTags())
             for enemy in gegner {
                 if !heldenAuswahl.isEmpty {
                     if enemy is Endgegner {
@@ -288,10 +300,10 @@ class Game{
                 
             }
             if heldenAuswahl.isEmpty {
-                print("😪😪😪Die Gegner haben Gewonnen😪😪😪")
+                print("\(red)\(blinken)\(bold)😪😪😪Die Gegner haben Gewonnen😪😪😪 \(reset)")
                 break
             } else if gegner.isEmpty {
-                print("🎉🎉🎉Die Helden haben Gewonnen🎉🎉🎉")
+                print("\(green)\(blinken)\(bold)🎉🎉🎉Die Helden haben Gewonnen🎉🎉🎉\(reset)")
                 
                 let highScore: Highscore = Highscore(userName: userNameInput, runden: rundenCounter)
                 highScores.append(highScore)

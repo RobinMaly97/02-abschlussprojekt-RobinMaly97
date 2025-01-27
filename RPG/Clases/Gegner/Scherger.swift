@@ -13,11 +13,11 @@ class Scherger: Gegner {
     // MARK: Heil Attacke
     func heilPfeil(zuHeilen: Gegner) {
         if zuHeilen.name == self.name {
-            print("\(self.name) setzt ❤️🏹🏹Heilfpleil❤️🏹🏹 ein und hat sich Selbst geheilt ❤️. Mit einem Rest von Hp \(self.hp)❤️.")
+            print("\(self.name) setzt \(blinken)❤️🏹🏹Heilfpleil❤️🏹🏹\(reset) ein und hat sich Selbst geheilt ❤️. Mit einem Rest von Hp \(self.hp)❤️.")
             self.heilung(20)
     
         } else {
-            print("\(self.name) setzt ❤️🏹🏹Heilfpleil❤️🏹🏹 ein heilt \(zuHeilen.name) mit einer Hp von \(zuHeilen.hp)❤️.")
+            print("\(self.name) setzt \(blinken)❤️🏹🏹Heilfpleil❤️🏹🏹\(reset) ein heilt \(zuHeilen.name) mit einer Hp von \(zuHeilen.hp)❤️.")
             zuHeilen.heilung(20)
             
         }
@@ -26,7 +26,7 @@ class Scherger: Gegner {
     
     // MARK: Eis Attacke
     func eisPfeil(held: Held) {
-        print("\(self.name) schießt ein ❄️🏹🏹Eis Pfeil❄️🏹🏹 auf \(held.name) mit einer HP von \(held.hp)❤️")
+        print("\(self.name) schießt ein \(blinken)❄️🏹🏹Eis Pfeil❄️🏹🏹\(reset) auf \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(10)
         print("\(held.name) verliert 10 HP❤️, Rest HP \(held.hp)❤️")
         let random: Int = Int.random(in: 1...5)
@@ -40,7 +40,7 @@ class Scherger: Gegner {
     
     // MARK: Paralyse Attacke
     func paralysePfeil(held: Held) {
-        print("\(self.name) schießt ein ⚡️🏹🏹Paralyse Pfeil⚡️🏹🏹 auf \(held.name) mit einer HP von \(held.hp)❤️")
+        print("\(self.name) schießt ein \(blinken)⚡️🏹🏹Paralyse Pfeil⚡️🏹🏹\(reset) auf \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(9.5)
         print("\(held.name) verliert 9.5 HP❤️, Rest HP \(held.hp)❤️")
         let random: Int = Int.random(in: 1...5)
@@ -53,7 +53,7 @@ class Scherger: Gegner {
     
     // MARK: Gift Attacke
     func giftPfeil(held: Held) {
-        print("\(self.name) schießt ein ☠️🏹🏹Gift Pfeil auf☠️🏹🏹 \(held.name) mit einer HP von \(held.hp)❤️")
+        print("\(self.name) schießt ein \(blinken)☠️🏹🏹Gift Pfeil auf☠️🏹🏹\(reset) \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(10.5)
         print("\(held.name) verliert 10.5 HP❤️, Rest HP \(held.hp)❤️")
         let random: Int = Int.random(in: 1...5)

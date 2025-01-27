@@ -18,7 +18,7 @@ class Barbar: Held {
     // MARK: Reguläre Attacke
     func seismischesSchmettern(gegner: Gegner) {
       
-        print("\(self.name) führt die Attacke 💥🔨🔨Seismisches Schmettern💥🔨🔨 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) aus.")
+        print("\(self.name) führt die Attacke \(blinken)💥🔨🔨Seismisches Schmettern💥🔨🔨\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) aus.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1 // MARK: Muss das nicht in die if bedingung drunter ???
         if self.traegtItem {
@@ -29,7 +29,7 @@ class Barbar: Held {
     
     // MARK: Reguläre Attacke
     func kraftvollerAnsturm(gegner: Gegner) {
-        print("\(self.name) führt die Attacke 💪🏽💨💨Kraftvoller Ansturm💪🏽💨💨 gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) aus.")
+        print("\(self.name) führt die Attacke \(blinken)💪🏽💨💨Kraftvoller Ansturm💪🏽💨💨\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) aus.")
         gegner.nimmSchaden(15 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1 // MARK: Muss das nicht in die if bedingung drunter ???
         if self.traegtItem {
@@ -39,13 +39,13 @@ class Barbar: Held {
     }
     // MARK: Block Attacke
     func schwertBlock() {
-        print("\(self.name) setzt 🗡️🛡️🛡️Schwert Block🗡️🛡️🛡️ ein und blockt die nächste Attacke mit 10 Punkten.")
+        print("\(self.name) setzt \(blinken)🗡️🛡️🛡️Schwert Block🗡️🛡️🛡️\(reset) ein und blockt die nächste Attacke mit 10 Punkten.")
         blockWert = blockWert + 10
     }
     // MARK: Flächenangriff
     // da es ein flächenangriff ist muss als Parameter ein Array(Liste aus Gegner) übergeben werden damit ich auch bei allen gegnern die HP abziehen kann.
     func erdbeben(gegner: [Gegner]) {
-        print("\(self.name) führt die Attacke 🪨🪨🪨Erdbeben🪨🪨🪨 aus.")
+        print("\(self.name) führt die \(blinken)Attacke 🪨🪨🪨Erdbeben🪨🪨🪨\(reset) aus.")
         print("Alle gegner werden getroffen.")
         for enemy in gegner {
             enemy.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
@@ -122,7 +122,7 @@ class Barbar: Held {
         switch input {
         case "1":
             if beutel.trank > 0 {
-                print("\(self.name) setz Trank ❤️❤️ ein und Heilt sich um 10 Hp ❤️")
+                print("\(self.name) setz \(blinken)Trank ❤️❤️\(reset) ein und Heilt sich um 10 Hp ❤️")
                beutel.trank -= 1
              self.hp += 10
             } else {
@@ -132,7 +132,7 @@ class Barbar: Held {
             }
         case "2":
             if beutel.feuerHeiler > 0 {
-                print("\(self.name) setzt Feuer Heiler 🔥❤️ ein und ist wieder Gesund ❤️")
+                print("\(self.name) setzt \(blinken)Feuer Heiler 🔥❤️\(reset) ein und ist wieder Gesund ❤️")
                 self.status = .gesund
                 beutel.feuerHeiler -= 1
             } else {
@@ -142,7 +142,7 @@ class Barbar: Held {
             }
         case "3":
             if beutel.giftHeiler > 0 {
-                print("\(self.name) setzt Gift Heiler ❤️☠️ ein und ist wieder Gesund ❤️")
+                print("\(self.name) setzt \(blinken)Gift Heiler ❤️☠️\(reset) ein und ist wieder Gesund ❤️")
                 self.status = .gesund
                 beutel.giftHeiler -= 1
             } else {
@@ -152,7 +152,7 @@ class Barbar: Held {
             }
         case "4":
             if beutel.waffen[0].anzahlVerwendung > 0 {
-                print("\(self.name) nimmt das Schwert ⚔️⚔️. Sein nächster Angriff macht macht 10 extra Schaden")
+                print("\(self.name) nimmt das \(blinken)Schwert ⚔️⚔️\(reset). Sein nächster Angriff macht macht 10 extra Schaden")
                 self.waffe = beutel.waffen[0]
                 self.waffe?.schadensWert += 10
                 beutel.waffen[0].anzahlVerwendung -= 1
@@ -164,7 +164,7 @@ class Barbar: Held {
             }
         case "5":
             if beutel.waffen[1].anzahlVerwendung > 0 {
-                print("\(self.name) blockiert den nächsten Angriff mit Schild 🛡️🛡️. Blockwert um 10 erhöht")
+                print("\(self.name) blockiert den nächsten Angriff mit \(blinken)Schild 🛡️🛡️\(reset). Blockwert um 10 erhöht")
                 self.waffe = beutel.waffen[1]
                 self.blockWert += 10
                 beutel.waffen[1].anzahlVerwendung -= 1
@@ -176,7 +176,7 @@ class Barbar: Held {
             }
         case "6":
             if beutel.waffen[2].anzahlVerwendung > 0 {
-                print("\(self.name) nimmt die Eiserne Faust ⚒️👊🏽. Sein nächster Angriff Macht 10 extra Schaden")
+                print("\(self.name) nimmt die \(blinken)Eiserne Faust ⚒️👊🏽\(reset). Sein nächster Angriff Macht 10 extra Schaden")
                 self.waffe = beutel.waffen[2]
                 self.waffe?.schadensWert += 10
                 beutel.waffen[2].anzahlVerwendung -= 1
@@ -188,7 +188,7 @@ class Barbar: Held {
             }
         case "7":
             if beutel.waffen[3].anzahlVerwendung > 0 {
-                print("\(self.name) nimmt die Geweite Axt ✨🪓. Sein nächster Angriff Macht 10  extra Schaden")
+                print("\(self.name) nimmt die \(blinken)Geweite Axt ✨🪓\(reset). Sein nächster Angriff Macht 10  extra Schaden")
                 self.waffe = beutel.waffen[3]
                 self.waffe?.schadensWert += 10
                 beutel.waffen[3].anzahlVerwendung -= 1
