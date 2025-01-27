@@ -114,10 +114,10 @@ class Hexendoktor: Held {
             print("[1] Trank, Hp + 10 ❤️❤️ Anzahl: \(max(beutel.trank,0))")
             print("[2] Feuer Heiler 🔥❤️ Anzahl: \(max(beutel.feuerHeiler,0))")
             print("[3] Gift Heiler ☠️❤️ Anzahl: \(max(beutel.giftHeiler,0))")
-            print("[4] Feuer Rune Angr + 10 🔥🀄️  Anzahl: \(max(beutel.items[0].anzahlVerwendung,0))")
-            print("[5] Eis Rune Angr + 10 ❄️🀄️ Anzahl: \(max(beutel.items[1].anzahlVerwendung,0))")
-            print("[6] Gift Rune Angr + 10 ☠️🀄️ Anzahl: \(max(beutel.items[2].anzahlVerwendung,0))")
-            print("[7] Paralyse Rune Angr + 10 ⚡️🀄️ Anzahl: \(max(beutel.items[3].anzahlVerwendung,0))")
+            print("[4] Feuer Rune Angr + 20 🔥🀄️  Anzahl: \(max(beutel.items[0].anzahlVerwendung,0))")
+            print("[5] Eis Rune Angr + 20 ❄️🀄️ Anzahl: \(max(beutel.items[1].anzahlVerwendung,0))")
+            print("[6] Gift Rune Angr + 20 ☠️🀄️ Anzahl: \(max(beutel.items[2].anzahlVerwendung,0))")
+            print("[7] Paralyse Rune Angr + 20 ⚡️🀄️ Anzahl: \(max(beutel.items[3].anzahlVerwendung,0))")
             print("[8] Zurück zur Attacken Auswahl ⚔️")
             
             let input: String = readLine()!

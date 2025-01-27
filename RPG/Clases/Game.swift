@@ -42,7 +42,7 @@ class Game{
         Hexendoktor(name: "\(green)Hexendoktor\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
     ]
     var gegner: [Gegner] = [
-        Endgegner(name: "\(red)Urzael\(reset)", hp: 150.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 50, status: .gesund)
+        Endgegner(name: "\(red)Urzael\(reset)", hp: 250.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 100, status: .gesund)
 
     ]
     
@@ -185,7 +185,8 @@ class Game{
             for (index,held) in helden.enumerated() {
                 print("Held: \(index+1)")
                 print("\(held.name) hat noch \(held.hp.zweiStellenNachKomma)❤️ HP und einen Blockwert \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
-                sleep(1)
+                Thread.sleep(forTimeInterval: 0.5)
+
             }
             print("---")
             // kann in eine funktion ausgelagert werden
@@ -193,7 +194,8 @@ class Game{
             for (index,enemy) in gegner.enumerated() {
                 print("Gegner: \(index+1)")
                 print("\(enemy.name) hat noch \(enemy.hp.zweiStellenNachKomma)❤️ HP und \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
-                sleep(1)
+                Thread.sleep(forTimeInterval: 0.5)
+
             }
             print("---")
             print("\(blue) \(bold)Helden Liste\(reset)".hashTags())
@@ -202,7 +204,8 @@ class Game{
                     held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
                     gegner.removeAll(where: {$0.hp <= 0}) // in funktion schreiben
                     print("----")
-                   sleep(1)
+                    Thread.sleep(forTimeInterval: 0.5)
+
                 }
               
             }
@@ -219,7 +222,8 @@ class Game{
                     enemy.aktionsMenue(ziele: helden, zuHeilen: [enemy])
                     helden.removeAll(where: {$0.hp <= 0})
                     print("----")
-                   sleep(1)
+                    Thread.sleep(forTimeInterval: 0.5)
+
                 }
                 
             }
@@ -239,7 +243,8 @@ class Game{
             let randomMasterCounter: Int = Int.random(in: 3...5)
             gegner[0].masterAttackCounter += randomMasterCounter
             
-            sleep(1)
+            Thread.sleep(forTimeInterval: 0.5)
+
             
         }
         while gegner.contains(where: {$0.hp > 0}) || helden.contains(where: {$0.hp > 0})
@@ -278,7 +283,8 @@ class Game{
                     held.aktionsMenue(ziel: gegner.randomElement()!, zuHeilen: held)
                     gegner.removeAll(where: {$0.hp <= 0}) // in funktion schreiben
                     print("----")
-                   sleep(1)
+                    Thread.sleep(forTimeInterval: 0.5)
+
                 }
               
             }
@@ -295,7 +301,8 @@ class Game{
                     enemy.aktionsMenue(ziele: heldenAuswahl, zuHeilen: [enemy])
                     helden.removeAll(where: {$0.hp <= 0})
                     print("----")
-                   sleep(1)
+                    Thread.sleep(forTimeInterval: 0.5)
+
                 }
                 
             }
@@ -315,7 +322,8 @@ class Game{
             let randomMasterCounter: Int = Int.random(in: 3...5)
             gegner[0].masterAttackCounter += randomMasterCounter
             
-            sleep(1)
+            Thread.sleep(forTimeInterval: 0.5)
+
             
         }
         while gegner.contains(where: {$0.hp > 0}) || heldenAuswahl.contains(where: {$0.hp > 0})

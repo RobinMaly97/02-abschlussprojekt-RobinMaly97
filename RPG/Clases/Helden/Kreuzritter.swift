@@ -103,10 +103,10 @@ class Kreuzritter: Held {
         print("[1] Trank, Hp + 10 ❤️❤️ Anzahl: \(max(beutel.trank,0))")
         print("[2] Feuer Heiler 🔥❤️ Anzahl: \(max(beutel.feuerHeiler,0))")
         print("[3] Gift Heiler ☠️❤️ Anzahl: \(max(beutel.giftHeiler,0))")
-        print("[4] Schwert Angr + 10 ⚔️⚔️ Anzahl: \(max(beutel.waffen[0].anzahlVerwendung,0))")
+        print("[4] Schwert Angr + 20 ⚔️⚔️ Anzahl: \(max(beutel.waffen[0].anzahlVerwendung,0))")
         print("[5] Schild Vert + 10 🛡️🛡️ Anzahl: \(max(beutel.waffen[1].anzahlVerwendung,0))")
-        print("[6] Eiserne Faust Angr + 10 ⚒️👊🏽 Anzahl: \(max(beutel.waffen[2].anzahlVerwendung,0))")
-        print("[7] Geweite Axt  Angr + 10 ✨🪓 Anzahl: \(max(beutel.waffen[3].anzahlVerwendung,0))")
+        print("[6] Eiserne Faust Angr + 20 ⚒️👊🏽 Anzahl: \(max(beutel.waffen[2].anzahlVerwendung,0))")
+        print("[7] Geweite Axt  Angr + 20 ✨🪓 Anzahl: \(max(beutel.waffen[3].anzahlVerwendung,0))")
         print("[8] Zurück zur Attacken Auswahl ⚔️")
         
         let input: String = readLine()!
