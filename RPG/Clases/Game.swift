@@ -52,7 +52,7 @@ class Game{
         Hexendoktor(name: "\(green)Hexendoktor\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
     ]
     var gegner: [Gegner] = [
-        Endgegner(name: "\(red)Urzael\(reset)", hp: 250.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 100, status: .gesund)
+        Endgegner(name: "\(red)Urzael\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 30, status: .gesund)
         
     ]
     

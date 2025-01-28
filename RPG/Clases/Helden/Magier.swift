@@ -14,7 +14,7 @@ class Magier: Held {
     
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
-        print("\(self.name) setzt \(blinken)❄️❄️❄️Froststrahl❄️❄️❄️\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt \(blinken)❄️❄️❄️ Froststrahl❄️❄️❄️\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
         if self.traegtItem {
