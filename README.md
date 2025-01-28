@@ -19,6 +19,9 @@
 Wähle im Menü neues Spiel Starten:
 
 - Dadurch Startet das Spiel Mit Allen 4 Helden die Gegegen 1 Endgegner und seinen Schergen(Gehilfen) kämpfen. Schwierigkeitsgrad ist Standardmäßig auf leicht.
+- Bei jedem neuem Spiel wird nach deinem Username gefragt.
+    -> Diesen gibst du auch über die Konsole ein.  
+
 
   
 Wähle Die Heldenauswahl:
