@@ -201,12 +201,11 @@ class Game{
             print("\(blue) \(bold) Runde \(rundenCounter) \(reset)".hashTags().einruecken())
             print("Schwierigkeitsgrad: \(schwierigkeitsGrad.rawValue)")
             print()
-            // kann in eine funktion ausgelagert werden
-            // max(held.blockWert,0)
+          
             print("\(green) \(bold)Heldenliste \(reset)".hashTags())
             for (index,held) in helden.enumerated() {
                 print("Held: \(index+1)")
-                print("\(held.name) hat noch \(held.hp.zweiStellenNachKomma)❤️ HP und einen Blockwert \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
+                print("\(held.name) hat noch \(max(held.hp.zweiStellenNachKomma,0))❤️ HP und einen Blockwert \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
                 Thread.sleep(forTimeInterval: 0.5)
 
             }
@@ -215,7 +214,7 @@ class Game{
             print("\(red) \(bold)Gegnerliste \(reset)".hashTags())
             for (index,enemy) in gegner.enumerated() {
                 print("Gegner: \(index+1)")
-                print("\(enemy.name) hat noch \(enemy.hp.zweiStellenNachKomma)❤️ HP und \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+                print("\(enemy.name) hat noch \(max(enemy.hp.zweiStellenNachKomma,0))❤️ HP und \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
                 Thread.sleep(forTimeInterval: 0.5)
 
             }
@@ -288,7 +287,7 @@ class Game{
             print("\(green) \(bold)Heldenliste \(reset)")
             for (index,held) in heldenAuswahl.enumerated() {
                 print("Held: \(index+1)")
-                print("\(held.name) hat noch \(held.hp.zweiStellenNachKomma)❤️ HP und einen Blockwert  \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
+                print("\(held.name) hat noch \(max(held.hp.zweiStellenNachKomma,0))❤️ HP und einen Blockwert  \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
                
             }
             print("---")
@@ -296,7 +295,7 @@ class Game{
             print("\(red) \(bold)Gegnerliste \(reset)")
             for (index,enemy) in gegner.enumerated() {
                 print("Gegner: \(index+1)")
-                print("\(enemy.name) hat noch \(enemy.hp.zweiStellenNachKomma)❤️ HP und  \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+                print("\(enemy.name) hat noch \(max(enemy.hp.zweiStellenNachKomma,0))❤️ HP und  \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
             }
             print("---")
             print("\(blue) \(bold)Helden Liste\(reset)".hashTags())
