@@ -16,19 +16,29 @@ class Game{
         Highscore(userName: "DrG4ming", runden: 10),
         Highscore(userName: "Pabloson", runden: 7),
         Highscore(userName: "Stahlrich", runden: 6)
-        ]
+    ]
     
-
+    
     func highScoreListe() {
         
         let sortierteListe = highScores.sorted(by: {$0.runden < $1.runden})
         
-        print("\(yellow)\(blinken)\(bold)Highscores\(reset)".hashTags().einruecken())
+        print("""
+             \(yellow)\(blinken)\(bold)
+
+██╗  ██╗██╗ ██████╗ ██╗  ██╗███████╗ ██████╗ ██████╗ ██████╗ ███████╗███████╗
+██║  ██║██║██╔════╝ ██║  ██║██╔════╝██╔════╝██╔═══██╗██╔══██╗██╔════╝██╔════╝
+███████║██║██║  ███╗███████║███████╗██║     ██║   ██║██████╔╝█████╗  ███████╗
+██╔══██║██║██║   ██║██╔══██║╚════██║██║     ██║   ██║██╔══██╗██╔══╝  ╚════██║
+██║  ██║██║╚██████╔╝██║  ██║███████║╚██████╗╚██████╔╝██║  ██║███████╗███████║
+╚═╝  ╚═╝╚═╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝ ╚═════╝ ╚═════╝ ╚═╝  ╚═╝╚══════╝╚══════╝
+\(reset)
+""".hashTags().einruecken())
         for (index,highScore) in sortierteListe.enumerated() {
             print("Platz:\(index + 1)  |  UserName: \(highScore.userName)  |  Runden: \(highScore.runden)")
         }
     }
-
+    
     
     
     var heldenAuswahl: [Held] = []
@@ -43,62 +53,62 @@ class Game{
     ]
     var gegner: [Gegner] = [
         Endgegner(name: "\(red)Urzael\(reset)", hp: 250.zweiStellenNachKomma, angriffsPunkte: 30, etraSchild: 100, status: .gesund)
-
+        
     ]
     
-
+    
     var scherger: Scherger? = nil
     
     var kampfBeutel: [Beutel] = [Beutel(trank: 5, paraHeiler: 2, feuerHeiler: 2, giftHeiler: 2, eisHeiler: 2)]
     
-
+    
     func heldenAuswahlMenu() {
-       print("[1] Barbar")
-       print("[2] Kreuzritter")
-       print("[3] Magier")
-       print("[4] Hexendoktor")
-       print("[5] Spiel Starten")
-       print("[6] Zurück zum Hauptmenü ")
+        print("[1] Barbar")
+        print("[2] Kreuzritter")
+        print("[3] Magier")
+        print("[4] Hexendoktor")
+        print("[5] Spiel Starten")
+        print("[6] Zurück zum Hauptmenü ")
         
         let input: String = readLine()!
         
-       switch input {
+        switch input {
         case "1":
             print("Du Hast den Barbaren Gewählt")
-           print("Weiter Helden Auswählen oder Spiel Starten.")
-          let barbar = Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund)
-           heldenAuswahl.append(barbar)
-           heldenAuswahlMenu()
+            print("Weiter Helden Auswählen oder Spiel Starten.")
+            let barbar = Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund)
+            heldenAuswahl.append(barbar)
+            heldenAuswahlMenu()
         case "2":
             print("Du Hast den Kreuzritter Gewählt")
-           print("Weiter Helden Auswählen oder Spiel Starten.")
-           let kreuzRitter = Kreuzritter(name: "Kreuzritter", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund)
-           heldenAuswahl.append(kreuzRitter)
-           heldenAuswahlMenu()
+            print("Weiter Helden Auswählen oder Spiel Starten.")
+            let kreuzRitter = Kreuzritter(name: "Kreuzritter", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund)
+            heldenAuswahl.append(kreuzRitter)
+            heldenAuswahlMenu()
         case "3":
             print("Du Hast den Magier Gewählt")
-           print("Weiter Helden Auswählen oder Spiel Starten.")
-           let magier = Magier(name: "Magier", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund)
-           heldenAuswahl.append(magier)
-           heldenAuswahlMenu()
+            print("Weiter Helden Auswählen oder Spiel Starten.")
+            let magier = Magier(name: "Magier", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund)
+            heldenAuswahl.append(magier)
+            heldenAuswahlMenu()
         case "4":
-           print("Du Hast den Hexendoktor Gewählt")
-           print("Weiter Helden Auswählen oder Spiel Starten.")
-           let hexenDoktor = Hexendoktor(name: "Hexendoktor", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
-           heldenAuswahl.append(hexenDoktor)
-           heldenAuswahlMenu()
+            print("Du Hast den Hexendoktor Gewählt")
+            print("Weiter Helden Auswählen oder Spiel Starten.")
+            let hexenDoktor = Hexendoktor(name: "Hexendoktor", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 10, status: .gesund)
+            heldenAuswahl.append(hexenDoktor)
+            heldenAuswahlMenu()
         case "5":
-           print("Spiel Startet")
-           rundenHeldenAuswahl()
+            print("Spiel Startet")
+            rundenHeldenAuswahl()
         case "6":
             print("Zurück zum Hauptmenü")
-           heldenAuswahl.removeAll()
-           menu()
+            heldenAuswahl.removeAll()
+            menu()
         default:
-           heldenAuswahlMenu()
+            heldenAuswahlMenu()
         }
     }
-
+    
     func schwierigkeitsGradMenu() {
         print("Welchen Schwierigkeitsgrad möchtest du spielen?")
         print("[1] Leicht")
@@ -128,13 +138,26 @@ class Game{
             schwierigkeitsGradMenu()
             
         }
-       
+        
         
         
     }
     
     func menu() {
-        print("\(blue)\(bold)Willkommen bei DemonHunter \(reset)".einruecken())
+        print("""
+              \(blue)\(bold)
+              ████████▄     ▄████████   ▄▄▄▄███▄▄▄▄    ▄██████▄  ███▄▄▄▄      ▄█    █▄    ███    █▄  ███▄▄▄▄       ███        ▄████████    ▄████████
+              ███   ▀███   ███    ███ ▄██▀▀▀███▀▀▀██▄ ███    ███ ███▀▀▀██▄   ███    ███   ███    ███ ███▀▀▀██▄ ▀█████████▄   ███    ███   ███    ███
+              ███    ███   ███    █▀  ███   ███   ███ ███    ███ ███   ███   ███    ███   ███    ███ ███   ███    ▀███▀▀██   ███    █▀    ███    ███
+              ███    ███  ▄███▄▄▄     ███   ███   ███ ███    ███ ███   ███  ▄███▄▄▄▄███▄▄ ███    ███ ███   ███     ███   ▀  ▄███▄▄▄      ▄███▄▄▄▄██▀
+              ███    ███ ▀▀███▀▀▀     ███   ███   ███ ███    ███ ███   ███ ▀▀███▀▀▀▀███▀  ███    ███ ███   ███     ███     ▀▀███▀▀▀     ▀▀███▀▀▀▀▀  
+              ███    ███   ███    █▄  ███   ███   ███ ███    ███ ███   ███   ███    ███   ███    ███ ███   ███     ███       ███    █▄  ▀███████████
+              ███   ▄███   ███    ███ ███   ███   ███ ███    ███ ███   ███   ███    ███   ███    ███ ███   ███     ███       ███    ███   ███    ███
+              ████████▀    ██████████  ▀█   ███   █▀   ▀██████▀   ▀█   █▀    ███    █▀    ████████▀   ▀█   █▀     ▄████▀     ██████████   ███    ███
+                                                                                                                                          ███    ███
+              \(reset)
+              """.einruecken())
+        
         print()
         print("Bitte wähle ein Zahl von 1 - 4")
         print("[1] Neues Spiel Starten")
@@ -155,7 +178,6 @@ class Game{
         case "3":
             schwierigkeitsGradMenu()
         case "4":
-            print("Alle HIGHSCORES")
             highScoreListe()
             menu()
         case "5":
@@ -329,3 +351,4 @@ class Game{
         while gegner.contains(where: {$0.hp > 0}) || heldenAuswahl.contains(where: {$0.hp > 0})
     }
 }
+
