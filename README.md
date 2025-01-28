@@ -5,7 +5,7 @@
 
 ### UML
 
-<img src=img/UML Diagramm RPG.jpg width="50%">
+<img src=img/UMLRPG.jpg width="50%">
 
 Zeige hier ⬆️ dein UML Diagramm an
 1. Speichere dein Diagramm als Bild in dem "img" Ordner
