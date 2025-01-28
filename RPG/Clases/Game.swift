@@ -283,19 +283,21 @@ class Game{
             print()
             print("\(blue) \(bold)Runde \(rundenCounter)\(reset)".hashTags().einruecken())
             print()
-            // kann in eine funktion ausgelagert werden
-            print("\(green) \(bold)Heldenliste \(reset)")
+            print()
+            print("\(green) \(bold)Heldenliste \(reset)".hashTags())
             for (index,held) in heldenAuswahl.enumerated() {
                 print("Held: \(index+1)")
                 print("\(held.name) hat noch \(max(held.hp.zweiStellenNachKomma,0))❤️ HP und einen Blockwert  \(max(held.blockWert,0))🛡️. Status: \(held.status.rawValue)")
+                Thread.sleep(forTimeInterval: 0.5)
                
             }
             print("---")
             // kann in eine funktion ausgelagert werden
-            print("\(red) \(bold)Gegnerliste \(reset)")
+            print("\(red) \(bold)Gegnerliste \(reset)".hashTags())
             for (index,enemy) in gegner.enumerated() {
                 print("Gegner: \(index+1)")
                 print("\(enemy.name) hat noch \(max(enemy.hp.zweiStellenNachKomma,0))❤️ HP und  \(max(enemy.etraSchild,0))🛡️ Extra Schild. Status: \(enemy.status.rawValue)")
+                Thread.sleep(forTimeInterval: 0.5)
             }
             print("---")
             print("\(blue) \(bold)Helden Liste\(reset)".hashTags())
