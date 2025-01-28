@@ -9,6 +9,7 @@
    Benötigte Software:
       - Xcode
          - Mac Version: https://www.google.com/url?sa=t&source=web&rct=j&opi=89978449&url=https://apps.apple.com/us/app/xcode/id497799835%3Fmt%3D12&ved=2ahUKEwjjmJ-fm5iLAxUAzwIHHUd6BDUQFnoECAoQAQ&usg=AOvVaw2fEvMbfRtGhB4SPHYB54NX
+           - Sobald es Runtergeladen ist öffne des Xcode und folge den Anweisungen der Installationsschritte. 
 
 - Jetzt kannst du das Spiel einfach über github Clonen und über Xcode öffnen und Spielen
   
