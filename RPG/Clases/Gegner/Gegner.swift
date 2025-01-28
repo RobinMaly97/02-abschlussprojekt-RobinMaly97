@@ -58,7 +58,7 @@ class Gegner: Charakter, CustomStringConvertable {
         
         if self.etraSchild <= 0 {
             self.hp -= schaden
-               print("\(self.name) verliert \(schaden) Hp❤️, Rest HP \(self.hp)❤️")
+               print("\(self.name) verliert \(schaden) Hp❤️, Rest HP \(max(self.hp,0))❤️")
         }
             
             

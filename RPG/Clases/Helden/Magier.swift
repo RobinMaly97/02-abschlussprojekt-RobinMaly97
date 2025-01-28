@@ -6,7 +6,7 @@
 //
 // MARK: 4. Klassen & Vererbung
 
-
+import Foundation
 
 class Magier: Held {
     
@@ -17,6 +17,9 @@ class Magier: Held {
         print("\(self.name) setzt \(blinken)❄️ ❄️ ❄️ Froststrahl❄️ ❄️ ❄️\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
+        playSound(path: frostStrahlSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -33,6 +36,9 @@ class Magier: Held {
         print("\(self.name) setzt \(blinken)💥💥💥Explosion💥💥💥\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(8.5 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
+        playSound(path: explosionsSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -42,6 +48,9 @@ class Magier: Held {
         print("\(self.name) setzt die \(blinken)🐉🐉🐉Drei Köpfige Hydra🐉🐉🐉\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(13.5 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
+        playSound(path: dreiKoepfigeHydraSound)
+        Thread.sleep(forTimeInterval: 1.5)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -59,6 +68,9 @@ class Magier: Held {
         if held.name == self.name {
             print("\(self.name) hat sich \(blinken)Selbst ❤️ ❤️ ❤️geheilt❤️ ❤️ ❤️\(reset) mit einer HP von \(self.hp) ❤️.")
             self.heilung(20)
+            playSound(path: heilenSound)
+            Thread.sleep(forTimeInterval: 1.0)
+            audioPlayer?.stop()
         } else {
             print("\(self.name) hat \(blinken)\(held.name) ❤️ ❤️ ❤️geheilt❤️ ❤️ ❤️\(reset) mit einer HP von \(held.hp) ❤️.")
             held.heilung(20)

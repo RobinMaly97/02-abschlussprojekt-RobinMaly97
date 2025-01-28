@@ -97,8 +97,15 @@ class Game{
             heldenAuswahl.append(hexenDoktor)
             heldenAuswahlMenu()
         case "5":
-            print("Spiel Startet")
-            rundenHeldenAuswahl()
+            if !heldenAuswahl.isEmpty {
+                print("Spiel Startet")
+                rundenHeldenAuswahl()
+            } else {
+                print("Du hast noch kein/e Held/en ausgewählt mit denen du Kämpfen möchtest.")
+                print("Bitte wähle ein oder mehrer Helden aus.")
+                heldenAuswahlMenu()
+            }
+           
         case "6":
             print("Zurück zum Hauptmenü")
             heldenAuswahl.removeAll()
@@ -229,6 +236,9 @@ class Game{
                 }
               
             }
+            
+            sleep(1)
+            
             print("\(red) \(bold)Gegner Liste\(reset)".hashTags())
             for enemy in gegner {
                 if !helden.isEmpty {
@@ -249,10 +259,15 @@ class Game{
             }
             if helden.isEmpty {
                 print("\(bold)\(blinken)\(red)😪😪😪Die Gegner haben Gewonnen😪😪😪\(reset)")
+                playSound(path: verlorenSound)
+                Thread.sleep(forTimeInterval: 1.0)
+                audioPlayer?.stop()
                 break
             } else if gegner.isEmpty {
                 print("\(bold)\(blinken)\(green)🎉🎉🎉Die Helden haben Gewonnen🎉🎉🎉\(reset)")
-                
+                playSound(path: winSound)
+                Thread.sleep(forTimeInterval: 1.2)
+                audioPlayer?.stop()
                 let highScore: Highscore = Highscore(userName: userNameInput, runden: rundenCounter)
                 highScores.append(highScore)
                 print("Der Highsore wurde abgespeichert \n \(userNameInput) hat nach \(rundenCounter) Runden Uzrael und seinen Scherger besiegt.")
@@ -330,10 +345,15 @@ class Game{
             }
             if heldenAuswahl.isEmpty {
                 print("\(red)\(blinken)\(bold)😪😪😪Die Gegner haben Gewonnen😪😪😪 \(reset)")
+                playSound(path: verlorenSound)
+                Thread.sleep(forTimeInterval: 1.0)
+                audioPlayer?.stop()
                 break
             } else if gegner.isEmpty {
                 print("\(green)\(blinken)\(bold)🎉🎉🎉Die Helden haben Gewonnen🎉🎉🎉\(reset)")
-                
+                playSound(path: winSound)
+                Thread.sleep(forTimeInterval: 1.2)
+                audioPlayer?.stop()
                 let highScore: Highscore = Highscore(userName: userNameInput, runden: rundenCounter)
                 highScores.append(highScore)
                 print("Der Highsore wurde abgespeichert \n \(userNameInput) hat nach \(rundenCounter) Uzrael und seinen Scherger besiegt.")
@@ -350,5 +370,24 @@ class Game{
         }
         while gegner.contains(where: {$0.hp > 0}) || heldenAuswahl.contains(where: {$0.hp > 0})
     }
+    
+    
+    
+    func playSound(path: String) {
+        // erstellt ein URL-Objekt aus dem dateipfad:
+        let url = URL(fileURLWithPath: path)
+        // versuch, den sound abzuspielen
+        do {
+        // audioplayer mit dem angegebenen URL-Objekt erstellen:
+            audioPlayer = try AVAudioPlayer(contentsOf: url)
+            // startet die wiedergabe des sounds
+            audioPlayer?.play()
+        }
+        // falls ein fehler auftritt, wird dieser im catch-block abgefangen und eine meldung ausgegeben
+        catch {
+            print("Fehler beim Abspielen des Sounds: \(error) --\(error.localizedDescription)")
+        }
+    }
+
 }
 

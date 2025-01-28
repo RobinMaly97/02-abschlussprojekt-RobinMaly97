@@ -68,7 +68,7 @@ class Held: Charakter, CustomStringConvertable {
         if self.blockWert <= 0 {
             self.hp -= schaden + (self.waffe?.schadensWert ?? 0)
                 self.waffe?.anzahlVerwendung -= 1
-                print("\(self.name) verliert \(schaden) Hp❤️, Rest HP \(self.hp)❤️")
+                print("\(self.name) verliert \(schaden) Hp❤️, Rest HP \(max(self.hp,0))❤️")
         }
             
             

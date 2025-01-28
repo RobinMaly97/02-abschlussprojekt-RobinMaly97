@@ -6,7 +6,7 @@
 //
 // MARK: 4. Klassen & Vererbung
 // MARK: 4.1 Gegner-Schergen im Kampf hinzufügen
-
+import Foundation
 
 
 class Endgegner: Gegner {
@@ -16,7 +16,9 @@ class Endgegner: Gegner {
     // MARK: Reguläre Attacke
     func meteorSchlag(held: Held) {
         held.nimmSchaden(20)
-        
+        playSound(path: meteorSchlagSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
     }
     
     // MARK: Flächenangriff
@@ -28,7 +30,9 @@ class Endgegner: Gegner {
             print()
             
         }
-        
+        playSound(path: flammenInfernoSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
     }
     
     // MARK: One Hit Attacke (Bombastischer Angriff)
@@ -41,6 +45,9 @@ class Endgegner: Gegner {
             print("\(self.name) setzt 🔥😈😈Zorn des Teufels🔥😈😈 gegen \(held.name) ein.")
             held.nimmSchaden(held.hp)
             maxAngriffe -= 1
+            playSound(path: zornDesTeufelsSound)
+            Thread.sleep(forTimeInterval: 1.0)
+            audioPlayer?.stop()
         }
         
     }
@@ -56,7 +63,11 @@ class Endgegner: Gegner {
         print("Der Scherger Duriel wird beschworen und kommt \(self.name) zur hilfe.")
             let scherger: Scherger = Scherger(name: "\(magenta)Duriel\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
             schergerBeschworen = true
+        playSound(path: schergenBeschwörenSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
             return scherger
+  
         }
       
     

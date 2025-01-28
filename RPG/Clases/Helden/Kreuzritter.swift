@@ -5,8 +5,7 @@
 //  Created by Robin Maly on 20.01.25.
 //
 // MARK: 4. Klassen & Vererbung
-
-
+import Foundation
 
 class Kreuzritter: Held {
     
@@ -20,6 +19,9 @@ class Kreuzritter: Held {
         print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) mit dem \(blinken)🤺🤺🤺Schwung Angriff🤺🤺🤺\(reset) an.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
+        playSound(path: schwungAngriffSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -30,6 +32,9 @@ class Kreuzritter: Held {
         print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) mit der \(blinken)☁️ 👊🏽👊🏽Himmels Faust☁️ 👊🏽👊🏽\(reset) an")
         gegner.nimmSchaden(5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
+        playSound(path: himmelsFaustSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -40,6 +45,9 @@ class Kreuzritter: Held {
         print("\(self.name) greift \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) mit dem \(blinken)✨🔨🔨Gesegnetem Hammer✨🔨🔨\(reset) an")
         gegner.nimmSchaden(7.5 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1
+        playSound(path: gesegneterHammerSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -49,6 +57,9 @@ class Kreuzritter: Held {
     func schildBlock() {
         print("Der Kreuzritter \(self.name) setzt \(blinken)🛡️ 🛡️ 🛡️Schild Block🛡️ 🛡️ 🛡️\(reset) ein und Blockt die nächste attacke mit 10 Punkten")
         blockWert = blockWert + 10
+        playSound(path: schildBlockSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         
     }
     

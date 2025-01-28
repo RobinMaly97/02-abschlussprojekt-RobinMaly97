@@ -5,6 +5,8 @@
 //  Created by Robin Maly on 20.01.25.
 //
 // MARK: 4.1 Gegner-Schergen im Kampf hinzufügen
+import Foundation
+
 
 class Scherger: Gegner {
     
@@ -15,10 +17,16 @@ class Scherger: Gegner {
         if zuHeilen.name == self.name {
             print("\(self.name) setzt \(blinken)❤️🏹🏹Heilfpleil❤️🏹🏹\(reset) ein und hat sich Selbst geheilt ❤️. Mit einem Rest von Hp \(self.hp)❤️.")
             self.heilung(20)
+            playSound(path: heilenSound)
+            Thread.sleep(forTimeInterval: 1.0)
+            audioPlayer?.stop()
     
         } else {
             print("\(self.name) setzt \(blinken)❤️🏹🏹Heilfpleil❤️🏹🏹\(reset) ein heilt \(zuHeilen.name) mit einer Hp von \(zuHeilen.hp)❤️.")
             zuHeilen.heilung(20)
+            playSound(path: heilenSound)
+            Thread.sleep(forTimeInterval: 1.0)
+            audioPlayer?.stop()
             
         }
         
@@ -28,6 +36,9 @@ class Scherger: Gegner {
     func eisPfeil(held: Held) {
         print("\(self.name) schießt ein \(blinken)❄️🏹🏹Eis Pfeil❄️🏹🏹\(reset) auf \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(10)
+        playSound(path: frostStrahlSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
        
         let random: Int = Int.random(in: 1...5)
         if random == 3 {
@@ -42,7 +53,9 @@ class Scherger: Gegner {
     func paralysePfeil(held: Held) {
         print("\(self.name) schießt ein \(blinken)⚡️🏹🏹Paralyse Pfeil⚡️🏹🏹\(reset) auf \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(9.5)
-       
+        playSound(path: paralyseBombeSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         let random: Int = Int.random(in: 1...5)
         if random == 2 {
             print("\(held.name) wurde für 2 Runden paralysiert ⚡️⚡️")
@@ -55,7 +68,9 @@ class Scherger: Gegner {
     func giftPfeil(held: Held) {
         print("\(self.name) schießt ein \(blinken)☠️🏹🏹Gift Pfeil auf☠️🏹🏹\(reset) \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(10.5)
-       
+        playSound(path: giftPfeilSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         let random: Int = Int.random(in: 1...5)
         if random == 1 {
             print("\(held.name) wurde für 2 Runden vergiftet ☠️☠️")

@@ -5,7 +5,7 @@
 //  Created by Robin Maly on 20.01.25.
 //
 // MARK: 4. Klassen & Vererbung
-
+import Foundation
 
 
 class Barbar: Held {
@@ -21,6 +21,9 @@ class Barbar: Held {
         print("\(self.name) führt die Attacke \(blinken)💥🔨🔨Seismisches Schmettern💥🔨🔨\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) aus.")
         gegner.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
         waffe?.anzahlVerwendung -= 1 // MARK: Muss das nicht in die if bedingung drunter ???
+        playSound(path: seismischesSchmetternSound)
+        Thread.sleep(forTimeInterval: 0.7)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -31,7 +34,10 @@ class Barbar: Held {
     func kraftvollerAnsturm(gegner: Gegner) {
         print("\(self.name) führt die Attacke \(blinken)💪🏽💨💨Kraftvoller Ansturm💪🏽💨💨\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) aus.")
         gegner.nimmSchaden(15 + (waffe?.schadensWert ?? 0))
-        waffe?.anzahlVerwendung -= 1 // MARK: Muss das nicht in die if bedingung drunter ???
+        waffe?.anzahlVerwendung -= 1
+        playSound(path: kraftvollerAnsturnSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -41,6 +47,9 @@ class Barbar: Held {
     func schwertBlock() {
         print("\(self.name) setzt \(blinken)🗡️ 🛡️ 🛡️Schwert Block🗡️ 🛡️ 🛡️\(reset) ein und blockt die nächste Attacke mit 10 Punkten.")
         blockWert = blockWert + 10
+        playSound(path: schwertBlockSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
     }
     // MARK: Flächenangriff
     // da es ein flächenangriff ist muss als Parameter ein Array(Liste aus Gegner) übergeben werden damit ich auch bei allen gegnern die HP abziehen kann.
@@ -50,6 +59,9 @@ class Barbar: Held {
         for enemy in gegner {
             enemy.nimmSchaden(10 + (waffe?.schadensWert ?? 0))
             waffe?.anzahlVerwendung -= 1
+            playSound(path: erdbebenSound)
+            Thread.sleep(forTimeInterval: 2.0)
+            audioPlayer?.stop()
             if self.traegtItem {
                 print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
             }

@@ -5,7 +5,7 @@
 //  Created by Robin Maly on 20.01.25.
 //
 // MARK: 4. Klassen & Vererbung
-
+import Foundation
 
 
 class Hexendoktor: Held {
@@ -17,6 +17,9 @@ class Hexendoktor: Held {
         print("\(self.name) setzt \(blinken)👻👻👻Seelen Ernte👻👻👻\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
+        playSound(path: seelenErnteSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -27,6 +30,9 @@ class Hexendoktor: Held {
         print("\(self.name) setzt \(blinken)👻🔥🔥Geister Speerfeuer👻🔥🔥\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(11.5 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
+        playSound(path: geisterSpeerFeuerSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -37,6 +43,9 @@ class Hexendoktor: Held {
         print("\(self.name) setzt \(blinken)⚡️💣💣Paralyse Bombe⚡️💣💣\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(8.5 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
+        playSound(path: paralyseBombeSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
@@ -52,6 +61,9 @@ class Hexendoktor: Held {
         print("\(self.name) setzt ☠️ 🏹🏹Gift Pfeil☠️ 🏹🏹\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp)❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
+        playSound(path: giftPfeilSound)
+        Thread.sleep(forTimeInterval: 1.0)
+        audioPlayer?.stop()
         if self.traegtItem {
             print("Der Schaden wurde durch die waffe \(waffe?.name ?? "Keine Waffe Ausgerüstet") erhöht und die Waffe ist noch \(waffe?.anzahlVerwendung ?? 0) verfügbar.")
         }
