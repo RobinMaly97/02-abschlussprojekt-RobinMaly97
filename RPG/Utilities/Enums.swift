@@ -7,11 +7,11 @@
 // MARK: 7. Enums verwenden
 
 enum Status: String {
-    case gesund = "Gesund ❤️❤️"
-    case brennt = "Brennt 🔥🔥"
-    case vereist = "Vereist ❄️❄️"
-    case vergiftet = "Vergiftet ☠️☠️"
-    case paralysiert = "Paralysiert ⚡️⚡️"
+    case gesund = "Gesund ❤️ ❤️"
+    case brennt = "Brennt 🔥 🔥"
+    case vereist = "Vereist ❄️ ❄️"
+    case vergiftet = "Vergiftet ☠️ ☠️"
+    case paralysiert = "Paralysiert ⚡️ ⚡️"
     
 }
 

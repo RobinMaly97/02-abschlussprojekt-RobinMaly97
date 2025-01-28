@@ -82,7 +82,7 @@ class Endgegner: Gegner {
             } else {
                 if status == .vergiftet || status == .brennt {
                     print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ❤️")
-                    print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️")
+                    print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(max(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma,0))❤️")
                     self.hp = self.hp.zweiStellenNachKomma - (self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)
                     
                     
@@ -96,7 +96,7 @@ class Endgegner: Gegner {
                 
                 switch input {
                 case "1":
-                    print("\(self.name) setzt \(blinken)☄️👊🏽👊🏽Meteor Schlag☄️👊🏽👊🏽\(reset) ein.")
+                    print("\(self.name) setzt \(blinken)☄️ 👊🏽👊🏽Meteor Schlag☄️ 👊🏽👊🏽\(reset) ein.")
                     meteorSchlag(held: ziele.randomElement()!)
                 case "2":
                     print("\(self.name) setz \(blinken)🔥💥🔥Flammen Inferno🔥💥🔥\(reset) ein")

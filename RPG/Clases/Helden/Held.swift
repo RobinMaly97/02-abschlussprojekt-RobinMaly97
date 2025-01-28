@@ -60,7 +60,7 @@ class Held: Charakter, CustomStringConvertable {
     }
     
     func nimmSchaden(_ schaden: Double) {
-        if self.blockWert >= 0{
+        if self.blockWert > 0{
             self.blockWert -= schaden
             print("\(self.name) verliert \(schaden) Block Wert🛡️, Rest Schild🛡️ \(max(self.blockWert,0))")
         }
@@ -74,7 +74,7 @@ class Held: Charakter, CustomStringConvertable {
             
         
         if self.hp <= 0 {
-            print("☠️\(self.name) ist besiegt☠️")
+            print("☠️ \(self.name) ist besiegt☠️")
         }
     }
     

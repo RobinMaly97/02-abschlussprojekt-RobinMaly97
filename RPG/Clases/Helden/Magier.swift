@@ -14,7 +14,7 @@ class Magier: Held {
     
     // MARK: Frost Attacke
     func froststrahl(gegner: Gegner) {
-        print("\(self.name) setzt \(blinken)❄️❄️❄️ Froststrahl❄️❄️❄️\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
+        print("\(self.name) setzt \(blinken)❄️ ❄️ ❄️ Froststrahl❄️ ❄️ ❄️\(reset) gegen \(gegner.name) mit einer HP von \(gegner.hp) ❤️ und extra Schild: \(max(gegner.etraSchild,0)) ein.")
         gegner.nimmSchaden(10 + (item?.schadensWert ?? 0))
         item?.anzahlVerwendung -= 1
         if self.traegtItem {
@@ -22,7 +22,7 @@ class Magier: Held {
         }
         let random: Int = Int.random(in: 1...5)
         if random == 2 {
-            print("\(gegner.name) wurde für 2 Runden vereist ❄️❄️.")
+            print("\(gegner.name) wurde für 2 Runden vereist ❄️ ❄️.")
             gegner.status = .vereist
            
         }
@@ -47,7 +47,7 @@ class Magier: Held {
         }
         let random: Int = Int.random(in: 1...5)
         if random == 2 {
-            print("\(gegner.name) brennt 🔥🔥 für 2 Runden.")
+            print("\(gegner.name) brennt 🔥 🔥 für 2 Runden.")
             gegner.status = .brennt
             
             
@@ -57,10 +57,10 @@ class Magier: Held {
     // MARK: Heil Attacke
     func heilen(held: Held) {
         if held.name == self.name {
-            print("\(self.name) hat sich \(blinken)Selbst ❤️❤️❤️geheilt❤️❤️❤️\(reset) mit einer HP von \(self.hp) ❤️.")
+            print("\(self.name) hat sich \(blinken)Selbst ❤️ ❤️ ❤️geheilt❤️ ❤️ ❤️\(reset) mit einer HP von \(self.hp) ❤️.")
             self.heilung(20)
         } else {
-            print("\(self.name) hat \(blinken)\(held.name) ❤️❤️❤️geheilt❤️❤️❤️\(reset) mit einer HP von \(held.hp) ❤️.")
+            print("\(self.name) hat \(blinken)\(held.name) ❤️ ❤️ ❤️geheilt❤️ ❤️ ❤️\(reset) mit einer HP von \(held.hp) ❤️.")
             held.heilung(20)
         }
     }
@@ -74,18 +74,18 @@ class Magier: Held {
         } else {
             if status == .vergiftet || status == .brennt {
                 print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens ❤️")
-                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️")
+                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(max(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma,0))❤️")
             self.hp = self.hp.zweiStellenNachKomma - (self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)
           
             
             statusCounter += 1
             
         }
-            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️, Extra Schild \(max(ziel.etraSchild,0)) 🛡️ an! Welche Attacke soll er ausführen?")            
-            print("[1] Frost Strahl, Stärke: 10 ❄️❄️❄️")
+            print("\(self.name) greift \(ziel.name) HP: \(ziel.hp)❤️ , Extra Schild \(max(ziel.etraSchild,0)) 🛡️ an! Welche Attacke soll er ausführen?")            
+            print("[1] Frost Strahl, Stärke: 10 ❄️ ❄️ ❄️")
             print("[2] Explosion, Stärke: 8.5 💥💥💥")
             print("[3] Drei Köpfige Hydra, Stärke: 13.5 🐉🐉🐉")
-            print("[4] Heilen, Stärke: 20 ❤️❤️❤️")
+            print("[4] Heilen, Stärke: 20 ❤️ ❤️ ❤️")
             print("[5] Beutel öffnen 🎒🎒🎒")
             
             let input: String = readLine()!
@@ -115,12 +115,12 @@ class Magier: Held {
     // MARK: Beutel
     func beutel(ziel: Gegner, zuHeilen: Held) {
         print("Beutel")
-        print("[1] Trank, Hp + 10 ❤️❤️ Anzahl: \(max(beutel.trank,0))")
+        print("[1] Trank, Hp + 10 ❤️ ❤️ Anzahl: \(max(beutel.trank,0))")
         print("[2] Feuer Heiler 🔥❤️ Anzahl: \(max(beutel.feuerHeiler,0))")
-        print("[3] Gift Heiler ☠️❤️ Anzahl: \(max(beutel.giftHeiler,0))")
+        print("[3] Gift Heiler ☠️ ❤️ Anzahl: \(max(beutel.giftHeiler,0))")
         print("[4] Feuer Rune Angr + 20 🔥🀄️  Anzahl: \(max(beutel.items[0].anzahlVerwendung,0))")
-        print("[5] Eis Rune Angr + 20 ❄️🀄️ Anzahl: \(max(beutel.items[1].anzahlVerwendung,0))")
-        print("[6] Gift Rune Angr + 20 ☠️🀄️ Anzahl: \(max(beutel.items[2].anzahlVerwendung,0))")
+        print("[5] Eis Rune Angr + 20 ❄️ 🀄️ Anzahl: \(max(beutel.items[1].anzahlVerwendung,0))")
+        print("[6] Gift Rune Angr + 20 ☠️ 🀄️ Anzahl: \(max(beutel.items[2].anzahlVerwendung,0))")
         print("[7] Paralyse Rune Angr + 20 ⚡️🀄️ Anzahl: \(max(beutel.items[3].anzahlVerwendung,0))")
         print("[8] Zurück zur Attacken Auswahl ⚔️")
         
@@ -129,11 +129,11 @@ class Magier: Held {
         switch input {
         case "1":
             if beutel.trank > 0 {
-                print("\(self.name) setz \(blinken)Trank ❤️❤️\(reset) ein und Heilt sich um 10 Hp ❤️")
+                print("\(self.name) setz \(blinken)Trank ❤️ ❤️\(reset) ein und Heilt sich um 10 Hp ❤️")
                beutel.trank -= 1
              self.hp += 10
             } else {
-                print("Du hast alle Tränke ❤️❤️ aufgebraucht.")
+                print("Du hast alle Tränke ❤️ ❤️ aufgebraucht.")
                 print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
                 beutel(ziel: ziel, zuHeilen: zuHeilen)
             }
@@ -149,11 +149,11 @@ class Magier: Held {
             }
         case "3":
             if beutel.giftHeiler > 0 {
-                print("\(self.name) setzt \(blinken)Gift Heiler ❤️☠️\(reset) ein und ist wieder Gesund ❤️")
+                print("\(self.name) setzt \(blinken)Gift Heiler ☠️ ❤️\(reset) ein und ist wieder Gesund ❤️")
                 self.status = .gesund
                 beutel.giftHeiler -= 1
             } else {
-                print("Du hast alle Gift Heiler ❤️☠️ aufgebraucht.")
+                print("Du hast alle Gift Heiler ☠️ ❤️ aufgebraucht.")
                 print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
                 beutel(ziel: ziel, zuHeilen: zuHeilen)
             }
@@ -177,7 +177,7 @@ class Magier: Held {
                 beutel.items[1].anzahlVerwendung -= 1
                 aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
             } else {
-                print("Du hast alle Eis Runen ❄️🀄️ aufgebraucht.")
+                print("Du hast alle Eis Runen ❄️ 🀄️ aufgebraucht.")
                 print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
                 beutel(ziel: ziel, zuHeilen: zuHeilen)
             }
@@ -189,7 +189,7 @@ class Magier: Held {
                 beutel.items[2].anzahlVerwendung -= 1
                 aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
             } else {
-                print("Du hast alle Gift Runen ☠️🀄️ aufgebraucht.")
+                print("Du hast alle Gift Runen ☠️ 🀄️ aufgebraucht.")
                 print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
                 beutel(ziel: ziel, zuHeilen: zuHeilen)
             }

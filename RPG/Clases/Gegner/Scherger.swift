@@ -28,7 +28,7 @@ class Scherger: Gegner {
     func eisPfeil(held: Held) {
         print("\(self.name) schießt ein \(blinken)❄️🏹🏹Eis Pfeil❄️🏹🏹\(reset) auf \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(10)
-        print("\(held.name) verliert 10 HP❤️, Rest HP \(held.hp)❤️")
+       
         let random: Int = Int.random(in: 1...5)
         if random == 3 {
             print("\(held.name) wurde für 2 Runden vereist ❄️❄️ ")
@@ -42,7 +42,7 @@ class Scherger: Gegner {
     func paralysePfeil(held: Held) {
         print("\(self.name) schießt ein \(blinken)⚡️🏹🏹Paralyse Pfeil⚡️🏹🏹\(reset) auf \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(9.5)
-        print("\(held.name) verliert 9.5 HP❤️, Rest HP \(held.hp)❤️")
+       
         let random: Int = Int.random(in: 1...5)
         if random == 2 {
             print("\(held.name) wurde für 2 Runden paralysiert ⚡️⚡️")
@@ -55,7 +55,7 @@ class Scherger: Gegner {
     func giftPfeil(held: Held) {
         print("\(self.name) schießt ein \(blinken)☠️🏹🏹Gift Pfeil auf☠️🏹🏹\(reset) \(held.name) mit einer HP von \(held.hp)❤️")
         held.nimmSchaden(10.5)
-        print("\(held.name) verliert 10.5 HP❤️, Rest HP \(held.hp)❤️")
+       
         let random: Int = Int.random(in: 1...5)
         if random == 1 {
             print("\(held.name) wurde für 2 Runden vergiftet ☠️☠️")
@@ -71,7 +71,7 @@ class Scherger: Gegner {
         } else {
             if status == .vergiftet || status == .brennt {
             print("\(self.name) ist \(status.rawValue) er verliert 2 Runden 10 % seines Lebens❤️ ")
-                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️")
+                print("\(self.name) wurden \(self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)❤️ Hp abgezogen. Rest Hp \(max(self.hp.zweiStellenNachKomma - self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma,0))❤️")
             self.hp = self.hp.zweiStellenNachKomma - (self.hp.zweiStellenNachKomma * 0.1.zweiStellenNachKomma)
            
             

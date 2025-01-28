@@ -64,7 +64,7 @@ class Gegner: Charakter, CustomStringConvertable {
             
         
         if self.hp <= 0 {
-            print("☠️\(self.name) ist besiegt☠️")
+            print("☠️ \(self.name) ist besiegt☠️")
         }
     }
     
