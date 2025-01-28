@@ -155,7 +155,7 @@ class Hexendoktor: Held {
                 }
             case "4":
                 if beutel.items[0].anzahlVerwendung > 0 {
-                    print("\(self.name) nimmt die \(blinken)Feuer Rune 🔥🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
+                    print("\(self.name) nimmt die \(blinken)Feuer Rune 🔥🀄️\(reset). Sein nächster Angriff Macht 20 extra Schaden")
                     self.item = beutel.items[0]
                     self.item?.schadensWert += 10
                     beutel.items[0].anzahlVerwendung -= 1
@@ -167,7 +167,7 @@ class Hexendoktor: Held {
                 }
             case "5":
                 if beutel.items[1].anzahlVerwendung > 0 {
-                    print("\(self.name) nimmt die \(blinken)Eis Rune ❄️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
+                    print("\(self.name) nimmt die \(blinken)Eis Rune ❄️🀄️\(reset). Sein nächster Angriff Macht 20 extra Schaden")
                     self.item = beutel.items[1]
                     self.item?.schadensWert += 10
                     beutel.items[1].anzahlVerwendung -= 1
@@ -179,7 +179,7 @@ class Hexendoktor: Held {
                 }
             case "6":
                 if beutel.items[2].anzahlVerwendung > 0 {
-                    print("\(self.name) nimmt die \(blinken)Gift Rune ☠️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
+                    print("\(self.name) nimmt die \(blinken)Gift Rune ☠️🀄️\(reset). Sein nächster Angriff Macht 20 extra Schaden")
                     self.item = beutel.items[2]
                     self.item?.schadensWert += 10
                     beutel.items[2].anzahlVerwendung -= 1
@@ -191,7 +191,7 @@ class Hexendoktor: Held {
                 }
             case "7":
                 if beutel.items[3].anzahlVerwendung > 0 {
-                    print("\(self.name) nimmt die \(blinken)Paralyse Rune ⚡️🀄️\(reset). Sein nächster Angriff Macht 10 extra Schaden")
+                    print("\(self.name) nimmt die \(blinken)Paralyse Rune ⚡️🀄️\(reset). Sein nächster Angriff Macht 20 extra Schaden")
                     self.item = beutel.items[3]
                     self.item?.schadensWert += 10
                     beutel.items[3].anzahlVerwendung -= 1

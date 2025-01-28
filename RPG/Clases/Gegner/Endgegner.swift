@@ -53,7 +53,7 @@ class Endgegner: Gegner {
     var schergerBeschworen: Bool = false
     
     func schergenBeschwören() -> Scherger? {
-        print("\(blinken)Der Scherger wird beschworen und kommt \(self.name) zur hilfe.\(reset)")
+        print("Der Scherger Duriel wird beschworen und kommt \(self.name) zur hilfe.")
             let scherger: Scherger = Scherger(name: "\(magenta)Duriel\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, etraSchild: 0, status: .gesund)
             schergerBeschworen = true
             return scherger

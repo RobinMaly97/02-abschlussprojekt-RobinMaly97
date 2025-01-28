@@ -44,7 +44,6 @@ class Game{
     var heldenAuswahl: [Held] = []
     var heldenCounter: Int = 0
     var schwierigkeitsGrad: schwierigkeitesGrad = .leicht
-    
     var helden: [Held] = [
         Barbar(name: "\(green)Barbar\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund),
         Kreuzritter(name: "\(green)Kreuzritter\(reset)", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund),
@@ -75,19 +74,19 @@ class Game{
         switch input {
         case "1":
             print("Du Hast den Barbaren Gewählt")
-            print("Weiter Helden Auswählen oder Spiel Starten.")
+            print("Weitere Helden Auswählen oder Spiel Starten.")
             let barbar = Barbar(name: "Barbar", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 20, status: .gesund)
             heldenAuswahl.append(barbar)
             heldenAuswahlMenu()
         case "2":
             print("Du Hast den Kreuzritter Gewählt")
-            print("Weiter Helden Auswählen oder Spiel Starten.")
+            print("Weitere Helden Auswählen oder Spiel Starten.")
             let kreuzRitter = Kreuzritter(name: "Kreuzritter", hp: 100.zweiStellenNachKomma, angriffsPunkte: 15, verteidigungsPunkte: 20, status: .gesund)
             heldenAuswahl.append(kreuzRitter)
             heldenAuswahlMenu()
         case "3":
             print("Du Hast den Magier Gewählt")
-            print("Weiter Helden Auswählen oder Spiel Starten.")
+            print("Weitere Helden Auswählen oder Spiel Starten.")
             let magier = Magier(name: "Magier", hp: 100.zweiStellenNachKomma, angriffsPunkte: 20, verteidigungsPunkte: 15, status: .gesund)
             heldenAuswahl.append(magier)
             heldenAuswahlMenu()
@@ -322,7 +321,7 @@ class Game{
                         }
                     }
                     enemy.aktionsMenue(ziele: heldenAuswahl, zuHeilen: [enemy])
-                    helden.removeAll(where: {$0.hp <= 0})
+                    heldenAuswahl.removeAll(where: {$0.hp <= 0})
                     print("----")
                     Thread.sleep(forTimeInterval: 0.5)
 
