@@ -173,7 +173,7 @@ class Game{
         print("[4] Highscores")
         print("[5] Spiel Beenden")
         playSound(path: introSound)
-        Thread.sleep(forTimeInterval: 10.0)
+        
         
         let input: String = readLine()!
         
@@ -201,6 +201,7 @@ class Game{
     
     
     func runden() {
+        backGroundSound(path: hinterGrundSound)
         var rundenCounter: Int = 1
         print()
         print("\(cyan)\(bold)Bitte gib deinen UserNamen ein\(reset)")
@@ -292,6 +293,7 @@ class Game{
     
     
     func rundenHeldenAuswahl() {
+        backGroundSound(path: hinterGrundSound)
         var rundenCounter: Int = 1
         print()
         print("\(cyan)\(bold)Bitte gib deinen UserNamen ein\(reset)")
@@ -390,6 +392,24 @@ class Game{
         }
         // falls ein fehler auftritt, wird dieser im catch-block abgefangen und eine meldung ausgegeben
         catch {
+            print("Fehler beim Abspielen des Sounds: \(error) --\(error.localizedDescription)")
+        }
+    }
+    
+    
+    var backGroundAudioPlayer: AVAudioPlayer?
+    
+    func backGroundSound(path: String){
+        
+        let url = URL(fileURLWithPath: path)
+        
+        do {
+            backGroundAudioPlayer = try AVAudioPlayer(contentsOf: url)
+            
+            backGroundAudioPlayer?.numberOfLoops = -1
+            backGroundAudioPlayer?.play()
+            backGroundAudioPlayer?.volume = 0.8
+        } catch {
             print("Fehler beim Abspielen des Sounds: \(error) --\(error.localizedDescription)")
         }
     }

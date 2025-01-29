@@ -19,7 +19,7 @@ let giftPfeilSound: String = "\(basisPath)/Gift Pfeil.flac"
 let heilenSound: String = "\(basisPath)/Heilen.mp3"
 let himmelsFaustSound: String = "\(basisPath)/HimmelsFaust.wav"
 let kraftvollerAnsturnSound: String = "\(basisPath)/Kraftvoller Ansturn.mp3"
-let meteorSchlagSound: String = "\(basisPath)/Sounds/Meteor Schlag.wav"
+let meteorSchlagSound: String = "\(basisPath)/Meteor Schlag.wav"
 let paralyseBombeSound: String = "\(basisPath)/Paralyse Bombe 1,5s.wav"
 let schergenBeschwörenSound: String = "\(basisPath)/Schergen Beschwören.wav"
 let schildBlockSound: String = "\(basisPath)/Schild Block.wav"
@@ -30,6 +30,8 @@ let seismischesSchmetternSound: String = "\(basisPath)/seismisches Schmettern.wa
 let zornDesTeufelsSound: String = "\(basisPath)/Zorn des Teufels.wav"
 let winSound: String = "\(basisPath)/Win.wav"
 let verlorenSound: String = "\(basisPath)/verloren.mp3"
-let introSound: String = "\(basisPath)/Intro.mp3"
+let introSound: String = "\(basisPath)/IntroLang.mp3"
+let hinterGrundSound: String = "\(basisPath)/HintergrundMusikLang.mp3"
+let beutelSound: String = "\(basisPath)/BeutelSound.mp3"
 var audioPlayer: AVAudioPlayer?
 

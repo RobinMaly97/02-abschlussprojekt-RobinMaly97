@@ -106,6 +106,9 @@ class Barbar: Held {
                 erdbeben(gegner: [ziel])
             case "5":
                 print("\(self.name) öffnet den Beutel 🎒🎒🎒")
+                playSound(path: beutelSound)
+                Thread.sleep(forTimeInterval: 1.0)
+                audioPlayer?.stop()
                 beutel(ziel: ziel, zuHeilen: zuHeilen)
             default:
                 aktionsMenue(ziel: ziel, zuHeilen: zuHeilen)
