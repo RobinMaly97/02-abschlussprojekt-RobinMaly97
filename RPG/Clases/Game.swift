@@ -388,7 +388,7 @@ class Game{
         // audioplayer mit dem angegebenen URL-Objekt erstellen:
             audioPlayer = try AVAudioPlayer(contentsOf: url)
             // startet die wiedergabe des sounds
-            audioPlayer?.play()
+            audioPlayer?.play()        
         }
         // falls ein fehler auftritt, wird dieser im catch-block abgefangen und eine meldung ausgegeben
         catch {
@@ -408,7 +408,7 @@ class Game{
             
             backGroundAudioPlayer?.numberOfLoops = -1
             backGroundAudioPlayer?.play()
-            backGroundAudioPlayer?.volume = 0.8
+           
         } catch {
             print("Fehler beim Abspielen des Sounds: \(error) --\(error.localizedDescription)")
         }
