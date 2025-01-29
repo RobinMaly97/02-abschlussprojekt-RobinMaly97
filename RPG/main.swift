@@ -7,7 +7,7 @@ var spiel1: Game = Game()
 //playSound(path: heilen)
 //sleep(1)
 spiel1.menu()
-//spiel1.highScoreListe()
+spiel1.highScoreListe()
 
 
 //var gegner = Endgegner(name: "Urzael", hp: 50, angriffsPunkte: 30, etraSchild: 50, status: .gesund)

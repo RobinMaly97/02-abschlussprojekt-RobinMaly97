@@ -99,6 +99,7 @@ class Game{
         case "5":
             if !heldenAuswahl.isEmpty {
                 print("Spiel Startet")
+                audioPlayer?.stop()
                 rundenHeldenAuswahl()
             } else {
                 print("Du hast noch kein/e Held/en ausgewählt mit denen du Kämpfen möchtest.")
@@ -171,12 +172,15 @@ class Game{
         print("[3] Schwierigkeitsgrad")
         print("[4] Highscores")
         print("[5] Spiel Beenden")
+        playSound(path: introSound)
+        Thread.sleep(forTimeInterval: 10.0)
         
         let input: String = readLine()!
         
         switch input {
         case "1":
             print("\(blue)\(bold)Das Spiel Startet\(reset)".einruecken())
+            audioPlayer?.stop()
             runden()
         case "2":
             print("Mit welchen Helden Willst du Spielen ?")
@@ -192,6 +196,7 @@ class Game{
         default:
             menu()
         }
+        
     }
     
     

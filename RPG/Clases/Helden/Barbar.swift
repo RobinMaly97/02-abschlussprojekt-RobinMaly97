@@ -137,6 +137,9 @@ class Barbar: Held {
                 print("\(self.name) setz \(blinken)Trank ❤️ ❤️\(reset) ein und Heilt sich um 10 Hp ❤️")
                beutel.trank -= 1
              self.hp += 10
+                playSound(path: heilenSound)
+                Thread.sleep(forTimeInterval: 1.0)
+                audioPlayer?.stop()
             } else {
                 print("Du hast alle Tränke ❤️ ❤️ aufgebraucht.")
                 print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
@@ -147,6 +150,9 @@ class Barbar: Held {
                 print("\(self.name) setzt \(blinken)Feuer Heiler 🔥❤️\(reset) ein und ist wieder Gesund ❤️")
                 self.status = .gesund
                 beutel.feuerHeiler -= 1
+                playSound(path: heilenSound)
+                Thread.sleep(forTimeInterval: 1.0)
+                audioPlayer?.stop()
             } else {
                 print("Du hast alle Feuer Heiler 🔥❤️ aufgebraucht.")
                 print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
@@ -157,6 +163,9 @@ class Barbar: Held {
                 print("\(self.name) setzt \(blinken)Gift Heiler ☠️ ❤️\(reset) ein und ist wieder Gesund ❤️")
                 self.status = .gesund
                 beutel.giftHeiler -= 1
+                playSound(path: heilenSound)
+                Thread.sleep(forTimeInterval: 1.0)
+                audioPlayer?.stop()
             } else {
                 print("Du hast alle Gift Heiler ☠️ ❤️ aufgebraucht.")
                 print("Bitte wähle ein anderen Gegenstand aus dem Beutel")
